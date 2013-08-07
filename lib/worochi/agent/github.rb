@@ -3,71 +3,107 @@ require 'base64'
 require 'worochi/helper/github'
 
 class Worochi
+  # The {Agent} for GitHub API. This wraps around the `octokit` gem.
+  # @see https://github.com/octokit/octokit.rb
   class Agent::Github < Agent
 
-    # General agent methods
-
+    # @return [Hash] default options for GitHub
     def default_options
       {
         source: 'master',
         target: 'worochi',
         repo: 'darkmirage/test',
-        block_size: Worochi::Helper::Github::StreamIO::BLOCK_SIZE,
+        block_size: Worochi::Helper::Github::BLOCK_SIZE,
         commit_msg: 'Empty commit message',
         dir: '/'
       }
     end
 
+    # Initializes Octokit client. Refer to
+    # {https://github.com/octokit/octokit.rb
+    # octokit.rb documentation}.
+    #
+    # @return [Octokit::Client]
     def init_client
       @client = Octokit::Client.new(login: 'me', oauth_token: options[:token])
     end
 
+    # Pushes a list of {Item} to GitHub.
+    #
+    # @param [Array<Item>]
+    # @return [nil]
+    # @see Agent#push_items
     def push_all(items)
       source_sha = source_branch
       items.each { |item| source_sha = tree_append(source_sha, item) }
-      commit = @client.create_commit(repo, options[:commit_msg], source_sha, target_branch)
+      commit = @client.create_commit(repo, options[:commit_msg], source_sha,
+                                     target_branch)
       @client.update_ref(repo, "heads/#{options[:target]}", commit.sha)
+      nil
     end
 
-    # Pushing a single file using GitHub means making a new commit for each
-    # file. Not recommened and should just use push_all instead.
-    def push_file(item)
-      Worochi::Log.warn 'push_file should not be used for GitHub'
+    # Pushes a single {Item} to GitHub. This means making a new commit for each
+    # file. Not recommended and should just use {#push_all} instead.
+    #
+    # @param [Item]
+    # @return [nil]
+    def push_item(item)
+      Worochi::Log.warn 'push_item should not be used for GitHub'
       push_all([item])
     end
 
-    def folders
+    # Returns a list of files and subdirectories at the remote path specified
+    # by `options[:dir]`.
+    #
+    # @return [Array<Hash>] list of files and subdirectories
+    def list
       remote_path = options[:dir].sub(/^\//, '').sub(/\/$/, '')
-      source_sha = source_branch
-      list = get_folder_list(source_sha)
-      # Checks that folders are at the requested path
-      list.reject! do |folder|
-        !folder.path.match(remote_path + '($|\/.+)') || (
-          File.join(remote_path,
-            folder.path.split('/').last).sub(/^\//, '') != folder.path
-        )
+
+      result = @client.tree(repo, source_branch, recursive: true).tree
+      result.sort! do |x, y|
+        x.path.split('/').size <=> y.path.split('/').size
       end
-      list.map do |item|
+
+      # Checks that folders are at the requested path and not at a lower or
+      # higher level
+      result.reject! do |elem|
+        !elem.path.match(remote_path + '($|\/.+)') ||
+        (File.join(remote_path,
+            elem.path.split('/').last).sub(/^\//, '') != elem.path)
+      end
+
+      result.map do |elem|
         {
-          name: item.path.split('/').last,
-          path: item.path,
-          type: item.type == 'tree' ? 'dir' : 'file',
-          sha: item.sha
+          name: elem.path.split('/').last,
+          path: elem.path,
+          type: elem.type == 'tree' ? 'folder' : 'file',
+          sha: elem.sha
         }
       end
     end
 
-    # GitHub specific methods
-
-    def repos(push_only=false)
+    # Returns a list of repositories for the remote branch specified by
+    # `options[:source]`. If `opts[:push]` is `true`, then only repos with
+    # push access are returned. If `opts[:details]` is `true`, returns hashes
+    # containing more information about each repo.
+    #
+    # @param opts [Hash]
+    # @return [Array<String>, Array<Hash>] a list of repositories    
+    def repos(opts={ push: false, details: false, orgs: true })
       repos = @client.repositories.map {|repo| parse_repo repo}
       @client.organizations.each do |org|
         repos += @client.organization_repositories(org.login).map {|repo| parse_repo repo}
       end
-      repos.reject! {|repo| !repo[:push]} if push_only
-      repos
+      repos.reject! {|repo| !repo[:push]} if opts[:push]
+      repos.map { |repo| repo[:full_name] } unless opts[:details]
     end
 
+  private
+    # Appends an item to the existing tree.
+    #
+    # @param tree_sha [String] SHA1 checksum of the root tree
+    # @param item [Item] the item to append
+    # @return [String] SHA1 checksum of the resulting tree
     def tree_append(tree_sha, item)
       child = {
         path: full_path(item).gsub(/^\//, ''),
@@ -79,6 +115,10 @@ class Worochi
       new_tree.sha
     end
 
+    # Pushes a single item to GitHub and returns the blob SHA1 checksum.
+    #
+    # @param item [Item]
+    # @return [String] SHA1 checksum of the created blob
     def push_blob(item)
       Worochi::Log.debug "Uploading #{item.path} (#{item.size} bytes) to GitHub..."
       if item.size > options[:block_size]
@@ -90,9 +130,14 @@ class Worochi
       sha
     end
 
+    # Pushes a single item to GitHub using JSON streaming and returns the SHA1
+    # checksum
+    #
+    # @param item [Item]
+    # @return [String] SHA1 checksum of the created blob
     def stream_blob(item)
       Worochi::Log.debug "Using JSON streaming..."
-      post_stream = Worochi::Helper::Github::StreamIO.new(item.content)
+      post_stream = Worochi::Helper::Github::StreamIO.new(item)
 
       uri = URI("https://api.github.com/repos/#{repo}/git/blobs")
       request = Net::HTTP::Post.new(uri.path)
@@ -110,11 +155,7 @@ class Worochi
       raise Error, 'Failed to upload file to GitHub'
     end
 
-    def get_folder_list(root_sha)
-      folder_list = @client.tree(repo, root_sha, :recursive => true).tree
-      folder_list.sort! {|x, y| x.path.split('/').size <=> y.path.split('/').size}
-    end
-
+    # @return [Hash] repo information
     def parse_repo(repo)
       {
         name: repo.name,
@@ -127,25 +168,30 @@ class Worochi
       }
     end
 
+    # Returns the SHA1 checksum of the source branch.
+    #
+    # @return [String] SHA1 checksum
     def source_branch
       @client.branch(repo, options[:source]).commit.sha
     end
 
+    # Returns the SHA1 checksum of the target branch. Clones source branch if
+    # target branch does not exist
+    #
+    # @return [String] SHA1 checksum
     def target_branch
       begin
         sha = @client.branch(repo, options[:target]).commit.sha
       rescue
-        # Clones source branch if target branch does not exist
         ref = @client.create_ref(repo, "heads/#{options[:target]}", source_branch)
         sha = ref.object.sha
       end
       sha
     end
 
-    def set_source(source)
-      options[:source] = source
-    end
-
+    # An alias for `options[:repo]`
+    #
+    # @return [String] full repo name
     def repo
       options[:repo]
     end
