@@ -6,9 +6,10 @@ Gem::Specification.new do |s|
   s.description = 'Provides a standard way to interface with Ruby API wrappers provided by various cloud storage services such as Dropbox and Google Drive.'
   s.authors = ['Raven Jiang']
   s.email = ['raven@cs.stanford.edu']
-  s.files = %w(README.md worochi.gemspec)
+  s.files = %w(README.md LICENSE worochi.gemspec)
   s.files += Dir.glob('lib/**/*.rb')
   s.require_paths = ["lib"]
   s.homepage = 'http://rubygems.org/gems/worochi'
   s.license = 'MIT'
+  s.test_files = Dir.glob('spec/**/*')
 end

@@ -6,7 +6,13 @@ gem 'octokit'
 gem 'dropbox-sdk', :require => 'dropbox_sdk'
 gem 'aws-sdk'
 
-group :development do
-  gem 'yard', :require => false
+group :test do
   gem 'rspec', :require => false
 end
+
+group :development do
+  gem 'yard', :require => false
+  gem 'awesome_print', :require => false
+end
+
+gemspec
