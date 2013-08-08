@@ -77,18 +77,24 @@ class Worochi
       nil
     end
 
-    # Removes all agents from the list
+    # Removes all agents from the list.
     #
     # @return [nil]
     def reset
       @agents.clear
     end
 
-    # List the active agents.
+    # List the active agents in a human-readable form.
     #
-    # @return [Array<String>]
-    def list
-      @agents.map { |a| a.to_s }
+    # @param print [Boolean] prints the result if `true`
+    # @return [String] formatted list of agents
+    def list(print=true)
+      list = @agents.each_with_index.map do |a, i|
+        "  \033[33m# #{i}\033[0m\t#{a.name}"
+      end
+      result = list.join("\n")
+      puts result if print && !result.empty?
+      result
     end
 
     # @return [Integer] number of active agents.

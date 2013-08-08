@@ -114,6 +114,13 @@ class Worochi
       options
     end
 
+    # Returns the display name for the agent's service.
+    #
+    # @return [String] display name
+    def name
+      Worochi::Config.humanize_service(type)
+    end
+
   private
     # @return [String] full path combining remote directory and item path
     def full_path(item)
