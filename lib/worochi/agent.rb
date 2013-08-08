@@ -19,14 +19,13 @@ class Worochi
     # format the file list. An optional `opts` hash can be used to update the
     # agent options before pushing.
     #
-    # @example
-    #     agent = Worochi.create(:github, 'sfsFj41na89cx')
-    #     agent.push({ source: 'http://a.com/file.jpg', path: 'folder/file.jpg' })
-    #
     # @param origin [Array<Hash>, Array<String>, Hash, String]
     # @param opts [Hash] update agent options before pushing
     # @return [nil]
     # @see Item.open
+    # @example
+    #     agent = Worochi.create(:github, 'sfsFj41na89cx')
+    #     agent.push({ source: 'http://a.com/file.jpg', path: 'folder/file.jpg' })
     def push(origin, opts=nil)
       set_options(opts) unless opts.nil?
       items = Item.open(origin)
@@ -63,19 +62,37 @@ class Worochi
     # `options[:dir]`. Relies on the service-specific implementation of
     # `#list`.
     #
-    # @return [Array<Hash>] list of subdirectories
+    # @return [Array<String>, Array<Hash>] list of subdirectories
+    # @example
+    #     agent = Worochi.create(:dropbox, 'sfsFj41na89cx', dir: '/abc')
+    #     agent.folders # => ["folder1", "folder2"]
+    #     agent.folders(true)
+    #     # => [
+    #     #      { name: "folder1", type: "folder", path: "/abc/folder1"},
+    #     #      { name: "folder2", type: "folder", path: "/abc/folder2"}
+    #     #    ]
     def folders(details=false)
       result = list.reject { |elem| elem[:type] != 'folder' }
-      result.map { |elem| elem[:name] } unless details
+      result.map! { |elem| elem[:name] } unless details
+      result
     end
 
     # Returns a list of files at the remote path specified by `options[:dir]`.
     # Relies on the service-specific implementation of `#list`.
     #
-    # @return [Array<Hash>] list of files
+    # @return [Array<String>, Array<Hash>] list of files
+    # @example
+    #     agent = Worochi.create(:dropbox, 'sfsFj41na89cx', dir: '/abc')
+    #     agent.files # => ["k.jpg", "t.txt"]
+    #     agent.files(true)
+    #     # => [
+    #     #      { name: "k.jpg", type: "file", path: "/abc/k.jpg"},
+    #     #      { name: "t.txt", type: "file", path: "/abc/t.txt"}
+    #     #    ]
     def files(details=false)
       result = list.reject { |elem| elem[:type] != 'file' }
-      result.map { |elem| elem[:name] } unless details
+      result.map! { |elem| elem[:name] } unless details
+      result
     end
 
     # Updates {.options} using `opts`.
@@ -103,20 +120,21 @@ class Worochi
       File.join(options[:dir], item.path)
     end
 
-    # @return [Hash] default options for agents that do not override this
+    # Agents should override this.
+    #
+    # @return [nil]
     def default_options
-      { dir: '/' }
+      raise Error, 'Default options not specified.'
     end
 
     class << self
     public
       # Creates a new service-specific {Agent} based on `:service`.
       #
-      # @example
-      #     Worochi::Agent.new({ service: :github, token:'6st46setsybhd64' })
-      #
       # @param opts [Hash] service options; must contain `:service` key.
       # @return [Agent]
+      # @example
+      #     Worochi::Agent.new({ service: :github, token:'6st46setsybhd64' })
       def new(opts={})
         service = opts[:service]
         if self.name == 'Worochi::Agent'
@@ -131,6 +149,8 @@ class Worochi
       # Returns the class name for the {Agent} given a service name
       #
       # @return [String]
+      # @example
+      #     class_name(:google_drive) # => "GoogleDrive"
       def class_name(service)
         service.to_s.split('_').map{|e| e.capitalize}.join
       end

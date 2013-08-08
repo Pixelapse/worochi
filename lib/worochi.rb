@@ -17,6 +17,11 @@ class Worochi
     # Creates a new {Worochi::Agent} and adds it to the list of agents
     # listening to {Worochi.push} requests.
     #
+    # @param service [Symbol] service name as defined in {Config.services}
+    # @param token [String] authorization token for the service API
+    # @param opts [Hash] additional service-specific options
+    # @return [Worochi::Agent]
+    # @see Agent.new
     # @example
     #     Worochi.create(:dropbox, 'as89h38nFBUSHFfuh99f', { dir: '/folder' })
     # @example
@@ -27,12 +32,6 @@ class Worochi
     #       commit_msg: 'Hello'
     #     }
     #     Worochi.create(:github, '6st46setsytgbhd64', opts)
-    #
-    # @param service [Symbol] service name as defined in {Config.services}
-    # @param token [String] authorization token for the service API
-    # @param opts [Hash] additional service-specific options
-    # @return [Worochi::Agent]
-    # @see Agent.new
     def create(service, token, opts={})
       opts[:service] = service
       opts[:token] = token
@@ -47,7 +46,7 @@ class Worochi
     # @param agent [Worochi::Agent]
     # @return [nil]
     def add(agent)
-      @agents << agent
+      @agents << agent unless @agents.include?(agent)
       nil
     end
 
@@ -62,13 +61,13 @@ class Worochi
     end
 
     # Remove all agents belonging to a given service from the list. Removes
-    # all agents if service is not specified. (See {.reset}).
-    #
-    # @example
-    #     Worochi.remove(:dropbox)
+    # all agents if service is not specified.
     #
     # @param service [Symbol] service name as defined in {Config.services}
     # @return [nil]
+    # @see Worochi.reset
+    # @example
+    #     Worochi.remove(:dropbox)
     def remove_service(service=nil)
       if service.nil?
         reset

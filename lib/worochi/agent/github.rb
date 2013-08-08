@@ -10,7 +10,8 @@ class Worochi
     # @return [Hash] default options for GitHub
     def default_options
       {
-        source: 'master',
+        service: :github,
+        source: 'worochi',
         target: 'worochi',
         repo: 'darkmirage/test',
         block_size: Worochi::Helper::Github::BLOCK_SIZE,
@@ -26,6 +27,7 @@ class Worochi
     # @return [Octokit::Client]
     def init_client
       @client = Octokit::Client.new(login: 'me', oauth_token: options[:token])
+      @client
     end
 
     # Pushes a list of {Item} to GitHub.
@@ -124,7 +126,8 @@ class Worochi
       if item.size > options[:block_size]
         sha = stream_blob(item)
       else
-        sha = @client.create_blob(repo, Base64.strict_encode64(item.read), 'base64')
+        sha = @client.create_blob(repo, Base64.strict_encode64(item.read),
+                                  'base64')
       end
       Worochi::Log.debug "Uploaded [#{sha}]"
       sha

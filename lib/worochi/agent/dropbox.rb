@@ -7,6 +7,7 @@ class Worochi
     # @return [Hash] default options for Dropbox
     def default_options
       {
+        service: :dropbox,
         chunk_size: 2*1024*1024,
         overwrite: true,
         dir: '/'
@@ -20,6 +21,7 @@ class Worochi
     # @return [DropboxClient]
     def init_client
       @client = DropboxClient.new(options[:token])
+      @client
     end
 
     # Push a single {Item} to Dropbox.
