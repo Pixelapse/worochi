@@ -25,9 +25,9 @@ Gem::Specification.new do |s|
   s.add_runtime_dependency('dropbox-sdk') # Dropbox
   s.add_runtime_dependency('octokit') # GitHub
 
-  s.add_development_dependency('rspec', ['>= 2.14.1'])
-  s.add_development_dependency('vcr', ['>= 2.4.0'])
-  s.add_development_dependency('webmock', ['>= 1.9.0'])
+  s.add_development_dependency('rspec', ['~> 2.14.1'])
+  s.add_development_dependency('vcr', ['~> 2.5.0'])
+  s.add_development_dependency('webmock', ['~> 1.9.3'])
   s.add_development_dependency('awesome_print')
   s.add_development_dependency('yard')
 
