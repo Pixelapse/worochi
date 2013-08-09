@@ -19,7 +19,7 @@ class Worochi
       # Returns display name for the service.
       #
       # @param service [Symbol]
-      # @param [Stirng] display name
+      # @return [String] display name
       def humanize_service(service)
         @services[service]
       end

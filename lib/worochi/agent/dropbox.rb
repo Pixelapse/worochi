@@ -26,7 +26,7 @@ class Worochi
 
     # Push a single {Item} to Dropbox.
     #
-    # @param [Item]
+    # @param item [Item]
     # @return [nil]
     def push_item(item)
       Worochi::Log.debug "Uploading #{item.path} (#{item.size} bytes) to Dropbox..."
@@ -64,7 +64,7 @@ class Worochi
     # Refer to {https://www.dropbox.com/developers/core/docs#chunked-upload
     # API documentation}.
     #
-    # @param [Item]
+    # @param item [Item]
     # @return [nil]
     def push_item_chunked(item)
       Worochi::Log.debug "Using chunk uploader..."

@@ -3,6 +3,7 @@ require 'logger'
 class Worochi
   # Implements colored log messages.
   class Log
+    # Maps severity level to color code for logging.
     SEVERITY_COLOR = {
       'DEBUG' => 37,
       'INFO' => 32,
@@ -11,6 +12,7 @@ class Worochi
       'FATAL' => 31
     }
     class << self
+      # Initializes the logging system.
       def init_log
         @logger = Logger.new(STDOUT)
         @logger.formatter = proc do |severity, datetime, progname, msg|
@@ -18,21 +20,25 @@ class Worochi
         end
       end
 
+      # Prints DEBUG messages
       def debug(message)
         init_log if @logger.nil?
         @logger.debug message
       end
 
+      # Prints WARN messages
       def warn(message)
         init_log if @logger.nil?
         @logger.warn message
       end
 
+      # Prints INFO messages
       def info(message)
         init_log if @logger.nil?
         @logger.info message
       end
 
+      # Prints ERROR messages
       def error(message)
         init_log if @logger.nil?
         @logger.error message

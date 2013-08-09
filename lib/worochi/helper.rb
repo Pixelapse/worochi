@@ -1,6 +1,7 @@
 require 'aws-sdk' unless Worochi::Config.s3_bucket.nil?
 
 class Worochi
+  # Contains any global helper methods not specific to any individual service.
   module Helper
     class << self
       # A regex generated from {Config.s3_prefix} for determining if a given

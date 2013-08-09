@@ -5,6 +5,8 @@ require 'worochi/helper'
 require 'worochi/item'
 require 'worochi/agent'
 
+# The main class for the gem. This and the {Agent} class are the main
+# endpoints for interacting with the remote services.
 class Worochi
   @agents = []
 

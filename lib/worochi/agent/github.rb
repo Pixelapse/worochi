@@ -32,7 +32,7 @@ class Worochi
 
     # Pushes a list of {Item} to GitHub.
     #
-    # @param [Array<Item>]
+    # @param items [Array<Item>]
     # @return [nil]
     # @see Agent#push_items
     def push_all(items)
@@ -47,7 +47,7 @@ class Worochi
     # Pushes a single {Item} to GitHub. This means making a new commit for each
     # file. Not recommended and should just use {#push_all} instead.
     #
-    # @param [Item]
+    # @param item [Item]
     # @return [nil]
     def push_item(item)
       Worochi::Log.warn 'push_item should not be used for GitHub'

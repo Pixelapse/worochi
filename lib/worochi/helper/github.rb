@@ -4,6 +4,7 @@ class Worochi
   # Helper classes for GitHub JSON streaming.
   module Helper::Github
 
+    # Size to read in. Must be a multiple of 3 for Base64 streaming.
     BLOCK_SIZE = 12288
 
     # This is a wrapper that produces a JSON stream that works with
