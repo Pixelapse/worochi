@@ -2,7 +2,6 @@ require 'worochi'
 require 'awesome_print'
 require 'digest'
 require 'ostruct'
-require 'webmock/rspec'
 require 'vcr'
 
 Dir["./spec/support/**/*.rb"].sort.each { |f| require f }

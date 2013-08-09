@@ -17,13 +17,20 @@ shared_examples_for 'a service agent' do
   describe '#files', :vcr do
     it 'contains file1' do
       expect(agent.files).to include('file1')
-
+    end
+    
+    it 'accepts a different relative path' do
+      expect(agent.files('folder1')).to include('test.txt')
     end
   end
 
   describe '#folders', :vcr do
     it 'contains folder1' do
       expect(agent.folders).to include('folder1')
+    end
+
+    it 'accepts a different relative path' do
+      expect(agent.folders('folder1').size).to be(0)
     end
   end
 end

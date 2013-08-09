@@ -58,38 +58,38 @@ class Worochi
       nil
     end
 
-    # Returns a list of subdirectories at the remote path specified by
-    # `options[:dir]`. Relies on the service-specific implementation of
-    # `#list`.
-    #
-    # @return [Array<String>, Array<Hash>] list of subdirectories
-    # @example
-    #     agent = Worochi.create(:dropbox, 'sfsFj41na89cx', dir: '/abc')
-    #     agent.folders # => ["folder1", "folder2"]
-    #     agent.folders(true)
-    #     # => [
-    #     #      { name: "folder1", type: "folder", path: "/abc/folder1"},
-    #     #      { name: "folder2", type: "folder", path: "/abc/folder2"}
-    #     #    ]
-    def folders(*args)
-      list_helper(false, args)
-    end
-
     # Returns a list of files at the remote path specified by `options[:dir]`.
     # Relies on the service-specific implementation of `#list`.
-    #
     # 
+    # @overload files(details)
+    #   @param details [Boolean] display more information
+    # @overload files(path, details=false)
+    #   @param path [String] remote path to list instead of current directory
+    #   @param details [Boolean] display more information
     # @return [Array<String>, Array<Hash>] list of files
     # @example
     #     agent = Worochi.create(:dropbox, 'sfsFj41na89cx', dir: '/abc')
     #     agent.files # => ["k.jpg", "t.txt"]
-    #     agent.files(nil, true)
+    #     agent.files(true)
     #     # => [
     #     #      { name: "k.jpg", type: "file", path: "/abc/k.jpg"},
     #     #      { name: "t.txt", type: "file", path: "/abc/t.txt"}
     #     #    ]
     def files(*args)
       list_helper(true, args)
+    end
+
+    # Returns a list of subdirectories at the remote path specified by
+    # `options[:dir]`. Relies on the service-specific implementation of
+    # `#list`. Refer to {#files} for overloaded prototypes.
+    #
+    # @return [Array<String>, Array<Hash>] list of subdirectories
+    # @see #files
+    # @example
+    #     agent = Worochi.create(:dropbox, 'sfsFj41na89cx', dir: '/abc')
+    #     agent.folders # => ["folder1", "folder2"]
+    def folders(*args)
+      list_helper(false, args)
     end
 
     # Updates {.options} using `opts`.
@@ -119,9 +119,17 @@ class Worochi
     end
 
   private
+    # Parses the arguments for {#files} and {#folders}.
+    #
+    # @param file_only [Boolean] filters files or folders
+    # @param args [Array] argument list
+    # @return [Array<String>, Array<Hash>] list of files or folders
     def list_helper(file_only, args)
       details = true if args.first == true
-      path = args.first if args.first.kind_of?(String)
+      if args.first.kind_of?(String)
+        path = args.first 
+        details = true if args[1] == true
+      end
       excluded = file_only ? 'folder' : 'file'
       result = list(path).reject { |elem| elem[:type] == excluded }
       result.map! { |elem| elem[:name] } unless details
