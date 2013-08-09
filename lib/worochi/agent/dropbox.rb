@@ -42,9 +42,10 @@ class Worochi
     # Returns a list of files and subdirectories at the remote path specified
     # by `options[:dir]`.
     #
+    # @param path [String] path to list instead of the current directory
     # @return [Array<Hash>] list of files and subdirectories
-    def list
-      remote_path = options[:dir]
+    def list(path=nil)
+      remote_path = path || options[:dir]
       begin
         response = @client.metadata(remote_path)
       rescue DropboxError
@@ -79,6 +80,19 @@ class Worochi
       end
       uploader.finish(full_path(item), options[:overwrite])
       nil
+    end
+
+    # Deletes the file at `path` from Dropbox.
+    #
+    # @param path [String] path relative to current directory
+    # @return [Boolean] `true` if a file was actually deleted
+    def delete(path)
+      begin
+        @client.file_delete(File.join(options[:dir], path))
+      rescue DropboxError
+        false
+      end
+      true
     end
   end
 end

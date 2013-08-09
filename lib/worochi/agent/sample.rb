@@ -48,11 +48,13 @@ class Worochi
     # least the keys `:name`, `:path`, and `:type`, but can also contain other
     # service-specific meta information.
     #
+    # @param path [String] path to list instead of the current directory
     # @return [Array<Hash>] list of files and subdirectories
     # @see Agent#folders
     # @see Agent#files
-    def list
-      result = @client.get_file_list
+    def list(path=nil)
+      remote_path = path || options[:dir]
+      result = @client.get_file_list(remote_path)
       result.map do |elem|
         {
           name: elem.name,

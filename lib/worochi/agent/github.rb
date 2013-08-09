@@ -57,9 +57,10 @@ class Worochi
     # Returns a list of files and subdirectories at the remote path specified
     # by `options[:dir]`.
     #
+    # @param path [String] path to list instead of the current directory
     # @return [Array<Hash>] list of files and subdirectories
-    def list
-      remote_path = options[:dir].sub(/^\//, '').sub(/\/$/, '')
+    def list(path=nil)
+      remote_path = (path || options[:dir]).sub(/^\//, '').sub(/\/$/, '')
 
       result = @client.tree(repo, source_branch, recursive: true).tree
       result.sort! do |x, y|

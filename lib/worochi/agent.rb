@@ -71,28 +71,25 @@ class Worochi
     #     #      { name: "folder1", type: "folder", path: "/abc/folder1"},
     #     #      { name: "folder2", type: "folder", path: "/abc/folder2"}
     #     #    ]
-    def folders(details=false)
-      result = list.reject { |elem| elem[:type] != 'folder' }
-      result.map! { |elem| elem[:name] } unless details
-      result
+    def folders(*args)
+      list_helper(false, args)
     end
 
     # Returns a list of files at the remote path specified by `options[:dir]`.
     # Relies on the service-specific implementation of `#list`.
     #
+    # 
     # @return [Array<String>, Array<Hash>] list of files
     # @example
     #     agent = Worochi.create(:dropbox, 'sfsFj41na89cx', dir: '/abc')
     #     agent.files # => ["k.jpg", "t.txt"]
-    #     agent.files(true)
+    #     agent.files(nil, true)
     #     # => [
     #     #      { name: "k.jpg", type: "file", path: "/abc/k.jpg"},
     #     #      { name: "t.txt", type: "file", path: "/abc/t.txt"}
     #     #    ]
-    def files(details=false)
-      result = list.reject { |elem| elem[:type] != 'file' }
-      result.map! { |elem| elem[:name] } unless details
-      result
+    def files(*args)
+      list_helper(true, args)
     end
 
     # Updates {.options} using `opts`.
@@ -122,6 +119,15 @@ class Worochi
     end
 
   private
+    def list_helper(file_only, args)
+      details = true if args.first == true
+      path = args.first if args.first.kind_of?(String)
+      excluded = file_only ? 'folder' : 'file'
+      result = list(path).reject { |elem| elem[:type] == excluded }
+      result.map! { |elem| elem[:name] } unless details
+      result
+    end
+
     # @return [String] full path combining remote directory and item path
     def full_path(item)
       File.join(options[:dir], item.path)
