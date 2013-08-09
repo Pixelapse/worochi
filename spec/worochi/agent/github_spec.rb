@@ -1,9 +1,12 @@
 require 'helper'
 
 describe Worochi::Agent::Github do
+  let(:required_keys) { [:repo, :source, :target, :block_size, :commit_msg] }
+  let(:client_class) { Octokit::Client }
+
   let(:agent) do
     Worochi::Agent::Github.new({
-      token: github_token,
+      token: ENV['GITHUB_TEST_TOKEN'],
       repo: 'darkmirage/test',
       source: 'master',
       target: 'worochi'
@@ -11,20 +14,4 @@ describe Worochi::Agent::Github do
   end
 
   it_should_behave_like 'a service agent'
-
-  describe '#default_options' do
-    it 'has the required options' do
-      [:repo, :source, :target, :block_size, :commit_msg].each do |key|
-        expect(agent.default_options.include?(key)).to be_true
-      end
-    end
-  end
-
-  describe '#init_client' do
-    it 'returns the client' do
-      client = agent.init_client
-      expect(client.class).to eq(Octokit::Client)
-    end
-  end
-
 end

@@ -16,7 +16,7 @@ describe Worochi do
 
   describe '.size' do
     it 'returns the number of active agents' do
-      expect(Worochi.size).to equal(Worochi.agents.size)
+      expect(Worochi.size).to eq(Worochi.agents.size)
     end
   end
 
@@ -37,7 +37,7 @@ describe Worochi do
     it 'creates a single agent' do
       a = Worochi.create(:github, token)
       expect(a.kind_of?(Worochi::Agent)).to be_true
-      expect(Worochi.size).to equal(1)
+      expect(Worochi.size).to eq(1)
     end
 
     it 'creates four agents' do
@@ -45,7 +45,7 @@ describe Worochi do
         a = Worochi.create(:dropbox, token)
         expect(a.kind_of?(Worochi::Agent)).to be_true
       end
-      expect(Worochi.size).to equal(4)
+      expect(Worochi.size).to eq(4)
     end
 
     it 'requires service and token' do
@@ -57,9 +57,9 @@ describe Worochi do
   describe '.reset' do
     it "removes all agents" do
       5.times { create_github_agent }
-      expect(Worochi.size).to equal(5)
+      expect(Worochi.size).to eq(5)
       Worochi.reset
-      expect(Worochi.size).to equal(0)
+      expect(Worochi.size).to eq(0)
     end
   end
 
@@ -69,20 +69,20 @@ describe Worochi do
       create_github_agent
       create_dropbox_agent
       create_github_agent
-      expect(Worochi.size).to equal(4)
+      expect(Worochi.size).to eq(4)
       Worochi.remove_service(:dropbox)
       create_dropbox_agent
-      expect(Worochi.size).to equal(3)
+      expect(Worochi.size).to eq(3)
       Worochi.remove_service(:github)
-      expect(Worochi.size).to equal(1)
+      expect(Worochi.size).to eq(1)
     end
 
     it 'removes all agents' do
       4.times { create_dropbox_agent }
       4.times { create_github_agent }
-      expect(Worochi.size).to equal(8)
+      expect(Worochi.size).to eq(8)
       Worochi.remove_service
-      expect(Worochi.size).to equal(0)
+      expect(Worochi.size).to eq(0)
     end
   end
 
@@ -91,7 +91,7 @@ describe Worochi do
       a = create_dropbox_agent
       b = create_dropbox_agent
       expect(Worochi.agents).to include(a, b)
-      expect(Worochi.agents.size).to equal(2)
+      expect(Worochi.agents.size).to eq(2)
     end
   end
 

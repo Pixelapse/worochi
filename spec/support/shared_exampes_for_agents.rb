@@ -1,8 +1,16 @@
 shared_examples_for 'a service agent' do
   describe '#default_options' do
     it 'has the required options' do
-      agent.default_options.include?(:dir).should be_true
-      agent.default_options.include?(:service).should be_true
+      (required_keys + [:dir, :service]).each do |key|
+        expect(agent.default_options).to include(key)
+      end
+    end
+  end
+
+  describe '#init_client' do
+    it 'returns the client' do
+      client = agent.init_client
+      expect(client.class).to be(client_class)
     end
   end
 

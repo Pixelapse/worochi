@@ -67,6 +67,7 @@ class Worochi
     #
     # @param item [Item]
     # @return [nil]
+    # @see https://www.dropbox.com/developers/core/docs#chunked-upload
     def push_item_chunked(item)
       Worochi::Log.debug "Using chunk uploader..."
       uploader = @client.get_chunked_uploader(item.content, item.size)

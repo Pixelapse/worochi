@@ -22,24 +22,28 @@ class Worochi
 
       # Prints DEBUG messages
       def debug(message)
+        return if Worochi::Config.silent?
         init_log if @logger.nil?
         @logger.debug message
       end
 
       # Prints WARN messages
       def warn(message)
+        return if Worochi::Config.silent?
         init_log if @logger.nil?
         @logger.warn message
       end
 
       # Prints INFO messages
       def info(message)
+        return if Worochi::Config.silent?
         init_log if @logger.nil?
         @logger.info message
       end
 
       # Prints ERROR messages
       def error(message)
+        return if Worochi::Config.silent?
         init_log if @logger.nil?
         @logger.error message
       end
