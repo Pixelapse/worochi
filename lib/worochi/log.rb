@@ -1,6 +1,7 @@
 require 'logger'
 
 class Worochi
+  # Implements colored log messages.
   class Log
     SEVERITY_COLOR = {
       'DEBUG' => 37,
