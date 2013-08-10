@@ -1,0 +1,68 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://api.github.com/repos/darkmirage/test/branches/master
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Octokit Ruby Gem 1.25.0
+      Accept:
+      - application/vnd.github.beta+json
+      Authorization:
+      - token <GITHUB_TOKEN>
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - GitHub.com
+      Date:
+      - Fri, 09 Aug 2013 23:50:24 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Transfer-Encoding:
+      - chunked
+      Status:
+      - 200 OK
+      X-Ratelimit-Limit:
+      - '5000'
+      X-Ratelimit-Remaining:
+      - '4898'
+      X-Ratelimit-Reset:
+      - '1376092779'
+      X-Oauth-Scopes:
+      - user, public_repo, repo, gist
+      X-Accepted-Oauth-Scopes:
+      - repo, public_repo, repo:status, delete_repo, site_admin
+      X-Github-Media-Type:
+      - github.beta; format=json
+      X-Content-Type-Options:
+      - nosniff
+      Access-Control-Allow-Credentials:
+      - 'true'
+      Access-Control-Expose-Headers:
+      - ETag, Link, X-RateLimit-Limit, X-RateLimit-Remaining, X-RateLimit-Reset, X-OAuth-Scopes,
+        X-Accepted-OAuth-Scopes
+      Access-Control-Allow-Origin:
+      - '*'
+      Etag:
+      - '"9f1960e9f71a26ef10999b56127f5ff5"'
+      Cache-Control:
+      - max-age=0, private, must-revalidate
+      Vary:
+      - Accept-Encoding
+    body:
+      encoding: UTF-8
+      string: '{"name":"master","commit":{"sha":"cdddc3941866854cdb41c023d0f5240ed10df053","commit":{"author":{"name":"Raven
+        Jiang","email":"raven@cs.stanford.edu","date":"2013-08-09T23:23:24Z"},"committer":{"name":"Raven
+        Jiang","email":"raven@cs.stanford.edu","date":"2013-08-09T23:23:24Z"},"message":"Added
+        subfolder testing","tree":{"sha":"6553d302dfc55bf5cd09c07a6125753af023c7a5","url":"https://api.github.com/repos/darkmirage/test/git/trees/6553d302dfc55bf5cd09c07a6125753af023c7a5"},"url":"https://api.github.com/repos/darkmirage/test/git/commits/cdddc3941866854cdb41c023d0f5240ed10df053","comment_count":0},"url":"https://api.github.com/repos/darkmirage/test/commits/cdddc3941866854cdb41c023d0f5240ed10df053","html_url":"https://github.com/darkmirage/test/commit/cdddc3941866854cdb41c023d0f5240ed10df053","comments_url":"https://api.github.com/repos/darkmirage/test/commits/cdddc3941866854cdb41c023d0f5240ed10df053/comments","author":{"login":"darkmirage","id":1635019,"avatar_url":"https://secure.gravatar.com/avatar/5111569f6bba258cfe81d12af3ba99a2?d=https://a248.e.akamai.net/assets.github.com%2Fimages%2Fgravatars%2Fgravatar-user-420.png","gravatar_id":"5111569f6bba258cfe81d12af3ba99a2","url":"https://api.github.com/users/darkmirage","html_url":"https://github.com/darkmirage","followers_url":"https://api.github.com/users/darkmirage/followers","following_url":"https://api.github.com/users/darkmirage/following{/other_user}","gists_url":"https://api.github.com/users/darkmirage/gists{/gist_id}","starred_url":"https://api.github.com/users/darkmirage/starred{/owner}{/repo}","subscriptions_url":"https://api.github.com/users/darkmirage/subscriptions","organizations_url":"https://api.github.com/users/darkmirage/orgs","repos_url":"https://api.github.com/users/darkmirage/repos","events_url":"https://api.github.com/users/darkmirage/events{/privacy}","received_events_url":"https://api.github.com/users/darkmirage/received_events","type":"User"},"committer":{"login":"darkmirage","id":1635019,"avatar_url":"https://secure.gravatar.com/avatar/5111569f6bba258cfe81d12af3ba99a2?d=https://a248.e.akamai.net/assets.github.com%2Fimages%2Fgravatars%2Fgravatar-user-420.png","gravatar_id":"5111569f6bba258cfe81d12af3ba99a2","url":"https://api.github.com/users/darkmirage","html_url":"https://github.com/darkmirage","followers_url":"https://api.github.com/users/darkmirage/followers","following_url":"https://api.github.com/users/darkmirage/following{/other_user}","gists_url":"https://api.github.com/users/darkmirage/gists{/gist_id}","starred_url":"https://api.github.com/users/darkmirage/starred{/owner}{/repo}","subscriptions_url":"https://api.github.com/users/darkmirage/subscriptions","organizations_url":"https://api.github.com/users/darkmirage/orgs","repos_url":"https://api.github.com/users/darkmirage/repos","events_url":"https://api.github.com/users/darkmirage/events{/privacy}","received_events_url":"https://api.github.com/users/darkmirage/received_events","type":"User"},"parents":[{"sha":"9da46c5d5e0758a759f80de6283eba05c1f04735","url":"https://api.github.com/repos/darkmirage/test/commits/9da46c5d5e0758a759f80de6283eba05c1f04735","html_url":"https://github.com/darkmirage/test/commit/9da46c5d5e0758a759f80de6283eba05c1f04735"}]},"_links":{"self":"https://api.github.com/repos/darkmirage/test/branches/master","html":"https://github.com/darkmirage/test/tree/master"}}'
+    http_version: 
+  recorded_at: Fri, 09 Aug 2013 23:50:24 GMT
+recorded_with: VCR 2.5.0

@@ -1,0 +1,46 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://data-pixelapse.s3.amazonaws.com/12061/271934/orig_232903?AWSAccessKeyId=<AWS_ID>&Expires=1376089970&Signature=hbtQM2Az4viropQJZNUy7cqJWa8=
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - '*/*'
+      User-Agent:
+      - Ruby
+      Host:
+      - data-pixelapse.s3.amazonaws.com
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      X-Amz-Id-2:
+      - O2rlqW/ubwjAIZ2pV4Ug3is3N7pl+cjghHdBemSlnSDnZfJXjX1JAWtndZxOLUpM
+      X-Amz-Request-Id:
+      - E962F3B837EDD910
+      Date:
+      - Fri, 09 Aug 2013 22:12:51 GMT
+      Last-Modified:
+      - Tue, 06 Nov 2012 18:03:02 GMT
+      Etag:
+      - '"571411c9077a539675188e984056c508"'
+      Accept-Ranges:
+      - bytes
+      Content-Type:
+      - application/octet-stream
+      Content-Length:
+      - '8'
+      Server:
+      - AmazonS3
+    body:
+      encoding: UTF-8
+      string: "#empty\r\n"
+    http_version: 
+  recorded_at: Fri, 09 Aug 2013 22:12:50 GMT
+recorded_with: VCR 2.5.0
