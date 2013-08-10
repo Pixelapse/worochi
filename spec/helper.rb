@@ -26,7 +26,7 @@ end
 RSpec.configure do |c|
   c.color_enabled = true
   c.tty = true
-  # c.formatter = :documentation
+  c.formatter = :documentation
   c.treat_symbols_as_metadata_keys_with_true_values = true # needed for vcr
   c.include TestFiles
 
