@@ -15,10 +15,12 @@ class Worochi
     # An IO object containing the content of the file being pushed.
     # @return [IO]
     attr_accessor :content
-    def initialize(opts={})
-      @path = opts[:path]
-      raise Error, 'Missing Item content' if !opts[:content]
-      @content = opts[:content]
+
+    # @param path [String] relative destination path including file name
+    # @param content [IO] file content
+    def initialize(path, content)
+      @path = path
+      @content = content
       @content.rewind
     end
 
@@ -34,7 +36,15 @@ class Worochi
     #
     # @return [String]
     def read(*args)
-      content.read(args)
+      content.read(*args)
+    end
+
+    # Rewinds the content. This is just a wrapper for the `#rewind` method on
+    # {#content}.
+    #
+    # @return [0]
+    def rewind
+      content.rewind
     end
 
     class << self
@@ -79,11 +89,10 @@ class Worochi
           source = entry
         end
 
-        Item.new({
-          path: path || File.basename(source),
-          content: retrieve(source)
-        })
+        Item.new(path || File.basename(source), retrieve(source))
       end
+
+    private
 
       # Retrieves the file content from `source`.
       #

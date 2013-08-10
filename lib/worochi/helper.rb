@@ -4,14 +4,6 @@ class Worochi
   # Contains any global helper methods not specific to any individual service.
   module Helper
     class << self
-      # A regex generated from {Config.s3_prefix} for determining if a given
-      # String is an S3 path.
-      #
-      # @return [Regexp]
-      def s3_prefix_re
-        /^#{Config.s3_prefix}\:/
-      end
-
       # Given an S3 path, return the full URL for the corresponding object
       # determined using the AWS SDK.
       #
@@ -29,6 +21,15 @@ class Worochi
       # @return [Boolean]
       def is_s3_path?(path)
         !s3_prefix_re.match(path).nil?
+      end
+
+    private
+      # A regex generated from {Config.s3_prefix} for determining if a given
+      # String is an S3 path.
+      #
+      # @return [Regexp]
+      def s3_prefix_re
+        /^#{Config.s3_prefix}\:/
       end
     end
   end

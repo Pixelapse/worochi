@@ -1,0 +1,79 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://api.dropbox.com/1/metadata/auto/Dev/test?file_limit=25000&include_deleted=false&list=true
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - '*/*'
+      User-Agent:
+      - OfficialDropboxRubySDK/1.6.1
+      Authorization:
+      - Bearer <DROPBOX_TOKEN>
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - nginx
+      Date:
+      - Fri, 09 Aug 2013 23:04:21 GMT
+      Content-Type:
+      - text/javascript
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      X-Server-Response-Time:
+      - '60'
+      X-Dropbox-Request-Id:
+      - 4bb445e6280dbda2242297deaccf6d1e
+      Pragma:
+      - no-cache
+      Cache-Control:
+      - no-cache
+      X-Dropbox-Http-Protocol:
+      - None
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Requestid:
+      - 51c179468646c793498cba5611400e72
+    body:
+      encoding: UTF-8
+      string: '{"hash": "bf88e23a6fa5e851915a2b37069faf3c", "revision": 913527043,
+        "rev": "36735103002426b8", "thumb_exists": false, "bytes": 0, "modified":
+        "Fri, 09 Aug 2013 00:17:26 +0000", "path": "/Dev/test", "is_dir": true, "icon":
+        "folder", "root": "dropbox", "contents": [{"revision": 913527044, "rev": "36735104002426b8",
+        "thumb_exists": false, "bytes": 0, "modified": "Fri, 09 Aug 2013 00:17:28
+        +0000", "path": "/Dev/test/.git", "is_dir": true, "icon": "folder", "root":
+        "dropbox", "size": "0 bytes"}, {"revision": 913527128, "rev": "36735158002426b8",
+        "thumb_exists": false, "bytes": 18, "modified": "Fri, 09 Aug 2013 00:17:36
+        +0000", "client_mtime": "Thu, 08 Aug 2013 20:44:11 +0000", "path": "/Dev/test/file1",
+        "is_dir": false, "icon": "page_white", "root": "dropbox", "mime_type": "application/octet-stream",
+        "size": "18 bytes"}, {"revision": 913527046, "rev": "36735106002426b8", "thumb_exists":
+        false, "bytes": 0, "modified": "Fri, 09 Aug 2013 00:17:28 +0000", "path":
+        "/Dev/test/folder1", "is_dir": true, "icon": "folder", "root": "dropbox",
+        "size": "0 bytes"}, {"revision": 913527047, "rev": "36735107002426b8", "thumb_exists":
+        false, "bytes": 0, "modified": "Fri, 09 Aug 2013 00:17:28 +0000", "path":
+        "/Dev/test/folder2", "is_dir": true, "icon": "folder", "root": "dropbox",
+        "size": "0 bytes"}, {"revision": 913527045, "rev": "36735105002426b8", "thumb_exists":
+        false, "bytes": 0, "modified": "Fri, 09 Aug 2013 00:17:28 +0000", "path":
+        "/Dev/test/folder3", "is_dir": true, "icon": "folder", "root": "dropbox",
+        "size": "0 bytes"}, {"revision": 913527152, "rev": "36735170002426b8", "thumb_exists":
+        false, "bytes": 1078, "modified": "Fri, 09 Aug 2013 00:17:36 +0000", "client_mtime":
+        "Thu, 08 Aug 2013 20:38:22 +0000", "path": "/Dev/test/LICENSE", "is_dir":
+        false, "icon": "page_white", "root": "dropbox", "mime_type": "application/octet-stream",
+        "size": "1.1 KB"}, {"revision": 913527129, "rev": "36735159002426b8", "thumb_exists":
+        false, "bytes": 20, "modified": "Fri, 09 Aug 2013 00:17:36 +0000", "client_mtime":
+        "Thu, 08 Aug 2013 20:38:22 +0000", "path": "/Dev/test/README.md", "is_dir":
+        false, "icon": "page_white_text", "root": "dropbox", "mime_type": "application/octet-stream",
+        "size": "20 bytes"}], "size": "0 bytes"}'
+    http_version: 
+  recorded_at: Fri, 09 Aug 2013 23:04:21 GMT
+recorded_with: VCR 2.5.0
