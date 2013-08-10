@@ -33,6 +33,13 @@ class Worochi
       #
       # @return [String]
       attr_reader :s3_prefix
+
+      # Disable debug and error messages if `true`.
+      #
+      # @return [Boolean]
+      attr_accessor :silent
+
+      alias_method :silent?, :silent
     end
   end
 end

@@ -45,7 +45,12 @@ class Worochi
     # @param path [String] path to list instead of the current directory
     # @return [Array<Hash>] list of files and subdirectories
     def list(path=nil)
-      remote_path = path || options[:dir]
+      if path
+        remote_path = path[0] == '/' ? path : File.join(options[:dir], path)
+      else
+        remote_path = options[:dir]
+      end
+      
       begin
         response = @client.metadata(remote_path)
       rescue DropboxError
@@ -67,6 +72,7 @@ class Worochi
     #
     # @param item [Item]
     # @return [nil]
+    # @see https://www.dropbox.com/developers/core/docs#chunked-upload
     def push_item_chunked(item)
       Worochi::Log.debug "Using chunk uploader..."
       uploader = @client.get_chunked_uploader(item.content, item.size)

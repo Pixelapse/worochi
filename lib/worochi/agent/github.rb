@@ -33,7 +33,7 @@ class Worochi
     # Pushes a list of {Item} to GitHub.
     #
     # @param items [Array<Item>]
-    # @return [nil]
+    # @return [String] Commit SHA1 hash
     # @see Agent#push_items
     def push_all(items)
       source_sha = source_branch
@@ -41,7 +41,7 @@ class Worochi
       commit = @client.create_commit(repo, options[:commit_msg], source_sha,
                                      target_branch)
       @client.update_ref(repo, "heads/#{options[:target]}", commit.sha)
-      nil
+      commit.sha
     end
 
     # Pushes a single {Item} to GitHub. This means making a new commit for each
@@ -58,11 +58,12 @@ class Worochi
     # by `options[:dir]`.
     #
     # @param path [String] path to list instead of the current directory
+    # @param sha [String] list a different branch than the `:source`
     # @return [Array<Hash>] list of files and subdirectories
-    def list(path=nil)
+    def list(path=nil, sha=nil)
       remote_path = (path || options[:dir]).sub(/^\//, '').sub(/\/$/, '')
 
-      result = @client.tree(repo, source_branch, recursive: true).tree
+      result = @client.tree(repo, sha || source_branch, recursive: true).tree
       result.sort! do |x, y|
         x.path.split('/').size <=> y.path.split('/').size
       end

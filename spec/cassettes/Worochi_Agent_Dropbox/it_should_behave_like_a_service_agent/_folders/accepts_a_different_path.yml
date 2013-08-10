@@ -1,0 +1,60 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://api.dropbox.com/1/metadata/auto/Dev/test/folder1?file_limit=25000&include_deleted=false&list=true
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - '*/*'
+      User-Agent:
+      - OfficialDropboxRubySDK/1.6.1
+      Authorization:
+      - Bearer <DROPBOX_TOKEN>
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - nginx
+      Date:
+      - Fri, 09 Aug 2013 23:16:53 GMT
+      Content-Type:
+      - text/javascript
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      X-Server-Response-Time:
+      - '46'
+      X-Dropbox-Request-Id:
+      - 030cfdf38668243a91dc6e7c5aab47b7
+      Pragma:
+      - no-cache
+      Cache-Control:
+      - no-cache
+      X-Dropbox-Http-Protocol:
+      - None
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Requestid:
+      - f44af7aa59e252256ba3781850804603
+    body:
+      encoding: UTF-8
+      string: '{"hash": "f8b81477e7377b80273993acbacd0527", "revision": 913527046,
+        "rev": "36735106002426b8", "thumb_exists": false, "bytes": 0, "modified":
+        "Fri, 09 Aug 2013 00:17:28 +0000", "path": "/Dev/test/folder1", "is_dir":
+        true, "icon": "folder", "root": "dropbox", "contents": [{"revision": 913527127,
+        "rev": "36735157002426b8", "thumb_exists": false, "bytes": 6, "modified":
+        "Fri, 09 Aug 2013 00:17:36 +0000", "client_mtime": "Thu, 08 Aug 2013 20:41:05
+        +0000", "path": "/Dev/test/folder1/test.txt", "is_dir": false, "icon": "page_white_text",
+        "root": "dropbox", "mime_type": "text/plain", "size": "6 bytes"}], "size":
+        "0 bytes"}'
+    http_version: 
+  recorded_at: Fri, 09 Aug 2013 23:16:53 GMT
+recorded_with: VCR 2.5.0
