@@ -83,8 +83,8 @@ class Worochi
       # @return [Item] the file item
       def open_single(entry)
         if entry.kind_of?(Hash)
-          source = entry[:source]
-          path = entry[:path]
+          source = entry[:source] || entry['source']
+          path = entry[:path] || entry['path']
         else
           source = entry
         end
@@ -123,7 +123,6 @@ class Worochi
       # @param file_url [String, URI] the URL of the file
       # @return [Tempfile] the downloaded file
       def retrieve_remote(file_url)
-        Worochi::Log.debug file_url.class
         uri = URI(file_url)
         Worochi::Log.debug 'GET: ' + uri.to_s
 

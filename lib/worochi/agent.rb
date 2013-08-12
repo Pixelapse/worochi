@@ -98,7 +98,9 @@ class Worochi
     # @return [Hash] the updated options
     def set_options(opts={})
       self.options ||= default_options
-      options.merge!(opts)
+      sym_opts = {}
+      opts.each { |k, v| sym_opts[k.to_sym] = v }
+      options.merge!(sym_opts)
     end
 
     # Sets the remote target directory path. This is the same as modifying
@@ -115,7 +117,7 @@ class Worochi
     #
     # @return [String] display name
     def name
-      Worochi::Config.humanize_service(type)
+      Worochi::Config.service_display_name(type)
     end
 
   private

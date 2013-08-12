@@ -24,7 +24,7 @@ class Worochi
       #   @param service_id [Integer]
       # @return [String] display name
       def service_display_name(arg)
-        service = arg.to_sym
+        service = arg.to_sym if arg.respond_to?(:to_sym)
         service = service_name(arg) unless @services.include?(service)
         if service.nil?
           nil
