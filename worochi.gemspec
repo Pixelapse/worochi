@@ -32,6 +32,6 @@ Gem::Specification.new do |s|
   s.add_development_dependency('yard')
 
   s.post_install_message = <<-MESSAGE
-RAWRRRRR!!!
+  Worochi says, "RAWRRRRR!!!"
   MESSAGE
 end

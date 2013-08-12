@@ -18,10 +18,19 @@ class Worochi
 
       # Returns display name for the service.
       #
-      # @param service [Symbol]
+      # @overload service_display_name(service)
+      #   @param service [Symbol]
+      # @overload service_display_name(service_id)
+      #   @param service_id [Integer]
       # @return [String] display name
-      def humanize_service(service)
-        @services[service][1]
+      def service_display_name(arg)
+        service = arg.to_sym
+        service = service_name(arg) unless @services.include?(service)
+        if service.nil?
+          nil
+        else
+          @services[service][1]
+        end
       end
 
       # Returns the service ID for the service, which can be used as a
@@ -30,7 +39,24 @@ class Worochi
       # @param service [Symbol]
       # @return [Integer] service ID
       def service_id(service)
-        @services[service][0]
+        @services[service.to_sym][0]
+      end
+
+      # Returns the service name given the service ID.
+      #
+      # @param service_id [Integer]
+      # @return [Symbol] if service exists
+      # @return [nil] if service does not exist
+      def service_name(service_id)
+        @service_ids ||= {}
+        return @service_ids[service_id] if @service_ids.include?(service_id)
+        @services.each do |key, value|
+          if value[0] == service_id
+            @service_ids[value[0]] = key
+            return key
+          end
+        end
+        nil
       end
 
       # Name of S3 bucket.
