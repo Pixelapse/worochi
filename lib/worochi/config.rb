@@ -2,8 +2,8 @@ class Worochi
   # Configurations for Worochi.
   module Config
     @services = {
-      github: 'GitHub',
-      dropbox: 'Dropbox'
+      github: [1, 'GitHub'],
+      dropbox: [2, 'Dropbox']
     }
     @s3_bucket = 'data-pixelapse'
     @s3_prefix = 's3'
@@ -21,7 +21,16 @@ class Worochi
       # @param service [Symbol]
       # @return [String] display name
       def humanize_service(service)
-        @services[service]
+        @services[service][1]
+      end
+
+      # Returns the service ID for the service, which can be used as a
+      # primary key for databases.
+      #
+      # @param service [Symbol]
+      # @return [Integer] service ID
+      def service_id(service)
+        @services[service][0]
       end
 
       # Name of S3 bucket.
