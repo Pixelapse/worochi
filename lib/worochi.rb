@@ -35,7 +35,7 @@ class Worochi
     #     }
     #     Worochi.create(:github, '6st46setsytgbhd64', opts)
     def create(service, token, opts={})
-      opts[:service] = service
+      opts[:service] = service.to_sym
       opts[:token] = token
       agent = Agent.new(opts)
       @agents << agent

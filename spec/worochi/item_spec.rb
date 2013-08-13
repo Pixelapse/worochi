@@ -8,28 +8,32 @@ describe Worochi::Item do
       checksum = Digest::SHA2.hexdigest(items.first.content.read)
       expect(items.first.class).to be(Worochi::Item)
       expect(checksum).to eq(file.checksum)
-      expect(items.first.path).to eq(hash ? hash[:path] : file.name)
+      path = hash ? hash[:path] || hash['path'] : file.name
+      expect(items.first.path).to eq(path)
     end
 
-    context 'opens a single file' do
-      it 'with String parameter' do
+    context 'with a single file' do
+      it 'accepts String parameter' do
         single_file(remote)
         single_file(local)
       end
-      it 'with Hash parameter' do
+      it 'accepts Hash parameter' do
         single_file(remote, { path: remote.path, source: remote.source })
         single_file(local, { path: local.path, source: local.source })
       end
+      it 'symbolizes keys' do
+        single_file(local, { 'path' => local.path, 'source' => local.source })
+      end
     end
 
-    context 'opens multiple files' do
-      it 'with String parameters' do
+    context 'with multiple files' do
+      it 'accepts String parameters' do
         items = Worochi::Item.open([remote.source, local.source])
         checksum = Digest::SHA2.hexdigest(items.last.content.read)
         expect(checksum).to eq(local.checksum)
         expect(items.size).to eq(2)
       end
-      it 'with Hash parameters' do
+      it 'accepts Hash parameters' do
         hashes = [remote, local, remote, local].map do |file|
           { path: file.path, source: file.source }
         end
@@ -37,6 +41,15 @@ describe Worochi::Item do
         checksum = Digest::SHA2.hexdigest(items.last.content.read)
         expect(checksum).to eq(local.checksum)
         expect(items.size).to eq(4)
+      end
+      it 'symbolizes keys' do
+        hashes = [local, local, local].map do |file|
+          { 'path' => file.path, 'source' => file.source }
+        end
+        items = Worochi::Item.open(hashes)
+        checksum = Digest::SHA2.hexdigest(items.last.content.read)
+        expect(checksum).to eq(local.checksum)
+        expect(items.size).to eq(3)
       end
     end
   end

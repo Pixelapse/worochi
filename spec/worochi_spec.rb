@@ -52,6 +52,12 @@ describe Worochi do
       expect { Worochi.create }.to raise_error(ArgumentError)
       expect { Worochi.create(:dropbox) }.to raise_error(ArgumentError)
     end
+
+    it 'symbolizes arguments correctly' do
+      a = Worochi.create('dropbox', token, { 'test_opt' => 'hi' })
+      expect(a.type).to eq(:dropbox)
+      expect(a.options[:test_opt]).to eq('hi')
+    end
   end
 
   describe '.reset' do

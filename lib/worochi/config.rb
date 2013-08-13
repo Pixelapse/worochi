@@ -39,7 +39,11 @@ class Worochi
       # @param service [Symbol]
       # @return [Integer] service ID
       def service_id(service)
-        @services[service.to_sym][0]
+        if @services[service.to_sym].nil?
+          nil
+        else
+          @services[service.to_sym][0]
+        end
       end
 
       # Returns the service name given the service ID.
