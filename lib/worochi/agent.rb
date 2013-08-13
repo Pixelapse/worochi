@@ -76,7 +76,7 @@ class Worochi
     #     #      { name: "t.txt", type: "file", path: "/abc/t.txt"}
     #     #    ]
     def files(*args)
-      list_helper(true, args)
+      list_helper(:files, args)
     end
 
     # Returns a list of subdirectories at the remote path specified by
@@ -89,7 +89,16 @@ class Worochi
     #     agent = Worochi.create(:dropbox, 'sfsFj41na89cx', dir: '/abc')
     #     agent.folders # => ["folder1", "folder2"]
     def folders(*args)
-      list_helper(false, args)
+      list_helper(:folders, args)
+    end
+
+    # Returns a list of files and folders at the remote path specified by
+    # `options[:dir]`. Relies on the service-specific implementation of
+    # `#list`. Refer to {#files} for overloaded prototypes.
+    #
+    # @return [Array<String>, Array<Hash>] list of files and folders
+    def files_and_folders(*args)
+      list_helper(:both, args)
     end
 
     # Updates {.options} using `opts`.
@@ -123,16 +132,25 @@ class Worochi
   private
     # Parses the arguments for {#files} and {#folders}.
     #
-    # @param file_only [Boolean] filters files or folders
+    # @param mode [Symbol] display files, folders, or both
     # @param args [Array] argument list
     # @return [Array<String>, Array<Hash>] list of files or folders
-    def list_helper(file_only, args)
+    def list_helper(mode, args)
       details = true if args.first == true
       if args.first.kind_of?(String)
         path = args.first 
         details = true if args[1] == true
       end
-      excluded = file_only ? 'folder' : 'file'
+
+      case mode
+      when :files
+        excluded = 'folder'
+      when :folders
+        excluded = 'file'
+      else
+        excluded = nil
+      end
+
       result = list(path).reject { |elem| elem[:type] == excluded }
       result.map! { |elem| elem[:name] } unless details
       result

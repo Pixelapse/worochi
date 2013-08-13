@@ -23,7 +23,7 @@ http_interactions:
       Server:
       - nginx
       Date:
-      - Fri, 09 Aug 2013 23:19:43 GMT
+      - Tue, 13 Aug 2013 00:17:41 GMT
       Content-Type:
       - text/javascript
       Transfer-Encoding:
@@ -31,9 +31,9 @@ http_interactions:
       Connection:
       - keep-alive
       X-Server-Response-Time:
-      - '49'
+      - '41'
       X-Dropbox-Request-Id:
-      - d50044111e93d7d62f7cad786f25cb10
+      - 3aa994c65959b914f61be86cf4215910
       Pragma:
       - no-cache
       Cache-Control:
@@ -43,7 +43,7 @@ http_interactions:
       X-Frame-Options:
       - SAMEORIGIN
       X-Requestid:
-      - dfc0ce433084bfdb0e14ac69dccea6e4
+      - 909f28e74172c7d97746b5a7a8e01b0d
     body:
       encoding: UTF-8
       string: '{"hash": "f8b81477e7377b80273993acbacd0527", "revision": 913527046,
@@ -56,5 +56,5 @@ http_interactions:
         "root": "dropbox", "mime_type": "text/plain", "size": "6 bytes"}], "size":
         "0 bytes"}'
     http_version: 
-  recorded_at: Fri, 09 Aug 2013 23:19:43 GMT
+  recorded_at: Tue, 13 Aug 2013 00:17:41 GMT
 recorded_with: VCR 2.5.0
