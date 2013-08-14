@@ -21,6 +21,7 @@ Gem::Specification.new do |s|
 
   s.require_paths = ['lib']
 
+  s.add_runtime_dependency('hashie')
   s.add_runtime_dependency('aws-sdk')
   s.add_runtime_dependency('dropbox-sdk') # Dropbox
   s.add_runtime_dependency('octokit') # GitHub

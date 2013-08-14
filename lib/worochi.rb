@@ -4,7 +4,7 @@ require 'worochi/log'
 require 'worochi/item'
 require 'worochi/agent'
 require 'worochi/helper'
-require 'awesome_print'
+require 'hashie'
 
 # The main class for the gem. This and the {Agent} class are the main
 # endpoints for interacting with the remote services.

@@ -58,21 +58,23 @@ describe Worochi::Item do
     it 'accepts a String' do
       item = Worochi::Item.open_single(remote.source)
       expect(item.class).to be(Worochi::Item)
-      expect(item.size).to eq(remote.size)
+      expect(item.size).to eq(remote.file_size)
     end
 
     it 'accepts a Hash' do
       hash = { path: local.path, source: local.source }
       item = Worochi::Item.open_single(hash)
       expect(item.class).to be(Worochi::Item)
-      expect(item.size).to eq(local.size)
+      expect(item.size).to eq(local.file_size)
     end
 
     it 'works with AWS S3 paths', :aws do
       item = Worochi::Item.open_single(s3.source)
       expect(item.class).to be(Worochi::Item)
-      checksum = Digest::SHA2.hexdigest(item.content.read)
+      content = item.content.read
+      checksum = Digest::SHA2.hexdigest(content)
       expect(checksum).to eq(s3.checksum)
+      expect(content.size).to eq(s3.file_size)
     end
   end
 
@@ -82,7 +84,7 @@ describe Worochi::Item do
       first_word = item.read(4)
       expect(first_word).to eq('This')
       rest = item.read
-      expect(rest.size).to eq(local.size - 4)
+      expect(rest.size).to eq(local.file_size - 4)
     end
   end
 
@@ -92,7 +94,7 @@ describe Worochi::Item do
       item.read
       expect(item.read.size).to eq(0)
       expect(item.rewind).to eq(0)
-      expect(item.read.size).to eq(local.size)
+      expect(item.read.size).to eq(local.file_size)
     end
   end
 end

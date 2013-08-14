@@ -1,7 +1,6 @@
 require 'worochi'
 require 'awesome_print'
 require 'digest'
-require 'ostruct'
 require 'vcr'
 
 Dir["./spec/support/**/*.rb"].sort.each { |f| require f }

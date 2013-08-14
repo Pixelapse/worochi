@@ -10,16 +10,13 @@ class Worochi
         @services.each do |service|
           path = File.join(File.dirname(__FILE__), "config/#{service}.yml")
           raise Error, "Missing config for #{service}" unless File.file?(path)
-          @options[service] = YAML.load_file(path).inject({}) do |memo, (k ,v)|
-            memo[k.to_sym] = v
-            memo
-          end
+          @options[service] = Hashie::Mash.new(YAML.load_file(path))
         end
       end
 
       # Returns the service configurations that was loaded from YAML.
       #
-      # @return [Hash]
+      # @return [Hashie::Mash]
       def service_opts(service)
         if service.nil? || @options.nil? || @options[service].nil?
           raise Error, "Invalid service (#{service}) specified"
@@ -47,7 +44,7 @@ class Worochi
         if service.nil?
           nil
         else
-          @options[service][:display_name]
+          @options[service].display_name
         end
       end
 
@@ -60,7 +57,7 @@ class Worochi
         if @options[service.to_sym].nil?
           nil
         else
-          @options[service.to_sym][:id]
+          @options[service.to_sym].id
         end
       end
 
@@ -73,8 +70,8 @@ class Worochi
         @service_names ||= {}
         return @service_names[id] if @service_names.include?(id)
         @options.each do |key, value|
-          if value[:id] == id
-            @service_names[value[:id]] = key
+          if value.id == id
+            @service_names[value.id] = key
             return key
           end
         end
