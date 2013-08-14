@@ -1,0 +1,14 @@
+# Use this as a template for configuring new services
+
+# General configurations (must be present)
+# id must be unique across all services
+id: 0
+display_name: Sample Agent
+dir: /
+
+# Service specific (optional; example is for GitHub)
+repo: darkmirage/test
+source: master
+target: worochi
+block_size: 12288
+commit_msg: Empty commit message

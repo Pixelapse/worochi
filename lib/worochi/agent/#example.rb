@@ -1,19 +1,7 @@
 class Worochi
-  # The {Agent} for a sample API.
+  # The {Agent} for an example API.
   # This is a sample of methods that should be implemented by a service agent.
-  class Agent::Sample < Agent
-
-    # This is the minimum set of default options that should be specified.
-    #
-    # @return [Hash] default options for sample API
-    # @see Agent#set_options
-    def default_options
-      {
-        service: :sample, # service name
-        dir: '/' # remote directory to act on
-      }
-    end
-
+  class Agent::Example < Agent
     # This is where the service-specific API client should be initialized.
     #
     # @return [ApiClient]
