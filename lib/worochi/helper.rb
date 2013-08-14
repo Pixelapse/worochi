@@ -1,5 +1,3 @@
-
-
 class Worochi
   # Contains any global helper methods not specific to any individual service.
   module Helper
@@ -38,3 +36,6 @@ class Worochi
     end
   end
 end
+
+# Load service helpers
+require 'worochi/helper/github_helper'

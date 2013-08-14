@@ -1,6 +1,5 @@
 require 'octokit'
 require 'base64'
-require 'worochi/helper/github'
 
 class Worochi
   # The {Agent} for GitHub API. This wraps around the `octokit` gem.
@@ -128,7 +127,7 @@ class Worochi
     # @return [String] SHA1 checksum of the created blob
     def stream_blob(item)
       Worochi::Log.debug "Using JSON streaming..."
-      post_stream = Worochi::Helper::Github::StreamIO.new(item)
+      post_stream = Helper::StreamIO.new(item)
 
       uri = URI("https://api.github.com/repos/#{repo}/git/blobs")
       request = Net::HTTP::Post.new(uri.path)

@@ -1,9 +1,9 @@
 require 'worochi/config'
 require 'worochi/error'
 require 'worochi/log'
-require 'worochi/helper'
 require 'worochi/item'
 require 'worochi/agent'
+require 'worochi/helper'
 require 'awesome_print'
 
 # The main class for the gem. This and the {Agent} class are the main

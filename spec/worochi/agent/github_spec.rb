@@ -1,4 +1,4 @@
-require 'helper'
+require 'spec_helper'
 
 describe Worochi::Agent::Github do
   let(:required_keys) { [:repo, :source, :target, :block_size, :commit_msg] }

@@ -1,4 +1,4 @@
-require 'helper'
+require 'spec_helper'
 
 describe Worochi::Config do
   describe '.services' do

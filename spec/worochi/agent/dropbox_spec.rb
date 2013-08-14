@@ -1,4 +1,4 @@
-require 'helper'
+require 'spec_helper'
 
 describe Worochi::Agent::Dropbox do
   let(:required_keys) { [:chunk_size, :overwrite] }

@@ -11,7 +11,7 @@ class Worochi
     attr_accessor :options
 
     # @param opts [Hash] service options
-    def initialize(opts={})      
+    def initialize(opts={})
       set_options(opts)
       @type = options[:service]
       init_client
