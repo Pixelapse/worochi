@@ -5,6 +5,20 @@
 id: 0
 display_name: Sample Agent
 dir: /
+# Required if using OAuth2 functionality
+oauth:
+  # These are the ENV names and not the actual ID and secret
+  id_env: SAMPLE_ID
+  secret_env: SAMPLE_SECRET
+  # API endpoints for OAuth2
+  token_url: /1/oauth2/token
+  authorize_url: /1/oauth2/authorize
+  # Some services (e.g. Dropbox) have a different domain for the second step
+  # of the OAuth flow
+  site: https://www.sample.com
+  api_site: https://api.sample.com
+  # Scope if required by the service
+  scope: gallery
 
 # Service specific (optional; example is for GitHub)
 repo: darkmirage/test

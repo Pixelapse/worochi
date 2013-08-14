@@ -1,11 +1,15 @@
-# This should be unique to each service and can be used as a primary key
 id: 1
 
-# General configurations
 display_name: GitHub
 dir: /
+oauth:
+  id_env: GITHUB_ID
+  secret_env: GITHUB_SECRET
+  token_url: /login/oauth/access_token
+  authorize_url: /login/oauth/authorize
+  site: https://github.com
+  scope: repo
 
-# GitHub specific
 repo: darkmirage/test
 source: master
 target: worochi

@@ -1,10 +1,15 @@
-# This should be unique to each service and can be used as a primary key
 id: 2
 
-# General configurations
 display_name: Dropbox
 dir: /
+oauth:
+  id_env: DROPBOX_ID
+  secret_env: DROPBOX_SECRET
+  token_url: /1/oauth2/token
+  authorize_url: /1/oauth2/authorize
+  site: https://www.dropbox.com
+  api_site: https://api.dropbox.com
+  scope: repo
 
-# Dropbox specific
 chunk_size: 2097152
 overwrite: true
