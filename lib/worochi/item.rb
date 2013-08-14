@@ -102,8 +102,10 @@ class Worochi
         if File.file?(source)
           retrieve_local(source)
         else
-          url = Helper.is_s3_path?(source) ? Helper.s3_url(source) : source
-          retrieve_remote(url)
+          if Config.s3_enabled? && Helper.is_s3_path?(source)
+            source = Helper.s3_url(source)
+          end
+          retrieve_remote(source)
         end        
       end
 
@@ -118,7 +120,7 @@ class Worochi
         file
       end
 
-      # Downloads a remote file using {HTTP::Get}.
+      # Downloads a remote file using `HTTP::Get`.
       #
       # @param file_url [String, URI] the URL of the file
       # @return [Tempfile] the downloaded file

@@ -8,7 +8,7 @@ class Worochi
     BLOCK_SIZE = 12288
 
     # This is a wrapper that produces a JSON stream that works with
-    # {Net::HTTP::Post#body_stream}.
+    # `Net::HTTP::Post#body_stream`.
     class StreamIO
 
       def initialize(item)

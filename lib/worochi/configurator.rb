@@ -70,7 +70,7 @@ class Worochi
 
       # Returns the service name given the service ID.
       #
-      # @param service_id [Integer]
+      # @param id [Integer]
       # @return [Symbol] if service exists
       # @return [nil] if service does not exist
       def service_name(id)
@@ -85,6 +85,12 @@ class Worochi
         end
         nil
       end
+
+      # Enables AWS S3 support. AWS_SECRET_ACCESS_KEY and AWS_ACCESS_KEY_ID
+      # should be present in ENV.
+      #
+      # @return [Boolean]
+      attr_reader :s3_enabled
 
       # Name of S3 bucket.
       #
@@ -102,6 +108,7 @@ class Worochi
       attr_accessor :silent
 
       alias_method :silent?, :silent
+      alias_method :s3_enabled?, :s3_enabled
     end
   end
 end
