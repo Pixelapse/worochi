@@ -7,7 +7,7 @@ class Worochi
       # @return [nil]
       def load_yaml
         @options = {}
-        @services.each do |service|
+        services.each do |service|
           path = File.join(File.dirname(__FILE__), "config/#{service}.yml")
           raise Error, "Missing config for #{service}" unless File.file?(path)
           @options[service] = Hashie::Mash.new(YAML.load_file(path))
@@ -24,10 +24,16 @@ class Worochi
         @options[service].clone
       end
 
-      # Array of service names. 
+      # Array of service names. Parsed from the file names of any .rb files in
+      # the worochi/agent directory that does not contain the `#` character.
       #
       # @return [Array<Symbol>]
       def services
+        return @services if @services
+        files = Dir[File.join(File.dirname(__FILE__), 'agent/[^#]*.rb')]
+        @services = files.map do |file|
+          File.basename(file, '.rb').to_sym
+        end
         @services
       end
 
@@ -101,6 +107,7 @@ class Worochi
 
       alias_method :silent?, :silent
       alias_method :s3_enabled?, :s3_enabled
+
     end
   end
 end

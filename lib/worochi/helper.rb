@@ -37,5 +37,7 @@ class Worochi
   end
 end
 
-# Load service helpers
-require 'worochi/helper/github_helper'
+# Load all helpers
+Dir[File.join(File.dirname(__FILE__), 'helper/[^#]*.rb')].each do |file|
+  require 'worochi/helper/' + File.basename(file, '.rb')
+end
