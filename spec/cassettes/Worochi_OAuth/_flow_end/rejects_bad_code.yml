@@ -1,0 +1,56 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: https://github.com/login/oauth/access_token
+    body:
+      encoding: UTF-8
+      string: grant_type=authorization_code&code=abc&client_id=<GITHUB_ID>&client_secret=<GITHUB_SECRET>&redirect_uri=http%3A%2F%2F127.0.0.1%3A3000
+    headers:
+      User-Agent:
+      - Faraday v0.8.8
+      Content-Type:
+      - application/x-www-form-urlencoded
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - '*/*'
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - GitHub.com
+      Date:
+      - Thu, 15 Aug 2013 00:44:07 GMT
+      Content-Type:
+      - application/x-www-form-urlencoded; charset=utf-8
+      Connection:
+      - keep-alive
+      Status:
+      - 200 OK
+      Cache-Control:
+      - private, max-age=0, must-revalidate
+      Strict-Transport-Security:
+      - max-age=2592000
+      X-Frame-Options:
+      - deny
+      Set-Cookie:
+      - dotcom_user=; path=/; expires=Thu, 01-Jan-1970 00:00:00 GMT
+      - logged_in=no; domain=.github.com; path=/; expires=Mon, 15-Aug-2033 00:44:07
+        GMT; secure; HttpOnly
+      X-Runtime:
+      - '20'
+      Etag:
+      - '"ed2cf91250498a9276e3b4fa6de2c2b6"'
+      Content-Length:
+      - '27'
+      Vary:
+      - Accept-Encoding
+    body:
+      encoding: UTF-8
+      string: error=bad_verification_code
+    http_version: 
+  recorded_at: Thu, 15 Aug 2013 00:44:07 GMT
+recorded_with: VCR 2.5.0

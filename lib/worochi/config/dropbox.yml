@@ -8,8 +8,7 @@ oauth:
   token_url: /1/oauth2/token
   authorize_url: /1/oauth2/authorize
   site: https://www.dropbox.com
-  api_site: https://api.dropbox.com
-  scope: repo
+  token_site: https://api.dropbox.com
 
 chunk_size: 2097152
 overwrite: true

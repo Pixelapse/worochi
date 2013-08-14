@@ -5,18 +5,25 @@
 id: 0
 display_name: Sample Agent
 dir: /
+
 # Required if using OAuth2 functionality
 oauth:
-  # These are the ENV names and not the actual ID and secret
+  # These are the ENV names and not the actual ID and secret. If not defined,
+  # then assumed to be SERVICE_NAME_ID and SERVICE_NAME_SECRET.
   id_env: SAMPLE_ID
   secret_env: SAMPLE_SECRET
+
   # API endpoints for OAuth2
   token_url: /1/oauth2/token
   authorize_url: /1/oauth2/authorize
+
   # Some services (e.g. Dropbox) have a different domain for the second step
-  # of the OAuth flow
+  # of the OAuth flow. In those cases, :site will be used as the endpoint for
+  # the start of the authorization flow while :token_site will be used as the
+  # endpoint for token retrieval.
   site: https://www.sample.com
-  api_site: https://api.sample.com
+  token_site: https://api.sample.com
+
   # Scope if required by the service
   scope: gallery
 

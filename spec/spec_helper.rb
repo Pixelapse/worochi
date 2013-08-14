@@ -11,6 +11,7 @@ require 'worochi'
 require 'awesome_print'
 require 'digest'
 require 'vcr'
+require 'webmock/rspec'
 
 Dir["./spec/support/**/*.rb"].sort.each { |f| require f }
 
@@ -28,7 +29,11 @@ VCR.configure do |c|
   c.filter_sensitive_data('<AWS_KEY>') { ENV['AWS_SECRET_ACCESS_KEY'] }
   c.filter_sensitive_data('<AWS_ID>') { ENV['AWS_ACCESS_KEY_ID'] }
   c.filter_sensitive_data('<GITHUB_TOKEN>') { ENV['GITHUB_TEST_TOKEN'] }
+  c.filter_sensitive_data('<GITHUB_ID>') { ENV['GITHUB_ID'] }
+  c.filter_sensitive_data('<GITHUB_SECRET>') { ENV['GITHUB_SECRET'] }
   c.filter_sensitive_data('<DROPBOX_TOKEN>') { ENV['DROPBOX_TEST_TOKEN'] }
+  c.filter_sensitive_data('<DROPBOX_ID>') { ENV['DROPBOX_ID'] }
+  c.filter_sensitive_data('<DROPBOX_SECRET>') { ENV['DROPBOX_SECRET'] }
 end
 
 RSpec.configure do |c|

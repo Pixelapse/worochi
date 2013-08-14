@@ -5,6 +5,7 @@ require 'worochi/error'
 require 'worochi/log'
 require 'worochi/item'
 require 'worochi/agent'
+require 'worochi/oauth'
 require 'worochi/helper'
 
 # The main class for the gem. This and the {Agent} class are the main
