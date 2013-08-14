@@ -3,9 +3,6 @@ require 'yaml'
 class Worochi
   # The parent class for all service agents.
   class Agent
-    # Service name.
-    # @return [Symbol]
-    attr_reader :type
     # Service options.
     # @return [Hash]
     attr_accessor :options
@@ -13,7 +10,6 @@ class Worochi
     # @param opts [Hash] service options
     def initialize(opts={})
       set_options(opts)
-      @type = options[:service]
       init_client
     end
 
@@ -106,29 +102,35 @@ class Worochi
     # Updates {.options} using `opts`.
     #
     # @param opts [Hash] new options
-    # @return [Hash] the updated options
+    # @return [Hashie::Mash] the updated options
     def set_options(opts={})
       self.options ||= default_options
-      sym_opts = {}
-      opts.each { |k, v| sym_opts[k.to_sym] = v }
-      options.merge!(sym_opts)
+      opts = Hashie::Mash.new(opts)
+      options.merge!(opts)
     end
 
     # Sets the remote target directory path. This is the same as modifying
     # `options[:dir]`.
     #
     # @param path [String] the new path
-    # @return [Hash] the updated options
+    # @return [Hashie::Mash] the updated options
     def set_dir(path)
-      options[:dir] = path
+      options.dir = path
       options
+    end
+
+    # Returns the service type for the agent.
+    #
+    # @return [Symbol] service type
+    def type
+      options.service
     end
 
     # Returns the display name for the agent's service.
     #
     # @return [String] display name
     def name
-      Worochi::Config.service_display_name(type)
+      Worochi::Config.service_display_name(options.service)
     end
 
   private
@@ -136,7 +138,7 @@ class Worochi
     #
     # @param mode [Symbol] display files, folders, or both
     # @param args [Array] argument list
-    # @return [Array<String>, Array<Hash>] list of files or folders
+    # @return [Array<String>, Array<Hashie::Mash>] list of files or folders
     def list_helper(mode, args)
       details = true if args.first == true
       if args.first.kind_of?(String)
@@ -154,23 +156,27 @@ class Worochi
       end
 
       result = list(path).reject { |elem| elem[:type] == excluded }
-      result.map! { |elem| elem[:name] } unless details
+      if details
+        result.map! { |elem| Hashie::Mash.new(elem) }
+      else
+        result.map! { |elem| elem[:name] }
+      end
       result
     end
 
     # @return [String] full path combining remote directory and item path
     def full_path(item)
-      File.join(options[:dir], item.path)
+      File.join(options.dir, item.path)
     end
 
     # Agents should either override this or have a YAML config file at
     # config/service_name.yml.
     #
-    # @return [Hash] options parsed from YAML config
+    # @return [Hashie::Mash] options parsed from YAML config
     def default_options
       service = service_name.to_sym
       opts = Worochi::Config.service_opts(service)
-      opts[:service] ||= service
+      opts.service ||= service
       opts
     end
 
