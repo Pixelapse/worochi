@@ -16,7 +16,7 @@ Gem::Specification.new do |s|
   s.license = 'MIT'
 
   s.files = %w(README.md LICENSE worochi.gemspec)
-  s.files += Dir.glob('lib/**/*.rb')
+  s.files += Dir.glob('lib/**/*.{rb,yml}')
   s.test_files = Dir.glob('spec/**/*')
 
   s.require_paths = ['lib']

@@ -1,4 +1,5 @@
 require 'hashie'
+require 'aws-sdk'
 require 'worochi/config'
 require 'worochi/error'
 require 'worochi/log'

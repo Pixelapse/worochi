@@ -1,11 +1,9 @@
 require 'worochi/configurator'
 
 class Worochi
-  # Configurations for Worochi.
-  module Config
-    @s3_enabled = true
-    @s3_bucket = 'data-pixelapse'
-    @s3_prefix = 's3'
-    @silent = true
-  end
+  # Default configurations
+  Config.s3_enabled = true
+  Config.s3_bucket = 'worochi'
+  Config.s3_prefix = 's3'
+  Config.silent = true
 end

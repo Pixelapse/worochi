@@ -89,17 +89,17 @@ class Worochi
       # should be present in ENV.
       #
       # @return [Boolean]
-      attr_reader :s3_enabled
+      attr_accessor :s3_enabled
 
       # Name of S3 bucket.
       #
       # @return [String]
-      attr_reader :s3_bucket
+      attr_accessor :s3_bucket
 
       # Prefix for S3 resource paths.
       #
       # @return [String]
-      attr_reader :s3_prefix
+      attr_accessor :s3_prefix
 
       # Disable debug and error messages if `true`.
       #

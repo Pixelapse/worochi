@@ -69,6 +69,7 @@ describe Worochi::Item do
     end
 
     it 'works with AWS S3 paths', :aws do
+      Worochi::Config.s3_bucket = 'data-pixelapse'
       item = Worochi::Item.open_single(s3.source)
       expect(item.class).to be(Worochi::Item)
       content = item.content.read
