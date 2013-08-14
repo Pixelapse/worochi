@@ -1,0 +1,13 @@
+# This should be unique to each service and can be used as a primary key
+id: 1
+
+# General configurations
+display_name: GitHub
+dir: /
+
+# GitHub specific
+repo: darkmirage/test
+source: master
+target: worochi
+block_size: 12288
+commit_msg: Empty commit message

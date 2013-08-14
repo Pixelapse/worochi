@@ -6,20 +6,6 @@ class Worochi
   # The {Agent} for GitHub API. This wraps around the `octokit` gem.
   # @see https://github.com/octokit/octokit.rb
   class Agent::Github < Agent
-
-    # @return [Hash] default options for GitHub
-    def default_options
-      {
-        service: :github,
-        source: 'worochi',
-        target: 'worochi',
-        repo: 'darkmirage/test',
-        block_size: Worochi::Helper::Github::BLOCK_SIZE,
-        commit_msg: 'Empty commit message',
-        dir: '/'
-      }
-    end
-
     # Initializes Octokit client. Refer to
     # {https://github.com/octokit/octokit.rb
     # octokit.rb documentation}.

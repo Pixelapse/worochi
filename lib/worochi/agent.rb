@@ -1,3 +1,5 @@
+require 'yaml'
+
 class Worochi
   # The parent class for all service agents.
   class Agent
@@ -9,7 +11,7 @@ class Worochi
     attr_accessor :options
 
     # @param opts [Hash] service options
-    def initialize(opts={})
+    def initialize(opts={})      
       set_options(opts)
       @type = options[:service]
       init_client
@@ -161,11 +163,28 @@ class Worochi
       File.join(options[:dir], item.path)
     end
 
-    # Agents should override this.
+    # Agents should either override this or have a YAML config file at
+    # config/service_name.yml.
     #
-    # @return [nil]
+    # @return [Hash] options parsed from YAML config
     def default_options
-      raise Error, 'Default options not specified.'
+      service = service_name.to_sym
+      opts = Worochi::Config.service_opts(service)
+      opts[:service] ||= service
+      opts
+    end
+
+    # Returns the service name based on the class name.
+    #
+    # @return [Symbol] service name
+    def service_name
+      name = self.class.to_s.split( '::' ).last
+      name.gsub!(/::/, '/')
+      name.gsub!(/([A-Z]+)([A-Z][a-z])/,'\1_\2')
+      name.gsub!(/([a-z\d])([A-Z])/,'\1_\2')
+      name.tr!("-", "_")
+      name.downcase!
+      name.to_sym
     end
 
     class << self

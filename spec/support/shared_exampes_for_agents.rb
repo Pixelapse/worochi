@@ -1,8 +1,12 @@
 shared_examples_for 'a service agent' do
+  before do
+    Worochi.init
+  end
+
   describe '#default_options' do
     it 'has the required options' do
       (required_keys + [:dir, :service]).each do |key|
-        expect(agent.default_options).to include(key)
+        expect(agent.send(:default_options)).to include(key)
       end
     end
   end

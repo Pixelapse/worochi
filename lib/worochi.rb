@@ -4,6 +4,7 @@ require 'worochi/log'
 require 'worochi/helper'
 require 'worochi/item'
 require 'worochi/agent'
+require 'awesome_print'
 
 # The main class for the gem. This and the {Agent} class are the main
 # endpoints for interacting with the remote services.
@@ -15,6 +16,16 @@ class Worochi
     #
     # @return [Array]
     attr_reader :agents
+
+    # Initialize configurations and logging.
+    #
+    # @return [nil]
+    def init
+      Config.load_yaml
+      Log.init
+      reset
+      @initialized = true
+    end
 
     # Creates a new {Worochi::Agent} and adds it to the list of agents
     # listening to {Worochi.push} requests.
@@ -35,6 +46,7 @@ class Worochi
     #     }
     #     Worochi.create(:github, '6st46setsytgbhd64', opts)
     def create(service, token, opts={})
+      init unless @initialized
       opts[:service] = service.to_sym
       opts[:token] = token
       agent = Agent.new(opts)

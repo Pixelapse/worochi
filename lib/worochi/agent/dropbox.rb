@@ -4,16 +4,6 @@ class Worochi
   # The {Agent} for Dropbox API. This wraps around the `dropbox-sdk` gem.
   # @see https://www.dropbox.com/developers/core/start/ruby
   class Agent::Dropbox < Agent
-    # @return [Hash] default options for Dropbox
-    def default_options
-      {
-        service: :dropbox,
-        chunk_size: 2*1024*1024,
-        overwrite: true,
-        dir: '/'
-      }
-    end
-
     # Initializes Dropbox SDK client. Refer to
     # {https://www.dropbox.com/developers/core/start/ruby
     # official Dropbox documentation}.

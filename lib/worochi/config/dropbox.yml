@@ -1,0 +1,10 @@
+# This should be unique to each service and can be used as a primary key
+id: 2
+
+# General configurations
+display_name: Dropbox
+dir: /
+
+# Dropbox specific
+chunk_size: 2097152
+overwrite: true
