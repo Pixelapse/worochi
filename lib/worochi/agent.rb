@@ -4,7 +4,7 @@ class Worochi
   # The parent class for all service agents.
   class Agent
     # Service options.
-    # @return [Hash]
+    # @return [Hashie::Mash]
     attr_accessor :options
 
     # @param opts [Hash] service options
@@ -175,9 +175,7 @@ class Worochi
     # @return [Hashie::Mash] options parsed from YAML config
     def default_options
       service = service_name.to_sym
-      opts = Worochi::Config.service_opts(service)
-      opts.service ||= service
-      opts
+      Worochi::Config.service_opts(service)
     end
 
     # Returns the service name based on the class name.

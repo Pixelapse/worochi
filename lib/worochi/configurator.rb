@@ -11,6 +11,7 @@ class Worochi
           path = File.join(File.dirname(__FILE__), "config/#{service}.yml")
           raise Error, "Missing config for #{service}" unless File.file?(path)
           @options[service] = Hashie::Mash.new(YAML.load_file(path))
+          @options[service].service = service
         end
       end
 
