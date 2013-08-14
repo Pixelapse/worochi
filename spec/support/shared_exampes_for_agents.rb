@@ -50,6 +50,6 @@ shared_examples_for 'a service agent' do
     it 'contains folder1 and file1' do
       expect(agent.files_and_folders).to include('file1')
       expect(agent.files_and_folders).to include('folder1')
-    end    
+    end
   end
 end
