@@ -15,14 +15,12 @@ class Worochi
             memo
           end
         end
-        @initialized = true
       end
 
       # Returns the service configurations that was loaded from YAML.
       #
       # @return [Hash]
       def service_opts(service)
-        load_yaml unless @initialized
         if service.nil? || @options.nil? || @options[service].nil?
           raise Error, "Invalid service (#{service}) specified"
         end
@@ -44,7 +42,6 @@ class Worochi
       #   @param service_id [Integer]
       # @return [String] display name
       def service_display_name(arg)
-        load_yaml unless @initialized
         service = arg.to_sym if arg.respond_to?(:to_sym)
         service = service_name(arg) unless @options.include?(service)
         if service.nil?
@@ -60,7 +57,6 @@ class Worochi
       # @param service [Symbol]
       # @return [Integer] service ID
       def service_id(service)
-        load_yaml unless @initialized
         if @options[service.to_sym].nil?
           nil
         else
@@ -74,7 +70,6 @@ class Worochi
       # @return [Symbol] if service exists
       # @return [nil] if service does not exist
       def service_name(id)
-        load_yaml unless @initialized
         @service_names ||= {}
         return @service_names[id] if @service_names.include?(id)
         @options.each do |key, value|

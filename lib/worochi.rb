@@ -24,7 +24,6 @@ class Worochi
       Config.load_yaml
       Log.init
       reset
-      @initialized = true
     end
 
     # Creates a new {Worochi::Agent} and adds it to the list of agents
@@ -46,7 +45,6 @@ class Worochi
     #     }
     #     Worochi.create(:github, '6st46setsytgbhd64', opts)
     def create(service, token, opts={})
-      init unless @initialized
       opts[:service] = service.to_sym
       opts[:token] = token
       agent = Agent.new(opts)
@@ -131,3 +129,5 @@ class Worochi
     end
   end
 end
+
+Worochi.init
