@@ -1,7 +1,7 @@
 module TestFiles
   # Remote file for testing.
   def remote
-    @remote ||= OpenStruct.new({
+    @remote ||= Hashie::Mash.new({
       source: 'http://soraven.com/blog/wp-content/uploads/2013/06/sr3.gif',
       checksum: '3c0d873709da4a08e9d9978f678dbc30a6cc5138182c2fee56db1c0b8b806d67',
       name: 'sr3.gif',
@@ -23,7 +23,7 @@ module TestFiles
 
   # Amazon S3 file for testing.
   def s3
-    @s3 ||= OpenStruct.new({
+    @s3 ||= Hashie::Mash.new({
       source: 's3:12061/271934/orig_232903',
       checksum: 'f0891f199f0966ec1b1d209b91ff3f51273577944dbbe338f1947ae9f33cb79a',
       name: '__init__.py',

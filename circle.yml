@@ -1,0 +1,13 @@
+machine:
+  # Fake tokens work for testing because HTTP responses are played back using
+  # VCR. Set these to real tokens if recording new responses.
+  environment:
+    AWS_ACCESS_KEY_ID: abc
+    AWS_SECRET_ACCESS_KEY: abc
+    MIXPANEL_API_TOKEN: abc
+    GITHUB_ID: abc
+    GITHUB_SECRET: abc
+    DROPBOX_ID: abc
+    DROPBOX_SECRET: abc
+    GITHUB_TEST_TOKEN: abc
+    DROPBOX_TEST_TOKEN: abc

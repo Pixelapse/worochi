@@ -133,7 +133,7 @@ class Worochi
 
         http = Net::HTTP.new(uri.host, uri.port)
         http.use_ssl = (uri.scheme == 'https')
-        request = Net::HTTP::Get.new uri
+        request = Net::HTTP::Get.new(uri.request_uri)
 
         http.request request do |response|
           response.read_body do |segment|
