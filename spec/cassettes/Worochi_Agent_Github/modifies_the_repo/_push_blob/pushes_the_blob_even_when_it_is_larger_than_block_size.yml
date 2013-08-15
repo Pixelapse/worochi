@@ -23,7 +23,7 @@ http_interactions:
       Server:
       - GitHub.com
       Date:
-      - Thu, 15 Aug 2013 18:36:27 GMT
+      - Thu, 15 Aug 2013 21:31:26 GMT
       Content-Type:
       - application/json; charset=utf-8
       Status:
@@ -31,9 +31,9 @@ http_interactions:
       X-Ratelimit-Limit:
       - '5000'
       X-Ratelimit-Remaining:
-      - '4985'
+      - '4669'
       X-Ratelimit-Reset:
-      - '1376594592'
+      - '1376602835'
       X-Oauth-Scopes:
       - user, public_repo, repo, gist
       X-Accepted-Oauth-Scopes:
@@ -55,12 +55,12 @@ http_interactions:
       encoding: UTF-8
       string: '{"message":"Validation Failed"}'
     http_version: 
-  recorded_at: Thu, 15 Aug 2013 18:36:27 GMT
+  recorded_at: Thu, 15 Aug 2013 21:31:26 GMT
 - request:
     method: post
     uri: https://api.github.com/repos/darkmirage/test/git/blobs
     body:
-      encoding: ASCII-8BIT
+      encoding: UTF-8
       string: '{"content":"VGhpcyBpcyBhIGZpbGUgdXNlZCBmb3IgUlNwZWMgdGVzdHMgaW52b2x2aW5nIFdvcm9jaGk6Okl0ZW0u","encoding":"base64"}'
     headers:
       Accept-Encoding:
@@ -83,7 +83,7 @@ http_interactions:
       Server:
       - GitHub.com
       Date:
-      - Thu, 15 Aug 2013 18:36:28 GMT
+      - Thu, 15 Aug 2013 21:31:27 GMT
       Content-Type:
       - application/json; charset=utf-8
       Status:
@@ -91,9 +91,9 @@ http_interactions:
       X-Ratelimit-Limit:
       - '5000'
       X-Ratelimit-Remaining:
-      - '4984'
+      - '4668'
       X-Ratelimit-Reset:
-      - '1376594592'
+      - '1376602835'
       X-Oauth-Scopes:
       - user, public_repo, repo, gist
       X-Accepted-Oauth-Scopes:
@@ -121,7 +121,7 @@ http_interactions:
       encoding: UTF-8
       string: '{"sha":"5df468c4497e072139462b88cb78e1df4357534b","url":"https://api.github.com/repos/darkmirage/test/git/blobs/5df468c4497e072139462b88cb78e1df4357534b"}'
     http_version: 
-  recorded_at: Thu, 15 Aug 2013 18:36:28 GMT
+  recorded_at: Thu, 15 Aug 2013 21:31:27 GMT
 - request:
     method: delete
     uri: https://api.github.com/repos/darkmirage/test/git/refs/heads/rspec
@@ -145,7 +145,7 @@ http_interactions:
       Server:
       - GitHub.com
       Date:
-      - Thu, 15 Aug 2013 18:36:28 GMT
+      - Thu, 15 Aug 2013 21:31:28 GMT
       Content-Type:
       - application/json; charset=utf-8
       Status:
@@ -153,9 +153,9 @@ http_interactions:
       X-Ratelimit-Limit:
       - '5000'
       X-Ratelimit-Remaining:
-      - '4983'
+      - '4667'
       X-Ratelimit-Reset:
-      - '1376594592'
+      - '1376602835'
       X-Oauth-Scopes:
       - user, public_repo, repo, gist
       X-Accepted-Oauth-Scopes:
@@ -177,5 +177,5 @@ http_interactions:
       encoding: UTF-8
       string: '{"message":"Validation Failed"}'
     http_version: 
-  recorded_at: Thu, 15 Aug 2013 18:36:28 GMT
+  recorded_at: Thu, 15 Aug 2013 21:31:28 GMT
 recorded_with: VCR 2.5.0

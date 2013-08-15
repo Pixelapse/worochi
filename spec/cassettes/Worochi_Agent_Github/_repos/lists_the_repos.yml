@@ -1,0 +1,207 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://api.github.com/user/repos
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Octokit Ruby Gem 1.25.0
+      Accept:
+      - application/vnd.github.beta+json
+      Authorization:
+      - token <GITHUB_TOKEN>
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - GitHub.com
+      Date:
+      - Thu, 15 Aug 2013 21:11:59 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Transfer-Encoding:
+      - chunked
+      Status:
+      - 200 OK
+      X-Ratelimit-Limit:
+      - '5000'
+      X-Ratelimit-Remaining:
+      - '4682'
+      X-Ratelimit-Reset:
+      - '1376602835'
+      Cache-Control:
+      - private, max-age=60, s-maxage=60
+      Last-Modified:
+      - Thu, 15 Aug 2013 21:10:11 GMT
+      Etag:
+      - '"f17df6adf04cc645891644e6b16fde6a"'
+      X-Oauth-Scopes:
+      - user, public_repo, repo, gist
+      X-Accepted-Oauth-Scopes:
+      - repo, public_repo, repo:status, delete_repo, site_admin
+      Vary:
+      - Accept, Authorization, Cookie
+      - Accept-Encoding
+      X-Github-Media-Type:
+      - github.beta; format=json
+      X-Content-Type-Options:
+      - nosniff
+      Access-Control-Allow-Credentials:
+      - 'true'
+      Access-Control-Expose-Headers:
+      - ETag, Link, X-RateLimit-Limit, X-RateLimit-Remaining, X-RateLimit-Reset, X-OAuth-Scopes,
+        X-Accepted-OAuth-Scopes
+      Access-Control-Allow-Origin:
+      - '*'
+    body:
+      encoding: UTF-8
+      string: '[{"id":11657303,"name":"cv-randomize","full_name":"darkmirage/cv-randomize","owner":{"login":"darkmirage","id":1635019,"avatar_url":"https://0.gravatar.com/avatar/5111569f6bba258cfe81d12af3ba99a2?d=https://a248.e.akamai.net/assets.github.com%2Fimages%2Fgravatars%2Fgravatar-user-420.png","gravatar_id":"5111569f6bba258cfe81d12af3ba99a2","url":"https://api.github.com/users/darkmirage","html_url":"https://github.com/darkmirage","followers_url":"https://api.github.com/users/darkmirage/followers","following_url":"https://api.github.com/users/darkmirage/following{/other_user}","gists_url":"https://api.github.com/users/darkmirage/gists{/gist_id}","starred_url":"https://api.github.com/users/darkmirage/starred{/owner}{/repo}","subscriptions_url":"https://api.github.com/users/darkmirage/subscriptions","organizations_url":"https://api.github.com/users/darkmirage/orgs","repos_url":"https://api.github.com/users/darkmirage/repos","events_url":"https://api.github.com/users/darkmirage/events{/privacy}","received_events_url":"https://api.github.com/users/darkmirage/received_events","type":"User"},"private":false,"html_url":"https://github.com/darkmirage/cv-randomize","description":"Using
+        python-docx to generate random CVs for correspondence resume experiments","fork":false,"url":"https://api.github.com/repos/darkmirage/cv-randomize","forks_url":"https://api.github.com/repos/darkmirage/cv-randomize/forks","keys_url":"https://api.github.com/repos/darkmirage/cv-randomize/keys{/key_id}","collaborators_url":"https://api.github.com/repos/darkmirage/cv-randomize/collaborators{/collaborator}","teams_url":"https://api.github.com/repos/darkmirage/cv-randomize/teams","hooks_url":"https://api.github.com/repos/darkmirage/cv-randomize/hooks","issue_events_url":"https://api.github.com/repos/darkmirage/cv-randomize/issues/events{/number}","events_url":"https://api.github.com/repos/darkmirage/cv-randomize/events","assignees_url":"https://api.github.com/repos/darkmirage/cv-randomize/assignees{/user}","branches_url":"https://api.github.com/repos/darkmirage/cv-randomize/branches{/branch}","tags_url":"https://api.github.com/repos/darkmirage/cv-randomize/tags","blobs_url":"https://api.github.com/repos/darkmirage/cv-randomize/git/blobs{/sha}","git_tags_url":"https://api.github.com/repos/darkmirage/cv-randomize/git/tags{/sha}","git_refs_url":"https://api.github.com/repos/darkmirage/cv-randomize/git/refs{/sha}","trees_url":"https://api.github.com/repos/darkmirage/cv-randomize/git/trees{/sha}","statuses_url":"https://api.github.com/repos/darkmirage/cv-randomize/statuses/{sha}","languages_url":"https://api.github.com/repos/darkmirage/cv-randomize/languages","stargazers_url":"https://api.github.com/repos/darkmirage/cv-randomize/stargazers","contributors_url":"https://api.github.com/repos/darkmirage/cv-randomize/contributors","subscribers_url":"https://api.github.com/repos/darkmirage/cv-randomize/subscribers","subscription_url":"https://api.github.com/repos/darkmirage/cv-randomize/subscription","commits_url":"https://api.github.com/repos/darkmirage/cv-randomize/commits{/sha}","git_commits_url":"https://api.github.com/repos/darkmirage/cv-randomize/git/commits{/sha}","comments_url":"https://api.github.com/repos/darkmirage/cv-randomize/comments{/number}","issue_comment_url":"https://api.github.com/repos/darkmirage/cv-randomize/issues/comments/{number}","contents_url":"https://api.github.com/repos/darkmirage/cv-randomize/contents/{+path}","compare_url":"https://api.github.com/repos/darkmirage/cv-randomize/compare/{base}...{head}","merges_url":"https://api.github.com/repos/darkmirage/cv-randomize/merges","archive_url":"https://api.github.com/repos/darkmirage/cv-randomize/{archive_format}{/ref}","downloads_url":"https://api.github.com/repos/darkmirage/cv-randomize/downloads","issues_url":"https://api.github.com/repos/darkmirage/cv-randomize/issues{/number}","pulls_url":"https://api.github.com/repos/darkmirage/cv-randomize/pulls{/number}","milestones_url":"https://api.github.com/repos/darkmirage/cv-randomize/milestones{/number}","notifications_url":"https://api.github.com/repos/darkmirage/cv-randomize/notifications{?since,all,participating}","labels_url":"https://api.github.com/repos/darkmirage/cv-randomize/labels{/name}","created_at":"2013-07-25T09:52:29Z","updated_at":"2013-08-08T00:26:15Z","pushed_at":"2013-08-08T00:26:10Z","git_url":"git://github.com/darkmirage/cv-randomize.git","ssh_url":"git@github.com:darkmirage/cv-randomize.git","clone_url":"https://github.com/darkmirage/cv-randomize.git","svn_url":"https://github.com/darkmirage/cv-randomize","homepage":null,"size":158,"watchers_count":0,"language":"Python","has_issues":true,"has_downloads":true,"has_wiki":true,"forks_count":0,"mirror_url":null,"open_issues_count":0,"forks":0,"open_issues":0,"watchers":0,"master_branch":"master","default_branch":"master","permissions":{"admin":true,"push":true,"pull":true}},{"id":11464133,"name":"git-api-test","full_name":"darkmirage/git-api-test","owner":{"login":"darkmirage","id":1635019,"avatar_url":"https://0.gravatar.com/avatar/5111569f6bba258cfe81d12af3ba99a2?d=https://a248.e.akamai.net/assets.github.com%2Fimages%2Fgravatars%2Fgravatar-user-420.png","gravatar_id":"5111569f6bba258cfe81d12af3ba99a2","url":"https://api.github.com/users/darkmirage","html_url":"https://github.com/darkmirage","followers_url":"https://api.github.com/users/darkmirage/followers","following_url":"https://api.github.com/users/darkmirage/following{/other_user}","gists_url":"https://api.github.com/users/darkmirage/gists{/gist_id}","starred_url":"https://api.github.com/users/darkmirage/starred{/owner}{/repo}","subscriptions_url":"https://api.github.com/users/darkmirage/subscriptions","organizations_url":"https://api.github.com/users/darkmirage/orgs","repos_url":"https://api.github.com/users/darkmirage/repos","events_url":"https://api.github.com/users/darkmirage/events{/privacy}","received_events_url":"https://api.github.com/users/darkmirage/received_events","type":"User"},"private":false,"html_url":"https://github.com/darkmirage/git-api-test","description":"Learning
+        how to use octokit.rb to create and push commits via the Github API","fork":false,"url":"https://api.github.com/repos/darkmirage/git-api-test","forks_url":"https://api.github.com/repos/darkmirage/git-api-test/forks","keys_url":"https://api.github.com/repos/darkmirage/git-api-test/keys{/key_id}","collaborators_url":"https://api.github.com/repos/darkmirage/git-api-test/collaborators{/collaborator}","teams_url":"https://api.github.com/repos/darkmirage/git-api-test/teams","hooks_url":"https://api.github.com/repos/darkmirage/git-api-test/hooks","issue_events_url":"https://api.github.com/repos/darkmirage/git-api-test/issues/events{/number}","events_url":"https://api.github.com/repos/darkmirage/git-api-test/events","assignees_url":"https://api.github.com/repos/darkmirage/git-api-test/assignees{/user}","branches_url":"https://api.github.com/repos/darkmirage/git-api-test/branches{/branch}","tags_url":"https://api.github.com/repos/darkmirage/git-api-test/tags","blobs_url":"https://api.github.com/repos/darkmirage/git-api-test/git/blobs{/sha}","git_tags_url":"https://api.github.com/repos/darkmirage/git-api-test/git/tags{/sha}","git_refs_url":"https://api.github.com/repos/darkmirage/git-api-test/git/refs{/sha}","trees_url":"https://api.github.com/repos/darkmirage/git-api-test/git/trees{/sha}","statuses_url":"https://api.github.com/repos/darkmirage/git-api-test/statuses/{sha}","languages_url":"https://api.github.com/repos/darkmirage/git-api-test/languages","stargazers_url":"https://api.github.com/repos/darkmirage/git-api-test/stargazers","contributors_url":"https://api.github.com/repos/darkmirage/git-api-test/contributors","subscribers_url":"https://api.github.com/repos/darkmirage/git-api-test/subscribers","subscription_url":"https://api.github.com/repos/darkmirage/git-api-test/subscription","commits_url":"https://api.github.com/repos/darkmirage/git-api-test/commits{/sha}","git_commits_url":"https://api.github.com/repos/darkmirage/git-api-test/git/commits{/sha}","comments_url":"https://api.github.com/repos/darkmirage/git-api-test/comments{/number}","issue_comment_url":"https://api.github.com/repos/darkmirage/git-api-test/issues/comments/{number}","contents_url":"https://api.github.com/repos/darkmirage/git-api-test/contents/{+path}","compare_url":"https://api.github.com/repos/darkmirage/git-api-test/compare/{base}...{head}","merges_url":"https://api.github.com/repos/darkmirage/git-api-test/merges","archive_url":"https://api.github.com/repos/darkmirage/git-api-test/{archive_format}{/ref}","downloads_url":"https://api.github.com/repos/darkmirage/git-api-test/downloads","issues_url":"https://api.github.com/repos/darkmirage/git-api-test/issues{/number}","pulls_url":"https://api.github.com/repos/darkmirage/git-api-test/pulls{/number}","milestones_url":"https://api.github.com/repos/darkmirage/git-api-test/milestones{/number}","notifications_url":"https://api.github.com/repos/darkmirage/git-api-test/notifications{?since,all,participating}","labels_url":"https://api.github.com/repos/darkmirage/git-api-test/labels{/name}","created_at":"2013-07-17T01:16:30Z","updated_at":"2013-07-17T01:19:01Z","pushed_at":"2013-07-17T01:19:00Z","git_url":"git://github.com/darkmirage/git-api-test.git","ssh_url":"git@github.com:darkmirage/git-api-test.git","clone_url":"https://github.com/darkmirage/git-api-test.git","svn_url":"https://github.com/darkmirage/git-api-test","homepage":null,"size":58,"watchers_count":0,"language":"Ruby","has_issues":true,"has_downloads":true,"has_wiki":true,"forks_count":0,"mirror_url":null,"open_issues_count":0,"forks":0,"open_issues":0,"watchers":0,"master_branch":"master","default_branch":"master","permissions":{"admin":true,"push":true,"pull":true}},{"id":7474709,"name":"pintos","full_name":"darkmirage/pintos","owner":{"login":"darkmirage","id":1635019,"avatar_url":"https://0.gravatar.com/avatar/5111569f6bba258cfe81d12af3ba99a2?d=https://a248.e.akamai.net/assets.github.com%2Fimages%2Fgravatars%2Fgravatar-user-420.png","gravatar_id":"5111569f6bba258cfe81d12af3ba99a2","url":"https://api.github.com/users/darkmirage","html_url":"https://github.com/darkmirage","followers_url":"https://api.github.com/users/darkmirage/followers","following_url":"https://api.github.com/users/darkmirage/following{/other_user}","gists_url":"https://api.github.com/users/darkmirage/gists{/gist_id}","starred_url":"https://api.github.com/users/darkmirage/starred{/owner}{/repo}","subscriptions_url":"https://api.github.com/users/darkmirage/subscriptions","organizations_url":"https://api.github.com/users/darkmirage/orgs","repos_url":"https://api.github.com/users/darkmirage/repos","events_url":"https://api.github.com/users/darkmirage/events{/privacy}","received_events_url":"https://api.github.com/users/darkmirage/received_events","type":"User"},"private":true,"html_url":"https://github.com/darkmirage/pintos","description":"CS
+        140 programming projects","fork":false,"url":"https://api.github.com/repos/darkmirage/pintos","forks_url":"https://api.github.com/repos/darkmirage/pintos/forks","keys_url":"https://api.github.com/repos/darkmirage/pintos/keys{/key_id}","collaborators_url":"https://api.github.com/repos/darkmirage/pintos/collaborators{/collaborator}","teams_url":"https://api.github.com/repos/darkmirage/pintos/teams","hooks_url":"https://api.github.com/repos/darkmirage/pintos/hooks","issue_events_url":"https://api.github.com/repos/darkmirage/pintos/issues/events{/number}","events_url":"https://api.github.com/repos/darkmirage/pintos/events","assignees_url":"https://api.github.com/repos/darkmirage/pintos/assignees{/user}","branches_url":"https://api.github.com/repos/darkmirage/pintos/branches{/branch}","tags_url":"https://api.github.com/repos/darkmirage/pintos/tags","blobs_url":"https://api.github.com/repos/darkmirage/pintos/git/blobs{/sha}","git_tags_url":"https://api.github.com/repos/darkmirage/pintos/git/tags{/sha}","git_refs_url":"https://api.github.com/repos/darkmirage/pintos/git/refs{/sha}","trees_url":"https://api.github.com/repos/darkmirage/pintos/git/trees{/sha}","statuses_url":"https://api.github.com/repos/darkmirage/pintos/statuses/{sha}","languages_url":"https://api.github.com/repos/darkmirage/pintos/languages","stargazers_url":"https://api.github.com/repos/darkmirage/pintos/stargazers","contributors_url":"https://api.github.com/repos/darkmirage/pintos/contributors","subscribers_url":"https://api.github.com/repos/darkmirage/pintos/subscribers","subscription_url":"https://api.github.com/repos/darkmirage/pintos/subscription","commits_url":"https://api.github.com/repos/darkmirage/pintos/commits{/sha}","git_commits_url":"https://api.github.com/repos/darkmirage/pintos/git/commits{/sha}","comments_url":"https://api.github.com/repos/darkmirage/pintos/comments{/number}","issue_comment_url":"https://api.github.com/repos/darkmirage/pintos/issues/comments/{number}","contents_url":"https://api.github.com/repos/darkmirage/pintos/contents/{+path}","compare_url":"https://api.github.com/repos/darkmirage/pintos/compare/{base}...{head}","merges_url":"https://api.github.com/repos/darkmirage/pintos/merges","archive_url":"https://api.github.com/repos/darkmirage/pintos/{archive_format}{/ref}","downloads_url":"https://api.github.com/repos/darkmirage/pintos/downloads","issues_url":"https://api.github.com/repos/darkmirage/pintos/issues{/number}","pulls_url":"https://api.github.com/repos/darkmirage/pintos/pulls{/number}","milestones_url":"https://api.github.com/repos/darkmirage/pintos/milestones{/number}","notifications_url":"https://api.github.com/repos/darkmirage/pintos/notifications{?since,all,participating}","labels_url":"https://api.github.com/repos/darkmirage/pintos/labels{/name}","created_at":"2013-01-07T00:41:21Z","updated_at":"2013-03-17T00:14:20Z","pushed_at":"2013-03-17T00:14:20Z","git_url":"git://github.com/darkmirage/pintos.git","ssh_url":"git@github.com:darkmirage/pintos.git","clone_url":"https://github.com/darkmirage/pintos.git","svn_url":"https://github.com/darkmirage/pintos","homepage":null,"size":616,"watchers_count":0,"language":"C","has_issues":true,"has_downloads":true,"has_wiki":true,"forks_count":1,"mirror_url":null,"open_issues_count":0,"forks":1,"open_issues":0,"watchers":0,"master_branch":"master","default_branch":"master","permissions":{"admin":true,"push":true,"pull":true}},{"id":11385834,"name":"reddit-image-browser","full_name":"darkmirage/reddit-image-browser","owner":{"login":"darkmirage","id":1635019,"avatar_url":"https://0.gravatar.com/avatar/5111569f6bba258cfe81d12af3ba99a2?d=https://a248.e.akamai.net/assets.github.com%2Fimages%2Fgravatars%2Fgravatar-user-420.png","gravatar_id":"5111569f6bba258cfe81d12af3ba99a2","url":"https://api.github.com/users/darkmirage","html_url":"https://github.com/darkmirage","followers_url":"https://api.github.com/users/darkmirage/followers","following_url":"https://api.github.com/users/darkmirage/following{/other_user}","gists_url":"https://api.github.com/users/darkmirage/gists{/gist_id}","starred_url":"https://api.github.com/users/darkmirage/starred{/owner}{/repo}","subscriptions_url":"https://api.github.com/users/darkmirage/subscriptions","organizations_url":"https://api.github.com/users/darkmirage/orgs","repos_url":"https://api.github.com/users/darkmirage/repos","events_url":"https://api.github.com/users/darkmirage/events{/privacy}","received_events_url":"https://api.github.com/users/darkmirage/received_events","type":"User"},"private":false,"html_url":"https://github.com/darkmirage/reddit-image-browser","description":"An
+        client-side image browser for Reddit using jQuery to process unauthenticated
+        JSONP with some D3.js processing.","fork":false,"url":"https://api.github.com/repos/darkmirage/reddit-image-browser","forks_url":"https://api.github.com/repos/darkmirage/reddit-image-browser/forks","keys_url":"https://api.github.com/repos/darkmirage/reddit-image-browser/keys{/key_id}","collaborators_url":"https://api.github.com/repos/darkmirage/reddit-image-browser/collaborators{/collaborator}","teams_url":"https://api.github.com/repos/darkmirage/reddit-image-browser/teams","hooks_url":"https://api.github.com/repos/darkmirage/reddit-image-browser/hooks","issue_events_url":"https://api.github.com/repos/darkmirage/reddit-image-browser/issues/events{/number}","events_url":"https://api.github.com/repos/darkmirage/reddit-image-browser/events","assignees_url":"https://api.github.com/repos/darkmirage/reddit-image-browser/assignees{/user}","branches_url":"https://api.github.com/repos/darkmirage/reddit-image-browser/branches{/branch}","tags_url":"https://api.github.com/repos/darkmirage/reddit-image-browser/tags","blobs_url":"https://api.github.com/repos/darkmirage/reddit-image-browser/git/blobs{/sha}","git_tags_url":"https://api.github.com/repos/darkmirage/reddit-image-browser/git/tags{/sha}","git_refs_url":"https://api.github.com/repos/darkmirage/reddit-image-browser/git/refs{/sha}","trees_url":"https://api.github.com/repos/darkmirage/reddit-image-browser/git/trees{/sha}","statuses_url":"https://api.github.com/repos/darkmirage/reddit-image-browser/statuses/{sha}","languages_url":"https://api.github.com/repos/darkmirage/reddit-image-browser/languages","stargazers_url":"https://api.github.com/repos/darkmirage/reddit-image-browser/stargazers","contributors_url":"https://api.github.com/repos/darkmirage/reddit-image-browser/contributors","subscribers_url":"https://api.github.com/repos/darkmirage/reddit-image-browser/subscribers","subscription_url":"https://api.github.com/repos/darkmirage/reddit-image-browser/subscription","commits_url":"https://api.github.com/repos/darkmirage/reddit-image-browser/commits{/sha}","git_commits_url":"https://api.github.com/repos/darkmirage/reddit-image-browser/git/commits{/sha}","comments_url":"https://api.github.com/repos/darkmirage/reddit-image-browser/comments{/number}","issue_comment_url":"https://api.github.com/repos/darkmirage/reddit-image-browser/issues/comments/{number}","contents_url":"https://api.github.com/repos/darkmirage/reddit-image-browser/contents/{+path}","compare_url":"https://api.github.com/repos/darkmirage/reddit-image-browser/compare/{base}...{head}","merges_url":"https://api.github.com/repos/darkmirage/reddit-image-browser/merges","archive_url":"https://api.github.com/repos/darkmirage/reddit-image-browser/{archive_format}{/ref}","downloads_url":"https://api.github.com/repos/darkmirage/reddit-image-browser/downloads","issues_url":"https://api.github.com/repos/darkmirage/reddit-image-browser/issues{/number}","pulls_url":"https://api.github.com/repos/darkmirage/reddit-image-browser/pulls{/number}","milestones_url":"https://api.github.com/repos/darkmirage/reddit-image-browser/milestones{/number}","notifications_url":"https://api.github.com/repos/darkmirage/reddit-image-browser/notifications{?since,all,participating}","labels_url":"https://api.github.com/repos/darkmirage/reddit-image-browser/labels{/name}","created_at":"2013-07-13T09:18:47Z","updated_at":"2013-07-31T19:38:51Z","pushed_at":"2013-07-27T21:33:58Z","git_url":"git://github.com/darkmirage/reddit-image-browser.git","ssh_url":"git@github.com:darkmirage/reddit-image-browser.git","clone_url":"https://github.com/darkmirage/reddit-image-browser.git","svn_url":"https://github.com/darkmirage/reddit-image-browser","homepage":null,"size":466,"watchers_count":2,"language":"JavaScript","has_issues":true,"has_downloads":true,"has_wiki":true,"forks_count":0,"mirror_url":null,"open_issues_count":0,"forks":0,"open_issues":0,"watchers":2,"master_branch":"master","default_branch":"master","permissions":{"admin":true,"push":true,"pull":true}},{"id":11539156,"name":"stanford-cookie-grabber","full_name":"darkmirage/stanford-cookie-grabber","owner":{"login":"darkmirage","id":1635019,"avatar_url":"https://0.gravatar.com/avatar/5111569f6bba258cfe81d12af3ba99a2?d=https://a248.e.akamai.net/assets.github.com%2Fimages%2Fgravatars%2Fgravatar-user-420.png","gravatar_id":"5111569f6bba258cfe81d12af3ba99a2","url":"https://api.github.com/users/darkmirage","html_url":"https://github.com/darkmirage","followers_url":"https://api.github.com/users/darkmirage/followers","following_url":"https://api.github.com/users/darkmirage/following{/other_user}","gists_url":"https://api.github.com/users/darkmirage/gists{/gist_id}","starred_url":"https://api.github.com/users/darkmirage/starred{/owner}{/repo}","subscriptions_url":"https://api.github.com/users/darkmirage/subscriptions","organizations_url":"https://api.github.com/users/darkmirage/orgs","repos_url":"https://api.github.com/users/darkmirage/repos","events_url":"https://api.github.com/users/darkmirage/events{/privacy}","received_events_url":"https://api.github.com/users/darkmirage/received_events","type":"User"},"private":false,"html_url":"https://github.com/darkmirage/stanford-cookie-grabber","description":"Proof
+        of concept demonstrating user identification through cookies on the Stanford
+        network","fork":false,"url":"https://api.github.com/repos/darkmirage/stanford-cookie-grabber","forks_url":"https://api.github.com/repos/darkmirage/stanford-cookie-grabber/forks","keys_url":"https://api.github.com/repos/darkmirage/stanford-cookie-grabber/keys{/key_id}","collaborators_url":"https://api.github.com/repos/darkmirage/stanford-cookie-grabber/collaborators{/collaborator}","teams_url":"https://api.github.com/repos/darkmirage/stanford-cookie-grabber/teams","hooks_url":"https://api.github.com/repos/darkmirage/stanford-cookie-grabber/hooks","issue_events_url":"https://api.github.com/repos/darkmirage/stanford-cookie-grabber/issues/events{/number}","events_url":"https://api.github.com/repos/darkmirage/stanford-cookie-grabber/events","assignees_url":"https://api.github.com/repos/darkmirage/stanford-cookie-grabber/assignees{/user}","branches_url":"https://api.github.com/repos/darkmirage/stanford-cookie-grabber/branches{/branch}","tags_url":"https://api.github.com/repos/darkmirage/stanford-cookie-grabber/tags","blobs_url":"https://api.github.com/repos/darkmirage/stanford-cookie-grabber/git/blobs{/sha}","git_tags_url":"https://api.github.com/repos/darkmirage/stanford-cookie-grabber/git/tags{/sha}","git_refs_url":"https://api.github.com/repos/darkmirage/stanford-cookie-grabber/git/refs{/sha}","trees_url":"https://api.github.com/repos/darkmirage/stanford-cookie-grabber/git/trees{/sha}","statuses_url":"https://api.github.com/repos/darkmirage/stanford-cookie-grabber/statuses/{sha}","languages_url":"https://api.github.com/repos/darkmirage/stanford-cookie-grabber/languages","stargazers_url":"https://api.github.com/repos/darkmirage/stanford-cookie-grabber/stargazers","contributors_url":"https://api.github.com/repos/darkmirage/stanford-cookie-grabber/contributors","subscribers_url":"https://api.github.com/repos/darkmirage/stanford-cookie-grabber/subscribers","subscription_url":"https://api.github.com/repos/darkmirage/stanford-cookie-grabber/subscription","commits_url":"https://api.github.com/repos/darkmirage/stanford-cookie-grabber/commits{/sha}","git_commits_url":"https://api.github.com/repos/darkmirage/stanford-cookie-grabber/git/commits{/sha}","comments_url":"https://api.github.com/repos/darkmirage/stanford-cookie-grabber/comments{/number}","issue_comment_url":"https://api.github.com/repos/darkmirage/stanford-cookie-grabber/issues/comments/{number}","contents_url":"https://api.github.com/repos/darkmirage/stanford-cookie-grabber/contents/{+path}","compare_url":"https://api.github.com/repos/darkmirage/stanford-cookie-grabber/compare/{base}...{head}","merges_url":"https://api.github.com/repos/darkmirage/stanford-cookie-grabber/merges","archive_url":"https://api.github.com/repos/darkmirage/stanford-cookie-grabber/{archive_format}{/ref}","downloads_url":"https://api.github.com/repos/darkmirage/stanford-cookie-grabber/downloads","issues_url":"https://api.github.com/repos/darkmirage/stanford-cookie-grabber/issues{/number}","pulls_url":"https://api.github.com/repos/darkmirage/stanford-cookie-grabber/pulls{/number}","milestones_url":"https://api.github.com/repos/darkmirage/stanford-cookie-grabber/milestones{/number}","notifications_url":"https://api.github.com/repos/darkmirage/stanford-cookie-grabber/notifications{?since,all,participating}","labels_url":"https://api.github.com/repos/darkmirage/stanford-cookie-grabber/labels{/name}","created_at":"2013-07-19T23:31:33Z","updated_at":"2013-07-19T23:38:51Z","pushed_at":"2013-07-19T23:38:48Z","git_url":"git://github.com/darkmirage/stanford-cookie-grabber.git","ssh_url":"git@github.com:darkmirage/stanford-cookie-grabber.git","clone_url":"https://github.com/darkmirage/stanford-cookie-grabber.git","svn_url":"https://github.com/darkmirage/stanford-cookie-grabber","homepage":null,"size":38,"watchers_count":0,"language":"PHP","has_issues":true,"has_downloads":true,"has_wiki":true,"forks_count":0,"mirror_url":null,"open_issues_count":0,"forks":0,"open_issues":0,"watchers":0,"master_branch":"master","default_branch":"master","permissions":{"admin":true,"push":true,"pull":true}},{"id":11986043,"name":"test","full_name":"darkmirage/test","owner":{"login":"darkmirage","id":1635019,"avatar_url":"https://0.gravatar.com/avatar/5111569f6bba258cfe81d12af3ba99a2?d=https://a248.e.akamai.net/assets.github.com%2Fimages%2Fgravatars%2Fgravatar-user-420.png","gravatar_id":"5111569f6bba258cfe81d12af3ba99a2","url":"https://api.github.com/users/darkmirage","html_url":"https://github.com/darkmirage","followers_url":"https://api.github.com/users/darkmirage/followers","following_url":"https://api.github.com/users/darkmirage/following{/other_user}","gists_url":"https://api.github.com/users/darkmirage/gists{/gist_id}","starred_url":"https://api.github.com/users/darkmirage/starred{/owner}{/repo}","subscriptions_url":"https://api.github.com/users/darkmirage/subscriptions","organizations_url":"https://api.github.com/users/darkmirage/orgs","repos_url":"https://api.github.com/users/darkmirage/repos","events_url":"https://api.github.com/users/darkmirage/events{/privacy}","received_events_url":"https://api.github.com/users/darkmirage/received_events","type":"User"},"private":false,"html_url":"https://github.com/darkmirage/test","description":"API
+        test","fork":false,"url":"https://api.github.com/repos/darkmirage/test","forks_url":"https://api.github.com/repos/darkmirage/test/forks","keys_url":"https://api.github.com/repos/darkmirage/test/keys{/key_id}","collaborators_url":"https://api.github.com/repos/darkmirage/test/collaborators{/collaborator}","teams_url":"https://api.github.com/repos/darkmirage/test/teams","hooks_url":"https://api.github.com/repos/darkmirage/test/hooks","issue_events_url":"https://api.github.com/repos/darkmirage/test/issues/events{/number}","events_url":"https://api.github.com/repos/darkmirage/test/events","assignees_url":"https://api.github.com/repos/darkmirage/test/assignees{/user}","branches_url":"https://api.github.com/repos/darkmirage/test/branches{/branch}","tags_url":"https://api.github.com/repos/darkmirage/test/tags","blobs_url":"https://api.github.com/repos/darkmirage/test/git/blobs{/sha}","git_tags_url":"https://api.github.com/repos/darkmirage/test/git/tags{/sha}","git_refs_url":"https://api.github.com/repos/darkmirage/test/git/refs{/sha}","trees_url":"https://api.github.com/repos/darkmirage/test/git/trees{/sha}","statuses_url":"https://api.github.com/repos/darkmirage/test/statuses/{sha}","languages_url":"https://api.github.com/repos/darkmirage/test/languages","stargazers_url":"https://api.github.com/repos/darkmirage/test/stargazers","contributors_url":"https://api.github.com/repos/darkmirage/test/contributors","subscribers_url":"https://api.github.com/repos/darkmirage/test/subscribers","subscription_url":"https://api.github.com/repos/darkmirage/test/subscription","commits_url":"https://api.github.com/repos/darkmirage/test/commits{/sha}","git_commits_url":"https://api.github.com/repos/darkmirage/test/git/commits{/sha}","comments_url":"https://api.github.com/repos/darkmirage/test/comments{/number}","issue_comment_url":"https://api.github.com/repos/darkmirage/test/issues/comments/{number}","contents_url":"https://api.github.com/repos/darkmirage/test/contents/{+path}","compare_url":"https://api.github.com/repos/darkmirage/test/compare/{base}...{head}","merges_url":"https://api.github.com/repos/darkmirage/test/merges","archive_url":"https://api.github.com/repos/darkmirage/test/{archive_format}{/ref}","downloads_url":"https://api.github.com/repos/darkmirage/test/downloads","issues_url":"https://api.github.com/repos/darkmirage/test/issues{/number}","pulls_url":"https://api.github.com/repos/darkmirage/test/pulls{/number}","milestones_url":"https://api.github.com/repos/darkmirage/test/milestones{/number}","notifications_url":"https://api.github.com/repos/darkmirage/test/notifications{?since,all,participating}","labels_url":"https://api.github.com/repos/darkmirage/test/labels{/name}","created_at":"2013-08-08T20:38:13Z","updated_at":"2013-08-15T21:10:11Z","pushed_at":"2013-08-15T21:10:11Z","git_url":"git://github.com/darkmirage/test.git","ssh_url":"git@github.com:darkmirage/test.git","clone_url":"https://github.com/darkmirage/test.git","svn_url":"https://github.com/darkmirage/test","homepage":null,"size":304,"watchers_count":0,"language":null,"has_issues":true,"has_downloads":true,"has_wiki":true,"forks_count":0,"mirror_url":null,"open_issues_count":0,"forks":0,"open_issues":0,"watchers":0,"master_branch":"master","default_branch":"master","permissions":{"admin":true,"push":true,"pull":true}}]'
+    http_version: 
+  recorded_at: Thu, 15 Aug 2013 21:11:59 GMT
+- request:
+    method: get
+    uri: https://api.github.com/user/orgs
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Octokit Ruby Gem 1.25.0
+      Accept:
+      - application/vnd.github.beta+json
+      Authorization:
+      - token <GITHUB_TOKEN>
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - GitHub.com
+      Date:
+      - Thu, 15 Aug 2013 21:11:59 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Transfer-Encoding:
+      - chunked
+      Status:
+      - 200 OK
+      X-Ratelimit-Limit:
+      - '5000'
+      X-Ratelimit-Remaining:
+      - '4681'
+      X-Ratelimit-Reset:
+      - '1376602835'
+      Cache-Control:
+      - private, max-age=60, s-maxage=60
+      Last-Modified:
+      - Thu, 15 Aug 2013 18:37:58 GMT
+      Etag:
+      - '"2c138003194b4f07f6ee8699b22d8827"'
+      X-Oauth-Scopes:
+      - user, public_repo, repo, gist
+      X-Accepted-Oauth-Scopes:
+      - repo, user
+      Vary:
+      - Accept, Authorization, Cookie
+      - Accept-Encoding
+      X-Github-Media-Type:
+      - github.beta; format=json
+      X-Content-Type-Options:
+      - nosniff
+      Access-Control-Allow-Credentials:
+      - 'true'
+      Access-Control-Expose-Headers:
+      - ETag, Link, X-RateLimit-Limit, X-RateLimit-Remaining, X-RateLimit-Reset, X-OAuth-Scopes,
+        X-Accepted-OAuth-Scopes
+      Access-Control-Allow-Origin:
+      - '*'
+    body:
+      encoding: UTF-8
+      string: '[{"login":"Pixelapse","id":1366702,"url":"https://api.github.com/orgs/Pixelapse","repos_url":"https://api.github.com/orgs/Pixelapse/repos","events_url":"https://api.github.com/orgs/Pixelapse/events","members_url":"https://api.github.com/orgs/Pixelapse/members{/member}","public_members_url":"https://api.github.com/orgs/Pixelapse/public_members{/member}","avatar_url":"https://0.gravatar.com/avatar/464b07a6c89bf293b8fa68c9b731c11b?d=https://a248.e.akamai.net/assets.github.com%2Fimages%2Fgravatars%2Fgravatar-org-420.png"}]'
+    http_version: 
+  recorded_at: Thu, 15 Aug 2013 21:11:59 GMT
+- request:
+    method: get
+    uri: https://api.github.com/orgs/Pixelapse/repos
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Octokit Ruby Gem 1.25.0
+      Accept:
+      - application/vnd.github.beta+json
+      Authorization:
+      - token <GITHUB_TOKEN>
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - GitHub.com
+      Date:
+      - Thu, 15 Aug 2013 21:12:00 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Transfer-Encoding:
+      - chunked
+      Status:
+      - 200 OK
+      X-Ratelimit-Limit:
+      - '5000'
+      X-Ratelimit-Remaining:
+      - '4680'
+      X-Ratelimit-Reset:
+      - '1376602835'
+      Cache-Control:
+      - private, max-age=60, s-maxage=60
+      Last-Modified:
+      - Thu, 15 Aug 2013 18:29:15 GMT
+      Etag:
+      - '"f59d3a5c4ccac32a72de8ad769e7f30d"'
+      X-Oauth-Scopes:
+      - user, public_repo, repo, gist
+      X-Accepted-Oauth-Scopes:
+      - repo, public_repo, repo:status, delete_repo, site_admin
+      Vary:
+      - Accept, Authorization, Cookie
+      - Accept-Encoding
+      X-Github-Media-Type:
+      - github.beta; format=json
+      X-Content-Type-Options:
+      - nosniff
+      Access-Control-Allow-Credentials:
+      - 'true'
+      Access-Control-Expose-Headers:
+      - ETag, Link, X-RateLimit-Limit, X-RateLimit-Remaining, X-RateLimit-Reset, X-OAuth-Scopes,
+        X-Accepted-OAuth-Scopes
+      Access-Control-Allow-Origin:
+      - '*'
+    body:
+      encoding: UTF-8
+      string: '[{"id":11830158,"name":"worochi","full_name":"Pixelapse/worochi","owner":{"login":"Pixelapse","id":1366702,"avatar_url":"https://0.gravatar.com/avatar/464b07a6c89bf293b8fa68c9b731c11b?d=https://a248.e.akamai.net/assets.github.com%2Fimages%2Fgravatars%2Fgravatar-org-420.png","gravatar_id":"464b07a6c89bf293b8fa68c9b731c11b","url":"https://api.github.com/users/Pixelapse","html_url":"https://github.com/Pixelapse","followers_url":"https://api.github.com/users/Pixelapse/followers","following_url":"https://api.github.com/users/Pixelapse/following{/other_user}","gists_url":"https://api.github.com/users/Pixelapse/gists{/gist_id}","starred_url":"https://api.github.com/users/Pixelapse/starred{/owner}{/repo}","subscriptions_url":"https://api.github.com/users/Pixelapse/subscriptions","organizations_url":"https://api.github.com/users/Pixelapse/orgs","repos_url":"https://api.github.com/users/Pixelapse/repos","events_url":"https://api.github.com/users/Pixelapse/events{/privacy}","received_events_url":"https://api.github.com/users/Pixelapse/received_events","type":"Organization"},"private":true,"html_url":"https://github.com/Pixelapse/worochi","description":"Ruby
+        third party service integrations","fork":false,"url":"https://api.github.com/repos/Pixelapse/worochi","forks_url":"https://api.github.com/repos/Pixelapse/worochi/forks","keys_url":"https://api.github.com/repos/Pixelapse/worochi/keys{/key_id}","collaborators_url":"https://api.github.com/repos/Pixelapse/worochi/collaborators{/collaborator}","teams_url":"https://api.github.com/repos/Pixelapse/worochi/teams","hooks_url":"https://api.github.com/repos/Pixelapse/worochi/hooks","issue_events_url":"https://api.github.com/repos/Pixelapse/worochi/issues/events{/number}","events_url":"https://api.github.com/repos/Pixelapse/worochi/events","assignees_url":"https://api.github.com/repos/Pixelapse/worochi/assignees{/user}","branches_url":"https://api.github.com/repos/Pixelapse/worochi/branches{/branch}","tags_url":"https://api.github.com/repos/Pixelapse/worochi/tags","blobs_url":"https://api.github.com/repos/Pixelapse/worochi/git/blobs{/sha}","git_tags_url":"https://api.github.com/repos/Pixelapse/worochi/git/tags{/sha}","git_refs_url":"https://api.github.com/repos/Pixelapse/worochi/git/refs{/sha}","trees_url":"https://api.github.com/repos/Pixelapse/worochi/git/trees{/sha}","statuses_url":"https://api.github.com/repos/Pixelapse/worochi/statuses/{sha}","languages_url":"https://api.github.com/repos/Pixelapse/worochi/languages","stargazers_url":"https://api.github.com/repos/Pixelapse/worochi/stargazers","contributors_url":"https://api.github.com/repos/Pixelapse/worochi/contributors","subscribers_url":"https://api.github.com/repos/Pixelapse/worochi/subscribers","subscription_url":"https://api.github.com/repos/Pixelapse/worochi/subscription","commits_url":"https://api.github.com/repos/Pixelapse/worochi/commits{/sha}","git_commits_url":"https://api.github.com/repos/Pixelapse/worochi/git/commits{/sha}","comments_url":"https://api.github.com/repos/Pixelapse/worochi/comments{/number}","issue_comment_url":"https://api.github.com/repos/Pixelapse/worochi/issues/comments/{number}","contents_url":"https://api.github.com/repos/Pixelapse/worochi/contents/{+path}","compare_url":"https://api.github.com/repos/Pixelapse/worochi/compare/{base}...{head}","merges_url":"https://api.github.com/repos/Pixelapse/worochi/merges","archive_url":"https://api.github.com/repos/Pixelapse/worochi/{archive_format}{/ref}","downloads_url":"https://api.github.com/repos/Pixelapse/worochi/downloads","issues_url":"https://api.github.com/repos/Pixelapse/worochi/issues{/number}","pulls_url":"https://api.github.com/repos/Pixelapse/worochi/pulls{/number}","milestones_url":"https://api.github.com/repos/Pixelapse/worochi/milestones{/number}","notifications_url":"https://api.github.com/repos/Pixelapse/worochi/notifications{?since,all,participating}","labels_url":"https://api.github.com/repos/Pixelapse/worochi/labels{/name}","created_at":"2013-08-01T23:20:33Z","updated_at":"2013-08-15T00:59:48Z","pushed_at":"2013-08-15T00:59:47Z","git_url":"git://github.com/Pixelapse/worochi.git","ssh_url":"git@github.com:Pixelapse/worochi.git","clone_url":"https://github.com/Pixelapse/worochi.git","svn_url":"https://github.com/Pixelapse/worochi","homepage":null,"size":177,"watchers_count":0,"language":"Ruby","has_issues":true,"has_downloads":true,"has_wiki":true,"forks_count":0,"mirror_url":null,"open_issues_count":0,"forks":0,"open_issues":0,"watchers":0,"master_branch":"master","default_branch":"master","permissions":{"admin":false,"push":true,"pull":true}}]'
+    http_version: 
+  recorded_at: Thu, 15 Aug 2013 21:12:00 GMT
+recorded_with: VCR 2.5.0

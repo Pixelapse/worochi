@@ -69,6 +69,15 @@ describe Worochi do
     end
   end
 
+  describe '.remove' do
+    it 'removes a single agent' do
+      a = create_dropbox_agent
+      expect(Worochi.agents).to include(a)
+      Worochi.remove(a)
+      expect(Worochi.agents).not_to include(a)
+    end
+  end
+
   describe '.remove_service' do
     it 'removes multiple agents by service' do
       create_dropbox_agent
@@ -110,6 +119,21 @@ describe Worochi do
       expect(Worochi.agents).not_to include(a)
       Worochi.add(a)
       expect(Worochi.agents).to include(a)
+    end
+  end
+
+  describe '.push', :vcr do
+    it 'pushes with agents' do
+      a = Worochi.create(:github, ENV['GITHUB_TEST_TOKEN'], {
+        repo: 'darkmirage/test',
+        source: 'master',
+        target: 'rspec',
+        commit_msg: "RSpec Test"
+      })
+      expect(Worochi.push(path: local.path, source: local.source)).to be(true)
+    end
+    it 'requires at least one active agent' do
+      expect(Worochi.push(local.source)).to be(false)
     end
   end
 end

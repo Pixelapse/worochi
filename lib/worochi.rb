@@ -124,7 +124,10 @@ class Worochi
     # @see Item.open
     # @see Agent#push
     def push(origin, opts={})
-      Log.warn 'No push targets specified' and return false if @agents.empty?
+      if @agents.empty?
+        Log.warn 'No push targets specified'
+        return false
+      end
       @agents.each { |agent| agent.push(origin, opts) }
       true
     end

@@ -53,12 +53,14 @@ class Worochi
         x.path.split('/').size <=> y.path.split('/').size
       end
 
-      # Checks that folders are at the requested path and not at a lower or
-      # higher level
+      # Filters for folders containing the specified path
+      result.reject! { |elem| !elem.path.match(remote_path + '($|\/.+)') }
+      raise Error, 'Invalid GitHub path specified' if result.empty?
+
+      # Filters out lower levels
       result.reject! do |elem|
-        !elem.path.match(remote_path + '($|\/.+)') ||
-        (File.join(remote_path,
-            elem.path.split('/').last).sub(/^\//, '') != elem.path)
+        filename = elem.path.split('/').last
+        File.join(remote_path, filename).sub(/^\//, '') != elem.path
       end
 
       result.map do |elem|
@@ -141,8 +143,6 @@ class Worochi
       http.request request do |response|
         return JSON.parse(response.body)['sha']
       end
-
-      raise Error, 'Failed to upload file to GitHub'
     end
 
     # @return [Hash] repo information

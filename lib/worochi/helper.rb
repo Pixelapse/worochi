@@ -1,5 +1,3 @@
-require 'awesome_print'
-
 class Worochi
   # Contains any global helper methods not specific to any individual service.
   module Helper

@@ -17,16 +17,16 @@ class Worochi
     # Push a single {Item} to Dropbox.
     #
     # @param item [Item]
-    # @return [nil]
+    # @return [Boolean] true if chunk uploader was used
     def push_item(item)
       Worochi::Log.debug "Uploading #{item.path} (#{item.size} bytes) to Dropbox..."
-      if item.size > options[:chunk_size]
+      if chunked = item.size > options[:chunk_size]
         push_item_chunked(item)
       else
         @client.put_file(full_path(item), item.content, options[:overwrite])
       end
       Worochi::Log.debug "Uploaded"
-      nil
+      chunked
     end
 
     # Returns a list of files and subdirectories at the remote path specified

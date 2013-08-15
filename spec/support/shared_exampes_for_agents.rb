@@ -26,6 +26,10 @@ shared_examples_for 'a service agent' do
     it 'accepts a different relative path' do
       expect(agent.files('folder1')).to include('test.txt')
     end
+
+    it 'raises error on invalid path' do
+      expect{agent.files('zzzzz')}.to raise_error Worochi::Error
+    end
   end
 
   describe '#folders', :vcr do
@@ -46,6 +50,13 @@ shared_examples_for 'a service agent' do
     it 'contains folder1 and file1' do
       expect(agent.files_and_folders).to include('file1')
       expect(agent.files_and_folders).to include('folder1')
+    end
+
+    it 'shows detailed listing including the required fields' do
+      list = agent.files_and_folders(true)
+      expect(list.first).to include(:name)
+      expect(list.first).to include(:path)
+      expect(list.first).to include(:type)
     end
   end
 end

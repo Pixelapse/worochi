@@ -13,8 +13,10 @@ class Worochi
     }
     class << self
       # Initializes the logging system.
-      def init
-        @logger = Logger.new(STDOUT)
+      #
+      # @param logdev [IO] target device to log to
+      def init(logdev=nil)
+        @logger = Logger.new(logdev || $stdout)
         @logger.formatter = proc do |severity, datetime, progname, msg|
           "[\033[#{SEVERITY_COLOR[severity]}m#{severity}\033[0m]: #{msg}\n"
         end
@@ -22,26 +24,22 @@ class Worochi
 
       # Prints DEBUG messages
       def debug(message)
-        return if Worochi::Config.silent?
-        @logger.debug message
+        @logger.debug message unless Worochi::Config.silent?
       end
 
       # Prints WARN messages
       def warn(message)
-        return if Worochi::Config.silent?
-        @logger.warn message
+        @logger.warn message unless Worochi::Config.silent?
       end
 
       # Prints INFO messages
       def info(message)
-        return if Worochi::Config.silent?
-        @logger.info message
+        @logger.info message unless Worochi::Config.silent?
       end
 
       # Prints ERROR messages
       def error(message)
-        return if Worochi::Config.silent?
-        @logger.error message
+        @logger.error message unless Worochi::Config.silent?
       end
     end
   end

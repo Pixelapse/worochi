@@ -10,7 +10,6 @@ class Worochi
       # This is a wrapper that produces a JSON stream that works with
       # `Net::HTTP::Post#body_stream`.
       class StreamIO
-
         def initialize(item)
           item.content.rewind
           @parts = [
@@ -19,12 +18,8 @@ class Worochi
             StringIO.new('","encoding":"base64"}')
           ]
           @part_no = 0
+          @pos = 0
           @size = @parts.inject(0) {|sum, p| sum + p.size}
-        end
-
-        # @return [Integer] size of the JSON
-        def size
-          @size
         end
 
         # Rewind each component of the stream.
@@ -33,35 +28,45 @@ class Worochi
         def rewind
           @parts.each { |part| part.rewind }
           @part_no = 0
+          @pos = 0
           nil
+        end
+
+        # @return [Boolean] file has been fully read.
+        def eof?
+          @pos >= size
         end
 
         # @param length [Integer]
         # @param outbuf [IO]
         # @return [String]
         def read(length=nil, outbuf=nil)
-          return length.nil? ? '' : nil if @part_no >= @parts.size
+          if eof?
+            outbuf.clear if outbuf
+            return length.nil? ? '' : nil
+          end
           
-          length = length || size
-          output = @parts[@part_no].read(length).to_s
+          length ||= size
 
-          if output.nil?
-            return nil if @part_no >= @parts.size
-            output = ''
-          end
-
+          output = ''
           while output.length < length
-            @part_no += 1
+            curr = @parts[@part_no]
+            output += curr.read(length - output.length).to_s
+            @part_no += 1 if curr.eof?
             break if @part_no == @parts.size
-            output += @parts[@part_no].read(length - output.length).to_s
           end
-          if not outbuf.nil?
+          @pos += output.length
+
+          unless outbuf.nil?
             outbuf.clear
             outbuf.insert(0, output)
           end
 
           output
-        end  
+        end
+
+        # @return [Integer] size of the JSON
+        attr_reader :size
       end
 
       # This is a wrapper around the file content that streams the file as a
@@ -77,6 +82,11 @@ class Worochi
         # @return [Integer] size of the JSON
         def size
           @encoded_size
+        end
+
+        # @return [Boolean] file has been fully read.
+        def eof?
+          @buffer.empty? && @file.eof?
         end
 
         # Rewind the stream.

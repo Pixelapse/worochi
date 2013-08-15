@@ -1,0 +1,1049 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: https://api.dropbox.com/1/fileops/delete?path=/Dev/test/test_file&root=auto
+    body:
+      encoding: UTF-8
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - '*/*'
+      User-Agent:
+      - OfficialDropboxRubySDK/1.6.1
+      Authorization:
+      - Bearer <DROPBOX_TOKEN>
+  response:
+    status:
+      code: 404
+      message: Not Found
+    headers:
+      Server:
+      - nginx
+      Date:
+      - Thu, 15 Aug 2013 19:07:56 GMT
+      Content-Type:
+      - application/json
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+    body:
+      encoding: UTF-8
+      string: '{"error": "Path ''/dev/test/test_file'' not found"}'
+    http_version: 
+  recorded_at: Thu, 15 Aug 2013 19:07:56 GMT
+- request:
+    method: get
+    uri: https://api.dropbox.com/1/metadata/auto/Dev/test?file_limit=25000&include_deleted=false&list=true
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - '*/*'
+      User-Agent:
+      - OfficialDropboxRubySDK/1.6.1
+      Authorization:
+      - Bearer <DROPBOX_TOKEN>
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - nginx
+      Date:
+      - Thu, 15 Aug 2013 19:07:56 GMT
+      Content-Type:
+      - text/javascript
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      X-Server-Response-Time:
+      - '51'
+      X-Dropbox-Request-Id:
+      - 4e31f0c8a730698088fd7f6eeb3c927e
+      Pragma:
+      - no-cache
+      Cache-Control:
+      - no-cache
+      X-Dropbox-Http-Protocol:
+      - None
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Requestid:
+      - 265be6c4a8d459e8b0b4c6f0804c546d
+    body:
+      encoding: UTF-8
+      string: '{"hash": "bf88e23a6fa5e851915a2b37069faf3c", "revision": 913527043,
+        "rev": "36735103002426b8", "thumb_exists": false, "bytes": 0, "modified":
+        "Fri, 09 Aug 2013 00:17:26 +0000", "path": "/Dev/test", "is_dir": true, "icon":
+        "folder", "root": "dropbox", "contents": [{"revision": 913527044, "rev": "36735104002426b8",
+        "thumb_exists": false, "bytes": 0, "modified": "Fri, 09 Aug 2013 00:17:28
+        +0000", "path": "/Dev/test/.git", "is_dir": true, "icon": "folder", "root":
+        "dropbox", "size": "0 bytes"}, {"revision": 913527128, "rev": "36735158002426b8",
+        "thumb_exists": false, "bytes": 18, "modified": "Fri, 09 Aug 2013 00:17:36
+        +0000", "client_mtime": "Thu, 08 Aug 2013 20:44:11 +0000", "path": "/Dev/test/file1",
+        "is_dir": false, "icon": "page_white", "root": "dropbox", "mime_type": "application/octet-stream",
+        "size": "18 bytes"}, {"revision": 913527046, "rev": "36735106002426b8", "thumb_exists":
+        false, "bytes": 0, "modified": "Fri, 09 Aug 2013 00:17:28 +0000", "path":
+        "/Dev/test/folder1", "is_dir": true, "icon": "folder", "root": "dropbox",
+        "size": "0 bytes"}, {"revision": 913527047, "rev": "36735107002426b8", "thumb_exists":
+        false, "bytes": 0, "modified": "Fri, 09 Aug 2013 00:17:28 +0000", "path":
+        "/Dev/test/folder2", "is_dir": true, "icon": "folder", "root": "dropbox",
+        "size": "0 bytes"}, {"revision": 913527045, "rev": "36735105002426b8", "thumb_exists":
+        false, "bytes": 0, "modified": "Fri, 09 Aug 2013 00:17:28 +0000", "path":
+        "/Dev/test/folder3", "is_dir": true, "icon": "folder", "root": "dropbox",
+        "size": "0 bytes"}, {"revision": 913527152, "rev": "36735170002426b8", "thumb_exists":
+        false, "bytes": 1078, "modified": "Fri, 09 Aug 2013 00:17:36 +0000", "client_mtime":
+        "Thu, 08 Aug 2013 20:38:22 +0000", "path": "/Dev/test/LICENSE", "is_dir":
+        false, "icon": "page_white", "root": "dropbox", "mime_type": "application/octet-stream",
+        "size": "1.1 KB"}, {"revision": 913527129, "rev": "36735159002426b8", "thumb_exists":
+        false, "bytes": 20, "modified": "Fri, 09 Aug 2013 00:17:36 +0000", "client_mtime":
+        "Thu, 08 Aug 2013 20:38:22 +0000", "path": "/Dev/test/README.md", "is_dir":
+        false, "icon": "page_white_text", "root": "dropbox", "mime_type": "application/octet-stream",
+        "size": "20 bytes"}], "size": "0 bytes"}'
+    http_version: 
+  recorded_at: Thu, 15 Aug 2013 19:07:56 GMT
+- request:
+    method: put
+    uri: https://api-content.dropbox.com/1/chunked_upload?offset=0
+    body:
+      encoding: ASCII-8BIT
+      string: This
+    headers:
+      Content-Type:
+      - application/octet-stream
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - '*/*'
+      User-Agent:
+      - OfficialDropboxRubySDK/1.6.1
+      Content-Length:
+      - 4
+      Authorization:
+      - Bearer <DROPBOX_TOKEN>
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - nginx
+      Date:
+      - Thu, 15 Aug 2013 19:07:57 GMT
+      Content-Type:
+      - text/javascript
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      X-Server-Response-Time:
+      - '475'
+      X-Dropbox-Request-Id:
+      - 39fc450b46a31ec835ae203877f7cd01
+      Pragma:
+      - no-cache
+      Cache-Control:
+      - no-cache
+      X-Requestid:
+      - 8e08a2a4d7faad95b1fd32a05afb8664
+    body:
+      encoding: UTF-8
+      string: '{"expires": "Fri, 16 Aug 2013 19:07:57 +0000", "upload_id": "lgRg4wuGBWILQPoiWAT9ig",
+        "offset": 4}'
+    http_version: 
+  recorded_at: Thu, 15 Aug 2013 19:07:57 GMT
+- request:
+    method: put
+    uri: https://api-content.dropbox.com/1/chunked_upload?offset=4&upload_id=lgRg4wuGBWILQPoiWAT9ig
+    body:
+      encoding: ASCII-8BIT
+      string: ' is '
+    headers:
+      Content-Type:
+      - application/octet-stream
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - '*/*'
+      User-Agent:
+      - OfficialDropboxRubySDK/1.6.1
+      Content-Length:
+      - 4
+      Authorization:
+      - Bearer <DROPBOX_TOKEN>
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - nginx
+      Date:
+      - Thu, 15 Aug 2013 19:07:59 GMT
+      Content-Type:
+      - text/javascript
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      X-Server-Response-Time:
+      - '557'
+      X-Dropbox-Request-Id:
+      - 5c1dc820256d802008e4b26aadf1be74
+      Pragma:
+      - no-cache
+      Cache-Control:
+      - no-cache
+      X-Requestid:
+      - 6caea593556b33a7f756daedbc998586
+    body:
+      encoding: UTF-8
+      string: '{"expires": "Fri, 16 Aug 2013 19:07:57 +0000", "upload_id": "lgRg4wuGBWILQPoiWAT9ig",
+        "offset": 8}'
+    http_version: 
+  recorded_at: Thu, 15 Aug 2013 19:07:59 GMT
+- request:
+    method: put
+    uri: https://api-content.dropbox.com/1/chunked_upload?offset=8&upload_id=lgRg4wuGBWILQPoiWAT9ig
+    body:
+      encoding: ASCII-8BIT
+      string: a fi
+    headers:
+      Content-Type:
+      - application/octet-stream
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - '*/*'
+      User-Agent:
+      - OfficialDropboxRubySDK/1.6.1
+      Content-Length:
+      - 4
+      Authorization:
+      - Bearer <DROPBOX_TOKEN>
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - nginx
+      Date:
+      - Thu, 15 Aug 2013 19:08:00 GMT
+      Content-Type:
+      - text/javascript
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      X-Server-Response-Time:
+      - '460'
+      X-Dropbox-Request-Id:
+      - 87f398137ec69034f2089c982dda49ec
+      Pragma:
+      - no-cache
+      Cache-Control:
+      - no-cache
+      X-Requestid:
+      - 8fa86b251ebcd7f412bfd1ad177c65fc
+    body:
+      encoding: UTF-8
+      string: '{"expires": "Fri, 16 Aug 2013 19:07:59 +0000", "upload_id": "lgRg4wuGBWILQPoiWAT9ig",
+        "offset": 12}'
+    http_version: 
+  recorded_at: Thu, 15 Aug 2013 19:08:00 GMT
+- request:
+    method: put
+    uri: https://api-content.dropbox.com/1/chunked_upload?offset=12&upload_id=lgRg4wuGBWILQPoiWAT9ig
+    body:
+      encoding: ASCII-8BIT
+      string: le u
+    headers:
+      Content-Type:
+      - application/octet-stream
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - '*/*'
+      User-Agent:
+      - OfficialDropboxRubySDK/1.6.1
+      Content-Length:
+      - 4
+      Authorization:
+      - Bearer <DROPBOX_TOKEN>
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - nginx
+      Date:
+      - Thu, 15 Aug 2013 19:08:01 GMT
+      Content-Type:
+      - text/javascript
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      X-Server-Response-Time:
+      - '557'
+      X-Dropbox-Request-Id:
+      - 0ebcc2a9f984a94e5fe435f4f431bd53
+      Pragma:
+      - no-cache
+      Cache-Control:
+      - no-cache
+      X-Requestid:
+      - 3364277f6f0ddfd586b0c3ba412eba76
+    body:
+      encoding: UTF-8
+      string: '{"expires": "Fri, 16 Aug 2013 19:08:00 +0000", "upload_id": "lgRg4wuGBWILQPoiWAT9ig",
+        "offset": 16}'
+    http_version: 
+  recorded_at: Thu, 15 Aug 2013 19:08:01 GMT
+- request:
+    method: put
+    uri: https://api-content.dropbox.com/1/chunked_upload?offset=16&upload_id=lgRg4wuGBWILQPoiWAT9ig
+    body:
+      encoding: ASCII-8BIT
+      string: 'sed '
+    headers:
+      Content-Type:
+      - application/octet-stream
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - '*/*'
+      User-Agent:
+      - OfficialDropboxRubySDK/1.6.1
+      Content-Length:
+      - 4
+      Authorization:
+      - Bearer <DROPBOX_TOKEN>
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - nginx
+      Date:
+      - Thu, 15 Aug 2013 19:08:02 GMT
+      Content-Type:
+      - text/javascript
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      X-Server-Response-Time:
+      - '537'
+      X-Dropbox-Request-Id:
+      - 68c521d4e6dad3ee11355ccff1758541
+      Pragma:
+      - no-cache
+      Cache-Control:
+      - no-cache
+      X-Requestid:
+      - 53ece173af699c172765eede49b340df
+    body:
+      encoding: UTF-8
+      string: '{"expires": "Fri, 16 Aug 2013 19:08:01 +0000", "upload_id": "lgRg4wuGBWILQPoiWAT9ig",
+        "offset": 20}'
+    http_version: 
+  recorded_at: Thu, 15 Aug 2013 19:08:02 GMT
+- request:
+    method: put
+    uri: https://api-content.dropbox.com/1/chunked_upload?offset=20&upload_id=lgRg4wuGBWILQPoiWAT9ig
+    body:
+      encoding: ASCII-8BIT
+      string: 'for '
+    headers:
+      Content-Type:
+      - application/octet-stream
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - '*/*'
+      User-Agent:
+      - OfficialDropboxRubySDK/1.6.1
+      Content-Length:
+      - 4
+      Authorization:
+      - Bearer <DROPBOX_TOKEN>
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - nginx
+      Date:
+      - Thu, 15 Aug 2013 19:08:04 GMT
+      Content-Type:
+      - text/javascript
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      X-Server-Response-Time:
+      - '545'
+      X-Dropbox-Request-Id:
+      - 131fbd1d791d9f4c62a62165ae032bf7
+      Pragma:
+      - no-cache
+      Cache-Control:
+      - no-cache
+      X-Requestid:
+      - 1b88d5608469d65e4e2d6b18567dc796
+    body:
+      encoding: UTF-8
+      string: '{"expires": "Fri, 16 Aug 2013 19:08:02 +0000", "upload_id": "lgRg4wuGBWILQPoiWAT9ig",
+        "offset": 24}'
+    http_version: 
+  recorded_at: Thu, 15 Aug 2013 19:08:03 GMT
+- request:
+    method: put
+    uri: https://api-content.dropbox.com/1/chunked_upload?offset=24&upload_id=lgRg4wuGBWILQPoiWAT9ig
+    body:
+      encoding: ASCII-8BIT
+      string: RSpe
+    headers:
+      Content-Type:
+      - application/octet-stream
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - '*/*'
+      User-Agent:
+      - OfficialDropboxRubySDK/1.6.1
+      Content-Length:
+      - 4
+      Authorization:
+      - Bearer <DROPBOX_TOKEN>
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - nginx
+      Date:
+      - Thu, 15 Aug 2013 19:08:05 GMT
+      Content-Type:
+      - text/javascript
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      X-Server-Response-Time:
+      - '613'
+      X-Dropbox-Request-Id:
+      - 691a3d61fe1b381df5f276c0164f1b13
+      Pragma:
+      - no-cache
+      Cache-Control:
+      - no-cache
+      X-Requestid:
+      - fc3ce5c7efbeaa1837f3b864aa6e5e70
+    body:
+      encoding: UTF-8
+      string: '{"expires": "Fri, 16 Aug 2013 19:08:03 +0000", "upload_id": "lgRg4wuGBWILQPoiWAT9ig",
+        "offset": 28}'
+    http_version: 
+  recorded_at: Thu, 15 Aug 2013 19:08:05 GMT
+- request:
+    method: put
+    uri: https://api-content.dropbox.com/1/chunked_upload?offset=28&upload_id=lgRg4wuGBWILQPoiWAT9ig
+    body:
+      encoding: ASCII-8BIT
+      string: c te
+    headers:
+      Content-Type:
+      - application/octet-stream
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - '*/*'
+      User-Agent:
+      - OfficialDropboxRubySDK/1.6.1
+      Content-Length:
+      - 4
+      Authorization:
+      - Bearer <DROPBOX_TOKEN>
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - nginx
+      Date:
+      - Thu, 15 Aug 2013 19:08:06 GMT
+      Content-Type:
+      - text/javascript
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      X-Server-Response-Time:
+      - '598'
+      X-Dropbox-Request-Id:
+      - 4b19801fccbdcf9329b59492d95152fc
+      Pragma:
+      - no-cache
+      Cache-Control:
+      - no-cache
+      X-Requestid:
+      - 924c85f9ff57a58c8c165dd43b47fa82
+    body:
+      encoding: UTF-8
+      string: '{"expires": "Fri, 16 Aug 2013 19:08:05 +0000", "upload_id": "lgRg4wuGBWILQPoiWAT9ig",
+        "offset": 32}'
+    http_version: 
+  recorded_at: Thu, 15 Aug 2013 19:08:06 GMT
+- request:
+    method: put
+    uri: https://api-content.dropbox.com/1/chunked_upload?offset=32&upload_id=lgRg4wuGBWILQPoiWAT9ig
+    body:
+      encoding: ASCII-8BIT
+      string: 'sts '
+    headers:
+      Content-Type:
+      - application/octet-stream
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - '*/*'
+      User-Agent:
+      - OfficialDropboxRubySDK/1.6.1
+      Content-Length:
+      - 4
+      Authorization:
+      - Bearer <DROPBOX_TOKEN>
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - nginx
+      Date:
+      - Thu, 15 Aug 2013 19:08:07 GMT
+      Content-Type:
+      - text/javascript
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      X-Server-Response-Time:
+      - '522'
+      X-Dropbox-Request-Id:
+      - 9c57193e566359a811e2c099d6e2d2ac
+      Pragma:
+      - no-cache
+      Cache-Control:
+      - no-cache
+      X-Requestid:
+      - a77de80697aa70673a4db2eeb0a843cc
+    body:
+      encoding: UTF-8
+      string: '{"expires": "Fri, 16 Aug 2013 19:08:06 +0000", "upload_id": "lgRg4wuGBWILQPoiWAT9ig",
+        "offset": 36}'
+    http_version: 
+  recorded_at: Thu, 15 Aug 2013 19:08:07 GMT
+- request:
+    method: put
+    uri: https://api-content.dropbox.com/1/chunked_upload?offset=36&upload_id=lgRg4wuGBWILQPoiWAT9ig
+    body:
+      encoding: ASCII-8BIT
+      string: invo
+    headers:
+      Content-Type:
+      - application/octet-stream
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - '*/*'
+      User-Agent:
+      - OfficialDropboxRubySDK/1.6.1
+      Content-Length:
+      - 4
+      Authorization:
+      - Bearer <DROPBOX_TOKEN>
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - nginx
+      Date:
+      - Thu, 15 Aug 2013 19:08:09 GMT
+      Content-Type:
+      - text/javascript
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      X-Server-Response-Time:
+      - '585'
+      X-Dropbox-Request-Id:
+      - cc7ad8a6d1b608db5c8226f998e45860
+      Pragma:
+      - no-cache
+      Cache-Control:
+      - no-cache
+      X-Requestid:
+      - 7898bd2c655d9cc4c67852d3dc49b8b7
+    body:
+      encoding: UTF-8
+      string: '{"expires": "Fri, 16 Aug 2013 19:08:07 +0000", "upload_id": "lgRg4wuGBWILQPoiWAT9ig",
+        "offset": 40}'
+    http_version: 
+  recorded_at: Thu, 15 Aug 2013 19:08:08 GMT
+- request:
+    method: put
+    uri: https://api-content.dropbox.com/1/chunked_upload?offset=40&upload_id=lgRg4wuGBWILQPoiWAT9ig
+    body:
+      encoding: ASCII-8BIT
+      string: lvin
+    headers:
+      Content-Type:
+      - application/octet-stream
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - '*/*'
+      User-Agent:
+      - OfficialDropboxRubySDK/1.6.1
+      Content-Length:
+      - 4
+      Authorization:
+      - Bearer <DROPBOX_TOKEN>
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - nginx
+      Date:
+      - Thu, 15 Aug 2013 19:08:10 GMT
+      Content-Type:
+      - text/javascript
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      X-Server-Response-Time:
+      - '488'
+      X-Dropbox-Request-Id:
+      - b0a4523b251af6f46cf5ab6325d32d88
+      Pragma:
+      - no-cache
+      Cache-Control:
+      - no-cache
+      X-Requestid:
+      - 49287b23c270431b31cdbaa859434155
+    body:
+      encoding: UTF-8
+      string: '{"expires": "Fri, 16 Aug 2013 19:08:08 +0000", "upload_id": "lgRg4wuGBWILQPoiWAT9ig",
+        "offset": 44}'
+    http_version: 
+  recorded_at: Thu, 15 Aug 2013 19:08:10 GMT
+- request:
+    method: put
+    uri: https://api-content.dropbox.com/1/chunked_upload?offset=44&upload_id=lgRg4wuGBWILQPoiWAT9ig
+    body:
+      encoding: ASCII-8BIT
+      string: g Wo
+    headers:
+      Content-Type:
+      - application/octet-stream
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - '*/*'
+      User-Agent:
+      - OfficialDropboxRubySDK/1.6.1
+      Content-Length:
+      - 4
+      Authorization:
+      - Bearer <DROPBOX_TOKEN>
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - nginx
+      Date:
+      - Thu, 15 Aug 2013 19:08:11 GMT
+      Content-Type:
+      - text/javascript
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      X-Server-Response-Time:
+      - '458'
+      X-Dropbox-Request-Id:
+      - a3a6a9bf0f3449a0401702ef50c2758c
+      Pragma:
+      - no-cache
+      Cache-Control:
+      - no-cache
+      X-Requestid:
+      - b6cc0a5054b9f3ccdaf1a227d29791ac
+    body:
+      encoding: UTF-8
+      string: '{"expires": "Fri, 16 Aug 2013 19:08:10 +0000", "upload_id": "lgRg4wuGBWILQPoiWAT9ig",
+        "offset": 48}'
+    http_version: 
+  recorded_at: Thu, 15 Aug 2013 19:08:11 GMT
+- request:
+    method: put
+    uri: https://api-content.dropbox.com/1/chunked_upload?offset=48&upload_id=lgRg4wuGBWILQPoiWAT9ig
+    body:
+      encoding: ASCII-8BIT
+      string: roch
+    headers:
+      Content-Type:
+      - application/octet-stream
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - '*/*'
+      User-Agent:
+      - OfficialDropboxRubySDK/1.6.1
+      Content-Length:
+      - 4
+      Authorization:
+      - Bearer <DROPBOX_TOKEN>
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - nginx
+      Date:
+      - Thu, 15 Aug 2013 19:08:12 GMT
+      Content-Type:
+      - text/javascript
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      X-Server-Response-Time:
+      - '457'
+      X-Dropbox-Request-Id:
+      - 51ce5ca390edbe397274fe642dcbab7e
+      Pragma:
+      - no-cache
+      Cache-Control:
+      - no-cache
+      X-Requestid:
+      - 769aadfed6b223520670956e774b4b46
+    body:
+      encoding: UTF-8
+      string: '{"expires": "Fri, 16 Aug 2013 19:08:11 +0000", "upload_id": "lgRg4wuGBWILQPoiWAT9ig",
+        "offset": 52}'
+    http_version: 
+  recorded_at: Thu, 15 Aug 2013 19:08:12 GMT
+- request:
+    method: put
+    uri: https://api-content.dropbox.com/1/chunked_upload?offset=52&upload_id=lgRg4wuGBWILQPoiWAT9ig
+    body:
+      encoding: ASCII-8BIT
+      string: i::I
+    headers:
+      Content-Type:
+      - application/octet-stream
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - '*/*'
+      User-Agent:
+      - OfficialDropboxRubySDK/1.6.1
+      Content-Length:
+      - 4
+      Authorization:
+      - Bearer <DROPBOX_TOKEN>
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - nginx
+      Date:
+      - Thu, 15 Aug 2013 19:08:13 GMT
+      Content-Type:
+      - text/javascript
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      X-Server-Response-Time:
+      - '532'
+      X-Dropbox-Request-Id:
+      - a651d716580e0bf57216d3b57e9c053c
+      Pragma:
+      - no-cache
+      Cache-Control:
+      - no-cache
+      X-Requestid:
+      - a78c8e75609b1c01a255b7cff2d2e841
+    body:
+      encoding: UTF-8
+      string: '{"expires": "Fri, 16 Aug 2013 19:08:12 +0000", "upload_id": "lgRg4wuGBWILQPoiWAT9ig",
+        "offset": 56}'
+    http_version: 
+  recorded_at: Thu, 15 Aug 2013 19:08:13 GMT
+- request:
+    method: put
+    uri: https://api-content.dropbox.com/1/chunked_upload?offset=56&upload_id=lgRg4wuGBWILQPoiWAT9ig
+    body:
+      encoding: ASCII-8BIT
+      string: tem.
+    headers:
+      Content-Type:
+      - application/octet-stream
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - '*/*'
+      User-Agent:
+      - OfficialDropboxRubySDK/1.6.1
+      Content-Length:
+      - 4
+      Authorization:
+      - Bearer <DROPBOX_TOKEN>
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - nginx
+      Date:
+      - Thu, 15 Aug 2013 19:08:14 GMT
+      Content-Type:
+      - text/javascript
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      X-Server-Response-Time:
+      - '499'
+      X-Dropbox-Request-Id:
+      - 0444eb1b551994ba7717461e29b000b1
+      Pragma:
+      - no-cache
+      Cache-Control:
+      - no-cache
+      X-Requestid:
+      - 88f4b3aac952529620477ef8f25078d7
+    body:
+      encoding: UTF-8
+      string: '{"expires": "Fri, 16 Aug 2013 19:08:13 +0000", "upload_id": "lgRg4wuGBWILQPoiWAT9ig",
+        "offset": 60}'
+    http_version: 
+  recorded_at: Thu, 15 Aug 2013 19:08:14 GMT
+- request:
+    method: post
+    uri: https://api-content.dropbox.com/1/commit_chunked_upload/auto/Dev/test/test_file?overwrite=true&parent_rev=&upload_id=lgRg4wuGBWILQPoiWAT9ig
+    body:
+      encoding: UTF-8
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - '*/*'
+      User-Agent:
+      - OfficialDropboxRubySDK/1.6.1
+      Authorization:
+      - Bearer <DROPBOX_TOKEN>
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - nginx
+      Date:
+      - Thu, 15 Aug 2013 19:08:16 GMT
+      Content-Type:
+      - text/javascript
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      X-Server-Response-Time:
+      - '1202'
+      X-Dropbox-Request-Id:
+      - cab4ebe49d6b8e1881bb809007e18829
+      Pragma:
+      - no-cache
+      Cache-Control:
+      - no-cache
+      X-Requestid:
+      - f175ae769776030313b4af1b5e79f1da
+    body:
+      encoding: UTF-8
+      string: '{"revision": 913531535, "rev": "3673628f002426b8", "thumb_exists":
+        false, "bytes": 60, "modified": "Thu, 15 Aug 2013 19:08:16 +0000", "client_mtime":
+        "Thu, 15 Aug 2013 19:08:16 +0000", "path": "/Dev/test/test_file", "is_dir":
+        false, "icon": "page_white", "root": "dropbox", "mime_type": "application/octet-stream",
+        "size": "60 bytes"}'
+    http_version: 
+  recorded_at: Thu, 15 Aug 2013 19:08:16 GMT
+- request:
+    method: get
+    uri: https://api.dropbox.com/1/metadata/auto/Dev/test?file_limit=25000&include_deleted=false&list=true
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - '*/*'
+      User-Agent:
+      - OfficialDropboxRubySDK/1.6.1
+      Authorization:
+      - Bearer <DROPBOX_TOKEN>
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - nginx
+      Date:
+      - Thu, 15 Aug 2013 19:08:16 GMT
+      Content-Type:
+      - text/javascript
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      X-Server-Response-Time:
+      - '66'
+      X-Dropbox-Request-Id:
+      - 8cbe4e073eb72fa1cff9b47a12e8d712
+      Pragma:
+      - no-cache
+      Cache-Control:
+      - no-cache
+      X-Dropbox-Http-Protocol:
+      - None
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Requestid:
+      - 468060e346323411c68d65ca15b5106d
+    body:
+      encoding: UTF-8
+      string: '{"hash": "dcc372d55fd0d9f02464548e101f6ffc", "revision": 913527043,
+        "rev": "36735103002426b8", "thumb_exists": false, "bytes": 0, "modified":
+        "Fri, 09 Aug 2013 00:17:26 +0000", "path": "/Dev/test", "is_dir": true, "icon":
+        "folder", "root": "dropbox", "contents": [{"revision": 913527044, "rev": "36735104002426b8",
+        "thumb_exists": false, "bytes": 0, "modified": "Fri, 09 Aug 2013 00:17:28
+        +0000", "path": "/Dev/test/.git", "is_dir": true, "icon": "folder", "root":
+        "dropbox", "size": "0 bytes"}, {"revision": 913527128, "rev": "36735158002426b8",
+        "thumb_exists": false, "bytes": 18, "modified": "Fri, 09 Aug 2013 00:17:36
+        +0000", "client_mtime": "Thu, 08 Aug 2013 20:44:11 +0000", "path": "/Dev/test/file1",
+        "is_dir": false, "icon": "page_white", "root": "dropbox", "mime_type": "application/octet-stream",
+        "size": "18 bytes"}, {"revision": 913527046, "rev": "36735106002426b8", "thumb_exists":
+        false, "bytes": 0, "modified": "Fri, 09 Aug 2013 00:17:28 +0000", "path":
+        "/Dev/test/folder1", "is_dir": true, "icon": "folder", "root": "dropbox",
+        "size": "0 bytes"}, {"revision": 913527047, "rev": "36735107002426b8", "thumb_exists":
+        false, "bytes": 0, "modified": "Fri, 09 Aug 2013 00:17:28 +0000", "path":
+        "/Dev/test/folder2", "is_dir": true, "icon": "folder", "root": "dropbox",
+        "size": "0 bytes"}, {"revision": 913527045, "rev": "36735105002426b8", "thumb_exists":
+        false, "bytes": 0, "modified": "Fri, 09 Aug 2013 00:17:28 +0000", "path":
+        "/Dev/test/folder3", "is_dir": true, "icon": "folder", "root": "dropbox",
+        "size": "0 bytes"}, {"revision": 913527152, "rev": "36735170002426b8", "thumb_exists":
+        false, "bytes": 1078, "modified": "Fri, 09 Aug 2013 00:17:36 +0000", "client_mtime":
+        "Thu, 08 Aug 2013 20:38:22 +0000", "path": "/Dev/test/LICENSE", "is_dir":
+        false, "icon": "page_white", "root": "dropbox", "mime_type": "application/octet-stream",
+        "size": "1.1 KB"}, {"revision": 913527129, "rev": "36735159002426b8", "thumb_exists":
+        false, "bytes": 20, "modified": "Fri, 09 Aug 2013 00:17:36 +0000", "client_mtime":
+        "Thu, 08 Aug 2013 20:38:22 +0000", "path": "/Dev/test/README.md", "is_dir":
+        false, "icon": "page_white_text", "root": "dropbox", "mime_type": "application/octet-stream",
+        "size": "20 bytes"}, {"revision": 913531535, "rev": "3673628f002426b8", "thumb_exists":
+        false, "bytes": 60, "modified": "Thu, 15 Aug 2013 19:08:16 +0000", "client_mtime":
+        "Thu, 15 Aug 2013 19:08:16 +0000", "path": "/Dev/test/test_file", "is_dir":
+        false, "icon": "page_white", "root": "dropbox", "mime_type": "application/octet-stream",
+        "size": "60 bytes"}], "size": "0 bytes"}'
+    http_version: 
+  recorded_at: Thu, 15 Aug 2013 19:08:16 GMT
+- request:
+    method: post
+    uri: https://api.dropbox.com/1/fileops/delete?path=/Dev/test/test_file&root=auto
+    body:
+      encoding: UTF-8
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - '*/*'
+      User-Agent:
+      - OfficialDropboxRubySDK/1.6.1
+      Authorization:
+      - Bearer <DROPBOX_TOKEN>
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - nginx
+      Date:
+      - Thu, 15 Aug 2013 19:08:17 GMT
+      Content-Type:
+      - text/javascript
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Set-Cookie:
+      - gvc=MTUwODU5NzA3NzY4NzkwOTcwNjg3NzE4Mjc3MDEyODE1Nzk4NTcx; expires=Tue, 14
+        Aug 2018 19:08:17 GMT; Path=/; httponly
+      X-Server-Response-Time:
+      - '133'
+      X-Dropbox-Request-Id:
+      - 09903388977d2764a90821cc2e3f5549
+      Pragma:
+      - no-cache
+      Cache-Control:
+      - no-cache
+      X-Dropbox-Http-Protocol:
+      - None
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Requestid:
+      - d165e9cccd5bafe165e2f546a4238bd3
+    body:
+      encoding: UTF-8
+      string: '{"is_deleted": true, "revision": 913531536, "rev": "36736290002426b8",
+        "thumb_exists": false, "bytes": 0, "modified": "Thu, 15 Aug 2013 19:08:17
+        +0000", "client_mtime": "Wed, 31 Dec 1969 23:59:59 +0000", "path": "/Dev/test/test_file",
+        "is_dir": false, "icon": "page_white", "root": "dropbox", "mime_type": "application/octet-stream",
+        "size": "0 bytes"}'
+    http_version: 
+  recorded_at: Thu, 15 Aug 2013 19:08:17 GMT
+recorded_with: VCR 2.5.0
