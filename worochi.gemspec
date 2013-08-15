@@ -12,7 +12,7 @@ Gem::Specification.new do |s|
 
   s.authors = ['Raven Jiang']
   s.email = ['raven@cs.stanford.edu']
-  s.homepage = 'http://rubygems.org/gems/worochi'
+  s.homepage = 'https://github.com/Pixelapse/worochi'
   s.license = 'MIT'
 
   s.files = %w(README.md LICENSE worochi.gemspec)
