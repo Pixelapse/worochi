@@ -31,6 +31,8 @@ Gem::Specification.new do |s|
   s.add_development_dependency('webmock', ['~> 1.9.3'])
   s.add_development_dependency('awesome_print')
   s.add_development_dependency('yard')
+  s.add_development_dependency('simplecov')
+  s.add_development_dependency('coveralls')
 
   s.post_install_message = <<-MESSAGE
   Worochi says, "RAWRRRRR!!!"
