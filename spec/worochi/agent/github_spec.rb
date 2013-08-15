@@ -21,15 +21,15 @@ describe Worochi::Agent::Github do
     @client = agent.init_client
   end
 
-  describe '#push_all', :vcr do
-    def delete_target
-      tag = "heads/#{agent.options[:target]}"
-      begin
-        @client.delete_ref(agent.options[:repo], tag)
-      rescue Octokit::UnprocessableEntity
-      end
+  def delete_target
+    tag = "heads/#{agent.options[:target]}"
+    begin
+      @client.delete_ref(agent.options[:repo], tag)
+    rescue Octokit::UnprocessableEntity
     end
+  end
 
+  describe '#push_all', :vcr do
     it 'pushes a list of items to create a new commit' do
       @client = agent.init_client
       delete_target
@@ -59,6 +59,14 @@ describe Worochi::Agent::Github do
       expect(ls).to include(local.name)
       
       delete_target
+    end
+  end
+
+  describe '#stream_blob', :vcr do
+    it 'streams the file as an Base64 JSON field' do
+      item = Worochi::Item.open_single(path: local.path, source: local.source)
+      sha = agent.send(:stream_blob, item)
+      expect(sha).to eq('5df468c4497e072139462b88cb78e1df4357534b')
     end
   end
 
