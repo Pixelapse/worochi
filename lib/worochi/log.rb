@@ -16,7 +16,7 @@ class Worochi
       #
       # @param logdev [IO] target device to log to
       def init(logdev=nil)
-        @logger = Logger.new(logdev || $stdout)
+        @logger = Logger.new(logdev || Config.logdev)
         @logger.formatter = proc do |severity, datetime, progname, msg|
           "[\033[#{SEVERITY_COLOR[severity]}m#{severity}\033[0m]: #{msg}\n"
         end

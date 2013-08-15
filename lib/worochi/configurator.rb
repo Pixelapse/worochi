@@ -101,6 +101,11 @@ class Worochi
       # @return [String]
       attr_accessor :s3_prefix
 
+      # Logging device.
+      #
+      # @return [IO]
+      attr_accessor :logdev
+
       # Disable debug and error messages if `true`.
       #
       # @return [Boolean]

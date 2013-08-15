@@ -6,4 +6,5 @@ class Worochi
   Config.s3_bucket = 'worochi'
   Config.s3_prefix = 's3'
   Config.silent = true
+  Config.logdev = $stdout
 end
