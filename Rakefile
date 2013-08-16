@@ -1,5 +1,6 @@
 require 'bundler'
 require 'rubygems'
+
 Bundler.setup
 Bundler::GemHelper.install_tasks
 
@@ -17,6 +18,7 @@ task :yard do
       task.options = [
         '--output-dir', 'doc',
         '--markup', 'markdown',
+        '--markup-provider', 'redcarpet'
       ]
     end
   rescue LoadError

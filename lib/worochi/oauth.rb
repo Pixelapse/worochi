@@ -38,12 +38,13 @@ class Worochi
     # Retrieves the token using the temporary authorization code.
     #
     # @param code [String] authorization code from the first part
-    # @return [OAuth2::AccessToken] OAuth2 token
+    # @return [Hashie::Mash] OAuth2 token
     def flow_end(code)
       client.site = options.token_site || options.site
       opts = {}
       opts[:redirect_uri] = options.redirect_uri if options.redirect_uri
-      client.auth_code.get_token(code, opts)
+      token = client.auth_code.get_token(code, opts)
+      Hashie::Mash.new(token.to_hash)
     end
 
     alias_method :get_token, :flow_end
