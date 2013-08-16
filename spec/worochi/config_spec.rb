@@ -9,6 +9,15 @@ class Worochi
       end
     end
 
+    describe '.list_services' do
+      it 'returns an Array of service details' do
+        expect(Config.list_services.class).to be(Array)
+        expect(Config.list_services.first).to include(:service)
+        expect(Config.list_services.first).to include(:display_name)
+        expect(Config.list_services.first).to include(:id)
+      end
+    end
+
     describe '.service_display_name' do
       it 'returns display name given an ID' do
         expect(Config.service_display_name(1)).to eq('GitHub')

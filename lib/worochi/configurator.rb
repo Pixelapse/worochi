@@ -25,17 +25,31 @@ class Worochi
         @options[service].clone
       end
 
-      # Array of service names. Parsed from the file names of any .rb files in
-      # the worochi/agent directory that does not contain the `#` character.
+      # Array of service names. Parsed from the file names of any .yml file
+      # names in the worochi/config directory, excluding ones that contain the
+      # `#` character.
       #
       # @return [Array<Symbol>]
       def services
         return @services if @services
-        files = Dir[File.join(File.dirname(__FILE__), 'agent/[^#]*.rb')]
+        files = Dir[File.join(File.dirname(__FILE__), 'config/[^#]*.yml')]
         @services = files.map do |file|
-          File.basename(file, '.rb').to_sym
+          File.basename(file, '.yml').to_sym
         end
         @services
+      end
+
+      # Array of service meta information.
+      #
+      # @return [Array<Hashie::Mash>]
+      def list_services
+        services.map do |service|
+          Hashie::Mash.new({
+            service: service,
+            display_name: service_display_name(service),
+            id: service_id(service)
+          })
+        end
       end
 
       # Returns display name for the service.
