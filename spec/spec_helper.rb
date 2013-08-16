@@ -8,7 +8,6 @@ SimpleCov.formatter = SimpleCov::Formatter::MultiFormatter[
 SimpleCov.start
 
 require 'worochi'
-require 'awesome_print'
 require 'digest'
 require 'vcr'
 require 'webmock/rspec'
