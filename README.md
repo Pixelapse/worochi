@@ -152,10 +152,12 @@ Test file:
 Use underscore for filenames and corresponding mixed case for class name. The
 class name and service name symbol for the above example would be:
 
-    class Worochi::Agent::FooBar < Worochi::Agent
-    end
+```ruby
+class Worochi::Agent::FooBar < Worochi::Agent
+end
 
-    Worochi.create(:foo_bar, token)
+Worochi.create(:foo_bar, token)
+```
 
 RSpec tests use the [VCR](https://github.com/vcr/vcr) gem to record and
 playback real HTTP interactions. Remember to filter out API tokens in the
