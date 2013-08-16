@@ -12,7 +12,7 @@ class Worochi
     attr_reader :client
 
     # @param service [Symbol] service name
-    # @param redirect_url [String] callback URL if required
+    # @param redirect_uri [String] callback URL if required
     def initialize(service, redirect_uri=nil)
       @options = Worochi::Config.service_opts(service).oauth
       options.service = service

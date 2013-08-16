@@ -34,6 +34,7 @@ Gem::Specification.new do |s|
   s.add_development_dependency('yard')
   s.add_development_dependency('simplecov')
   s.add_development_dependency('coveralls')
+  s.add_development_dependency('rake')
 
   s.post_install_message = <<-MESSAGE
   Worochi says, \033[33;1m"RAWRRRRR!!!"\033[0m
