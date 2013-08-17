@@ -36,7 +36,8 @@ class Worochi
         @services = files.map do |file|
           File.basename(file, '.yml').to_sym
         end
-        @services
+        @all_services = @services.clone.freeze
+        @services.freeze
       end
 
       # Array of service meta information.
@@ -50,6 +51,24 @@ class Worochi
             id: service_id(service)
           })
         end
+      end
+
+      # Only enable the list of services specified instead of all supported
+      # services.
+      #
+      # @return [Array<Symbol>] enabled services
+      def enable_services(list)
+        @all_services || services
+        @services = @all_services.reject { |service| !list.include?(service) }
+        @services.freeze
+      end
+
+      # Re-enable all supported services.
+      #
+      # @return [Array<Symbol>] enabled services
+      def reset_services
+        @services || services
+        @services = @all_services.clone
       end
 
       # Returns display name for the service.

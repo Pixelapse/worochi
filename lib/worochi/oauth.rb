@@ -43,8 +43,7 @@ class Worochi
       client.site = options.token_site || options.site
       opts = {}
       opts[:redirect_uri] = options.redirect_uri if options.redirect_uri
-      token = client.auth_code.get_token(code, opts)
-      Hashie::Mash.new(token.to_hash)
+      Hashie::Mash.new(client.auth_code.get_token(code, opts).to_hash)
     end
 
     alias_method :get_token, :flow_end

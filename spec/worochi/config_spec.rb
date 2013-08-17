@@ -7,6 +7,10 @@ class Worochi
         expect(Config.services.class).to be(Array)
         expect(Config.services.first.class).to be(Symbol)
       end
+      it 'is frozen' do
+        list = Config.services
+        expect{list << :test}.to raise_error(RuntimeError)
+      end
     end
 
     describe '.list_services' do
@@ -15,6 +19,26 @@ class Worochi
         expect(Config.list_services.first).to include(:service)
         expect(Config.list_services.first).to include(:display_name)
         expect(Config.list_services.first).to include(:id)
+      end
+    end
+
+    describe '.enable_services' do
+      it 'disables all services not in the given list' do
+        all_services = Config.services
+        Config.enable_services([all_services.first])
+        expect(Config.services).not_to eq(all_services)
+        expect(Config.services).to include(all_services.first)
+        Config.enable_services(all_services)
+        expect(Config.services).to eq(all_services)
+      end
+    end
+
+    describe '.reset_services' do
+      it 'enables all supported services' do
+        all_services = Config.services
+        Config.enable_services([all_services.first])
+        Config.reset_services
+        expect(Config.services).to eq(all_services)
       end
     end
 
