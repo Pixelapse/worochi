@@ -6,6 +6,8 @@ machine:
   environment:
     AWS_ACCESS_KEY_ID: abc
     AWS_SECRET_ACCESS_KEY: abc
+    BOX_ID: abc
+    BOX_SECRET: abc
     GITHUB_ID: abc
     GITHUB_SECRET: abc
     DROPBOX_ID: abc

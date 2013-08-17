@@ -1,0 +1,10 @@
+id: 6
+
+display_name: Box
+dir: /
+oauth:
+  id_env: BOX_ID
+  secret_env: BOX_SECRET
+  token_url: /api/oauth2/token
+  authorize_url: /api/oauth2/authorize
+  site: https://www.box.com
