@@ -48,6 +48,19 @@ class Worochi
 
     alias_method :get_token, :flow_end
 
+    # Refreshes the access token using the refresh token.
+    #
+    # @param hash [Hash] stored hash for the token
+    # @return [Hashie::Mash] Updated OAuth2 token
+    def refresh!(hash)
+      token = OAuth2::AccessToken.from_hash(@client, hash)
+      begin
+        token.refresh!
+      rescue OAuth2::Error
+      end
+      Hashie::Mash.new(token.to_hash)
+    end
+
   private
     # @return [String] scope
     def scope

@@ -30,4 +30,16 @@ describe Worochi::OAuth do
       expect{auth.flow_end('abc')}.to raise_error(OAuth2::Error)
     end
   end
+
+  describe '#refresh', :vcr do
+    it 'tries to refresh the access token' do
+      token = {
+        token_type: "bearer",
+        access_token: "aaaaa",
+        refresh_token: "bbbbb",
+        expires_at: 1376702712
+      }
+      expect(auth.refresh!(token)).to include(:refresh_token)
+    end
+  end
 end
