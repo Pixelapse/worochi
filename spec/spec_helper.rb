@@ -33,6 +33,9 @@ VCR.configure do |c|
   c.filter_sensitive_data('<DROPBOX_TOKEN>') { ENV['DROPBOX_TEST_TOKEN'] }
   c.filter_sensitive_data('<DROPBOX_ID>') { ENV['DROPBOX_ID'] }
   c.filter_sensitive_data('<DROPBOX_SECRET>') { ENV['DROPBOX_SECRET'] }
+  c.filter_sensitive_data('<GOOGLE_DRIVE_TOKEN>') { ENV['GOOGLE_DRIVE_TEST_TOKEN'] }
+  c.filter_sensitive_data('<GOOGLE_DRIVE_ID>') { ENV['GOOGLE_DRIVE_ID'] }
+  c.filter_sensitive_data('<GOOGLE_DRIVE_SECRET>') { ENV['GOOGLE_DRIVE_SECRET'] }
 end
 
 RSpec.configure do |c|
