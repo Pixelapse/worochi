@@ -2,10 +2,22 @@ require 'spec_helper'
 
 class Worochi
   describe Agent do
-    let(:agent) { Agent.new({ service: :github, token: '' }) }
+    let(:agent) { Agent.new({ service: :github, token: '', dir: '/folder' }) }
     describe '.new' do
       it 'initializes the right child class' do
         expect(agent.class).to be(Agent::Github)
+      end
+    end
+
+    describe '.full_path' do
+      let(:item) { Item.open_single(local.source) }
+      it 'accepts relative paths' do
+        item.path = 'test'
+        expect(agent.send(:full_path, item)).to eq('/folder/test')
+      end
+      it 'accepts absolute paths' do
+        item.path = '/test'
+        expect(agent.send(:full_path, item)).to eq('/test')
       end
     end
 

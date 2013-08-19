@@ -164,9 +164,17 @@ class Worochi
       result
     end
 
+    # Returns the full remote target path for the file being pushed. If the
+    # specified path starts with / then this is assumed to be the full
+    # absolute path. If not, join the path with the configured directory.
+    #
     # @return [String] full path combining remote directory and item path
     def full_path(item)
-      File.join(options.dir, item.path)
+      if item.path[0] == '/'
+        item.path
+      else
+        File.join(options.dir, item.path)
+      end
     end
 
     # Agents should either override this or have a YAML config file at
