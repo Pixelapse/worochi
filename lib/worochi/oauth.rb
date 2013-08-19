@@ -3,6 +3,10 @@ require 'oauth2'
 class Worochi
   # Implements OAuth2 authorization code flow for obtaining user tokens.
   class OAuth
+    # List of options that should not be sent with HTTP requests.
+    INTERNAL_OPTS = [:id_env, :secret_env, :token_url, :authorize_url, :site,
+      :token_site, :service]
+
     # OAuth2 options.
     # @return [Hashie::Mash]
     attr_accessor :options
@@ -29,9 +33,8 @@ class Worochi
     # @return [String] URL to begin flow
     def flow_start(state=nil)
       client.site = options.site
-      opts = { scope: scope }
+      opts = params
       opts[:state] = state if state
-      opts[:redirect_uri] = options.redirect_uri if options.redirect_uri
       client.auth_code.authorize_url(opts)
     end
 
@@ -46,22 +49,27 @@ class Worochi
       Hashie::Mash.new(client.auth_code.get_token(code, opts).to_hash)
     end
 
-    alias_method :get_token, :flow_end
-
-    # Refreshes the access token using the refresh token.
+    # Refreshes an existing access token using the refresh token.
     #
     # @param hash [Hash] stored hash for the token
     # @return [Hashie::Mash] Updated OAuth2 token
-    def refresh!(hash)
+    def refresh(hash)
       token = OAuth2::AccessToken.from_hash(@client, hash)
       begin
-        token.refresh!
+        Hashie::Mash.new(token.refresh!.to_hash)
       rescue OAuth2::Error
+        raise Worochi::Error, 'Invalid refresh token'
       end
-      Hashie::Mash.new(token.to_hash)
     end
 
+    alias_method :get_token, :flow_end
+
   private
+    # @return [Hash] returns only the options that are meant to be sent.
+    def params
+      options.reject { |k, v| INTERNAL_OPTS.include?(k.to_sym) }
+    end
+
     # @return [String] scope
     def scope
       options.scope || ''

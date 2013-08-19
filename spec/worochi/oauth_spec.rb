@@ -39,7 +39,7 @@ describe Worochi::OAuth do
         refresh_token: "bbbbb",
         expires_at: 1376702712
       }
-      expect(auth.refresh!(token)).to include(:refresh_token)
+      expect{auth.refresh(token)}.to raise_error(Worochi::Error)
     end
   end
 end

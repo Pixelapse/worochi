@@ -98,7 +98,7 @@ this to work.
 
 Worochi provides helper methods to assist with the OAuth2 authorization flow.
 
-Example Rails controller:
+### Example in Rails
 
 ```ruby
 class ApiTokensController < ApplicationController
@@ -124,6 +124,17 @@ private
     Worochi::OAuth.new(service, redirect_url)
   end
 end
+```
+
+### Refresh Token
+
+Retrieved tokens can be refreshed if `refresh_token` is supported by the
+service.
+
+```ruby
+token = oauth.flow_end(code)
+
+new_token = oauth.refresh(token)
 ```
 
 Service-specific settings for OAuth2 are predefined in the gem, so the
