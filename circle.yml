@@ -8,6 +8,8 @@ machine:
     AWS_SECRET_ACCESS_KEY: abc
     BOX_ID: abc
     BOX_SECRET: abc
+    GOOGLE_ID: abc
+    GOOGLE_SECRET: abc
     GITHUB_ID: abc
     GITHUB_SECRET: abc
     DROPBOX_ID: abc
