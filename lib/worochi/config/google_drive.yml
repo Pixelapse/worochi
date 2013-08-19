@@ -5,7 +5,9 @@ dir: /
 oauth:
   id_env: GOOGLE_ID
   secret_env: GOOGLE_SECRET
-  token_url: /1/oauth2/token
+  token_url: /o/oauth2/token
   authorize_url: /o/oauth2/auth
   site: https://accounts.google.com
   scope: https://www.googleapis.com/auth/drive
+  access_type: offline
+  approval_prompt: force
