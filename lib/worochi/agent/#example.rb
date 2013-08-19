@@ -52,6 +52,12 @@ class Worochi
       end
     end
 
+    # Deletes the file at path. Raises {Error} if file deletion is not
+    # supported by the service.
+    def delete(path)
+      raise Error, 'Deletion is not supported'
+    end
+
     # Service specific methods
   end
 end

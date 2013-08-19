@@ -102,4 +102,10 @@ describe Worochi::Agent::Github do
       expect(ls).to include('abc.txt')
     end
   end
+
+  describe '#delete' do
+    it 'does not allow file deletion' do
+      expect{agent.delete('test')}.to raise_error(Worochi::Error)
+    end
+  end
 end

@@ -89,6 +89,11 @@ class Worochi
       repos.map { |repo| repo[:full_name] } unless opts[:details]
     end
 
+    # Deletion is not supported by GitHub, so raises {Error}.
+    def delete(path)
+      raise Error, 'Cannot delete from GitHub'
+    end
+
   private
     # Appends an item to the existing tree.
     #
