@@ -1,6 +1,6 @@
 # Worochi
 
-![Coverage Status](https://coveralls.io/repos/Pixelapse/worochi/badge.png?branch=master)
+[![Coverage Status](https://coveralls.io/repos/Pixelapse/worochi/badge.png?branch=master)](https://coveralls.io/r/Pixelapse/worochi?branch=master)
 
 Worochi provides a standard way to interface with Ruby API wrappers provided
 by various cloud storage services such as Dropbox and Google Drive.
@@ -20,20 +20,20 @@ Worochi can be installed as a gem.
 ## Basic Usage
 
 Pushing files is easy. Just create an agent using the OAuth authorization
-token for the user and then call {Worochi::Agent#push} or {Worochi.push}. File
+token for the user and then call `Worochi::Agent#push` or `Worochi.push`. File
 origins can be local, HTTP, or Amazon S3 paths.
 
-Pushing files to Dropbox:
+### Pushing files to Dropbox
 
 ```ruby
 token = '982n3b989az'
 agent = Worochi.create(:dropbox, token)
 agent.push('test.txt')
-agent.files
+agent.files # lists the files in the default directory
 # => ['test.txt']
 ```
 
-Pushing multiple files:
+### Pushing multiple files
 
 ```ruby
 agent.push(['a.txt', 'folder1/b.txt', 'http://example.com/c.txt'])
@@ -41,7 +41,7 @@ agent.files
 # => ['a.txt', 'b.txt', 'c.txt']
 ```
 
-Pushing files to more than one agent at the same time:
+###  Pushing to more than one service
 
 ```ruby
 a = Worochi.create(:dropbox, 'hxhrerx')
@@ -53,26 +53,34 @@ b.files
 # => ['test.txt']
 ```
 
-Pushing to a specific folder:
+### Specifying remote paths
+
+Instead of pushing all the files to the default directory at `/`, you can
+specify the default path and also the path of every file individually.
 
 ```ruby
-agent = Worochi.create(:dropbox, token, { dir: '/folder1' })
-agent.push('a.txt')
+agent = Worochi.create(:dropbox, token, { dir: '/parent' }) # default path
+agent.push([
+  { source: 'a.txt', path: 'A.txt' },
+  { source: 'b.txt', path: 'folder1/B.txt' },
+  { source: 'c.txt', path: '/C.txt' } # absolute remote path
+])
 
 agent.files
-# => ['a.txt']
-
-agent.set_dir('/')
-agent.push('b.txt')
-agent.files
-# => ['b.txt']
+# => ['A.txt']
 
 agent.files_and_folders
-# => ['folder1', 'b.txt']
-agent.files('/folder1')
-# => ['a.txt']
-```
+# => ['A.txt', 'folder1']
 
+agent.files('/parent') # same as default directory
+# => ['A.txt']
+
+agent.files('/parent/folder1')
+# => ['B.txt']
+
+agent.files('/') # root
+# => ['C.txt']
+```
 ## Amazon S3 Support
 
 Files can be retrieved directly from their Amazon S3 location either using the
@@ -126,6 +134,10 @@ private
 end
 ```
 
+Service-specific settings for OAuth2 are predefined in the gem, so the
+framework just needs to handle verification of session state (this is usually
+optional) and storing the retrieved access token value.
+
 ### Refresh Token
 
 Retrieved tokens can be refreshed if `refresh_token` is supported by the
@@ -137,13 +149,12 @@ token = oauth.flow_end(code)
 new_token = oauth.refresh(token)
 ```
 
-Service-specific settings for OAuth2 are predefined in the gem, so the
-framework just needs to handle verification of session state (this is usually
-optional) and storing the retrieved access token value.
+Tokens are hashes and `refresh` expects a hash containing the field
+`refresh_token`. It raises an error if `refresh_token` is invalid.
 
 ## Development
 
-Each service is implemented as an {Worochi::Agent} object. Below is an
+Each service is implemented as an `Worochi::Agent` object. Below is an
 overview of the files necessary for defining an agent to support a new
 service.
 
