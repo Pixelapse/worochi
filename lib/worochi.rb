@@ -8,6 +8,7 @@ require 'worochi/item'
 require 'worochi/agent'
 require 'worochi/oauth'
 require 'worochi/helper'
+require 'worochi/version'
 
 # The main class for the gem. This and the {Agent} class are the main
 # endpoints for interacting with the remote services.

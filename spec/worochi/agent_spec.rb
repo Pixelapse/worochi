@@ -13,11 +13,11 @@ class Worochi
       let(:item) { Item.open_single(local.source) }
       it 'accepts relative paths' do
         item.path = 'test'
-        expect(agent.send(:full_path, item)).to eq('/folder/test')
+        expect(agent.send(:full_path, item.path)).to eq('/folder/test')
       end
       it 'accepts absolute paths' do
         item.path = '/test'
-        expect(agent.send(:full_path, item)).to eq('/test')
+        expect(agent.send(:full_path, item.path)).to eq('/test')
       end
     end
 
