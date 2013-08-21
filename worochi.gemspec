@@ -24,9 +24,12 @@ Gem::Specification.new do |s|
   s.add_runtime_dependency('hashie')
   s.add_runtime_dependency('oauth2')
   s.add_runtime_dependency('aws-sdk')
+  s.add_runtime_dependency('mime-types')
   s.add_runtime_dependency('dropbox-sdk') # Dropbox
+  s.add_runtime_dependency('google-api-client') # Google
   s.add_runtime_dependency('octokit', ['1.25.0']) # GitHub
 
+  s.add_development_dependency('ruby-filemagic')
   s.add_development_dependency('rspec', ['~> 2.14.1'])
   s.add_development_dependency('vcr', ['~> 2.5.0'])
   s.add_development_dependency('webmock', ['~> 1.9.3'])
@@ -35,6 +38,7 @@ Gem::Specification.new do |s|
   s.add_development_dependency('coveralls')
   s.add_development_dependency('rake')
   s.add_development_dependency('redcarpet')
+  s.add_development_dependency('awesome_print')
 
   s.post_install_message = <<-MESSAGE
   Worochi says, \033[33;1m"RAWRRRRR!!!"\033[0m

@@ -1,4 +1,11 @@
 require 'tempfile'
+require 'mime/types'
+
+# Install ruby-filemagic if you want better mime-type identification
+begin
+  require 'filemagic'
+rescue LoadError
+end
 
 class Worochi
   # This represents a single file that is being pushed. The {#content}
@@ -21,7 +28,13 @@ class Worochi
     def initialize(path, content)
       @path = path
       @content = content
+      detect_type
       @content.rewind
+    end
+
+    # @return [String] the filename
+    def filename
+      File.basename(path)
     end
 
     # The total size of the content in bytes.
@@ -45,6 +58,35 @@ class Worochi
     # @return [0]
     def rewind
       content.rewind
+    end
+
+    # @return [String] mime-type of the content.
+    def content_type
+      @type
+    end
+
+  private
+    # Detects the mime-type of the file. Uses file name matching if
+    # ruby-filemagic is not installed.
+    #
+    # @param simplified [Boolean] whether to use simplified mime-types
+    # @return [String] mime-type
+    def detect_type(simplified=true)
+      if defined?(FileMagic)
+        # Magic number matching
+        fm = FileMagic.mime
+        fm.simplified = true if simplified
+        @type = fm.file(@content.path)
+      else
+        # File name matching
+        types = MIME::Types.type_for(path)
+        if types.empty?
+          @type = 'application/octet-stream'
+        else
+          @type = simplified ? types[0].content_type : types[0].simplified
+        end
+      end
+      @type
     end
 
     class << self
@@ -93,7 +135,6 @@ class Worochi
       end
 
     private
-
       # Retrieves the file content from `source`.
       #
       # @param source [String] local or remote location of the file content

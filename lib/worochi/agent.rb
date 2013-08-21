@@ -168,12 +168,25 @@ class Worochi
     # specified path starts with / then this is assumed to be the full
     # absolute path. If not, join the path with the configured directory.
     #
+    # @param path [String] path to the file
     # @return [String] full path combining remote directory and item path
-    def full_path(item)
-      if item.path[0] == '/'
-        item.path
+    def full_path(path)
+      if path[0] == '/'
+        path
       else
-        File.join(options.dir, item.path)
+        File.join(options.dir, path)
+      end
+    end
+
+    # Path used for listing. Defaults to `options[:dir]` if not specified.
+    #
+    # @param path [String] relative/absolute path or nil
+    # @return [String] absolute path to list
+    def list_path(path)
+      if path.nil? || path.empty?
+        options.dir
+      else
+        return full_path(path)
       end
     end
 

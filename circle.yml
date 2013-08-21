@@ -16,3 +16,4 @@ machine:
     DROPBOX_SECRET: abc
     GITHUB_TEST_TOKEN: abc
     DROPBOX_TEST_TOKEN: abc
+    GOOGLE_TEST_TOKEN: abc

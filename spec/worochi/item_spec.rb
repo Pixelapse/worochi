@@ -98,4 +98,20 @@ describe Worochi::Item do
       expect(item.read.size).to eq(local.file_size)
     end
   end
+
+  describe '#content_type', :vcr do
+    it 'detects the MIME type' do
+      item = Worochi::Item.open_single(local.source)
+      expect(item.content_type).to eq('text/plain')
+    end
+    it 'falls back to file name when ruby-filemagic is not loaded' do
+      temp = FileMagic
+      Object.send(:remove_const, :FileMagic)
+      item = Worochi::Item.open_single(local.source)
+      expect(item.content_type).to eq('application/octet-stream')
+      item = Worochi::Item.open_single(remote.source)
+      expect(item.content_type).to eq('image/gif')
+      FileMagic = temp
+    end
+  end
 end

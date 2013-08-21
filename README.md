@@ -152,6 +152,15 @@ new_token = oauth.refresh(token)
 Tokens are hashes and `refresh` expects a hash containing the field
 `refresh_token`. It raises an error if `refresh_token` is invalid.
 
+## MIME Types
+
+Some services such as Google Drive require Worochi to provide MIME types
+for the files being uploaded. Worochi will attempt to use the file name
+to determine the MIME type, but this does not work well. You can use
+`ruby-filemagic` for better MIME type detection using magic numbers.
+
+    gem install ruby-filemagic
+
 ## Development
 
 Each service is implemented as an `Worochi::Agent` object. Below is an
