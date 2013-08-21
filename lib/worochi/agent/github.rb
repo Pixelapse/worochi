@@ -46,7 +46,7 @@ class Worochi
     # @param sha [String] list a different branch than the `:source`
     # @return [Array<Hash>] list of files and subdirectories
     def list(path=nil, sha=nil)
-      remote_path = (path || options[:dir]).sub(/^\//, '').sub(/\/$/, '')
+      remote_path = list_path(path).sub(/^\//, '').sub(/\/$/, '')
 
       result = @client.tree(repo, sha || source_branch, recursive: true).tree
       result.sort! do |x, y|
@@ -102,7 +102,7 @@ class Worochi
     # @return [String] SHA1 checksum of the resulting tree
     def tree_append(tree_sha, item)
       child = {
-        path: full_path(item).gsub(/^\//, ''),
+        path: full_path(item.path).gsub(/^\//, ''),
         sha: push_blob(item),
         type: 'blob',
         mode: '100644'

@@ -1,5 +1,5 @@
 shared_examples_for 'a service agent' do
-  describe '#default_options' do
+  describe '#default_options', :vcr do
     it 'has the required options' do
       (required_keys + [:dir, :service]).each do |key|
         expect(agent.send(:default_options)).to include(key)
@@ -7,7 +7,7 @@ shared_examples_for 'a service agent' do
     end
   end
 
-  describe '#init_client' do
+  describe '#init_client', :vcr do
     it 'returns the client' do
       client = agent.init_client
       expect(client.class).to be(client_class)

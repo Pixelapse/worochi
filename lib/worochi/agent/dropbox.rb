@@ -23,7 +23,8 @@ class Worochi
       if chunked = item.size > options[:chunk_size]
         push_item_chunked(item)
       else
-        @client.put_file(full_path(item), item.content, options[:overwrite])
+        path = full_path(item.path)
+        @client.put_file(path, item.content, options[:overwrite])
       end
       Worochi::Log.debug "Uploaded"
       chunked
@@ -35,11 +36,7 @@ class Worochi
     # @param path [String] path to list instead of the current directory
     # @return [Array<Hash>] list of files and subdirectories
     def list(path=nil)
-      if path
-        remote_path = path[0] == '/' ? path : File.join(options[:dir], path)
-      else
-        remote_path = options[:dir]
-      end
+      remote_path = list_path(path)
       
       begin
         response = @client.metadata(remote_path)
@@ -74,7 +71,7 @@ class Worochi
           end
           Worochi::Log.debug "Uploaded #{uploader.offset} bytes"
       end
-      uploader.finish(full_path(item), options[:overwrite])
+      uploader.finish(full_path(item.path), options[:overwrite])
       nil
     end
 
@@ -83,8 +80,9 @@ class Worochi
     # @param path [String] path relative to current directory
     # @return [Boolean] `true` if a file was actually deleted
     def delete(path)
+      abs_path = full_path(path)
       begin
-        @client.file_delete(File.join(options[:dir], path))
+        @client.file_delete(abs_path)
       rescue DropboxError
         false
       end
