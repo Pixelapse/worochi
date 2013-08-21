@@ -157,8 +157,7 @@ Tokens are hashes and `refresh` expects a hash containing the field
 Some services such as Google Drive require Worochi to provide MIME types
 for the files being uploaded. Worochi will attempt to use the file name
 to determine the MIME type, but this does not work well. You can use
-@blackwinter/ruby-filemagic for better MIME type detection using magic
-numbers.
+`ruby-filemagic` for better MIME type detection using magic numbers.
 
     gem install ruby-filemagic
 

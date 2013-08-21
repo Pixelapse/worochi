@@ -32,6 +32,11 @@ class Worochi
       @content.rewind
     end
 
+    # @return [String] the filename
+    def filename
+      File.basename(path)
+    end
+
     # The total size of the content in bytes.
     #
     # @return [Integer]
@@ -67,14 +72,14 @@ class Worochi
     # @param simplified [Boolean] whether to use simplified mime-types
     # @return [String] mime-type
     def detect_type(simplified=true)
-      begin
+      if defined?(FileMagic)
         # Magic number matching
         fm = FileMagic.mime
         fm.simplified = true if simplified
         @type = fm.file(@content.path)
-      rescue Worochi::Error
+      else
         # File name matching
-        types = MIME::Types.type_for(@content.path)
+        types = MIME::Types.type_for(path)
         if types.empty?
           @type = 'application/octet-stream'
         else
