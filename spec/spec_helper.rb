@@ -8,6 +8,7 @@ SimpleCov.formatter = SimpleCov::Formatter::MultiFormatter[
 SimpleCov.start
 
 require 'worochi'
+require 'filemagic'
 require 'awesome_print'
 require 'digest'
 require 'vcr'

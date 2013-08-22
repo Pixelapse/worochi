@@ -19,7 +19,7 @@ http_interactions:
       message: OK
     headers:
       Date:
-      - Thu, 22 Aug 2013 00:13:41 GMT
+      - Thu, 22 Aug 2013 00:13:39 GMT
       Server:
       - Apache
       Last-Modified:
@@ -101,5 +101,5 @@ http_interactions:
         BeCCFHjBABdow14BAIILGGAMGlDBBmDgiaR6AAYbUEE9zsDZznr2s6ANrWhH
         S9rSmva0qE2tarEQBAA7
     http_version: 
-  recorded_at: Thu, 22 Aug 2013 00:13:42 GMT
+  recorded_at: Thu, 22 Aug 2013 00:13:39 GMT
 recorded_with: VCR 2.5.0

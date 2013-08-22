@@ -103,6 +103,8 @@ describe Worochi::Item do
     it 'detects the MIME type' do
       item = Worochi::Item.open_single(local.source)
       expect(item.content_type).to eq('text/plain')
+      item = Worochi::Item.open_single(remote.source)
+      expect(item.content_type).to eq('image/gif')
     end
     it 'falls back to file name when ruby-filemagic is not loaded' do
       temp = FileMagic
