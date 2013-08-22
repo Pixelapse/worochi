@@ -140,10 +140,10 @@ class Worochi
     # @param args [Array] argument list
     # @return [Array<String>, Array<Hashie::Mash>] list of files or folders
     def list_helper(mode, args)
-      details = true if args.first == true
-      if args.first.kind_of?(String)
-        path = args.first 
-        details = true if args[1] == true
+      details = args[0] == true ? true : false
+      if args[0].respond_to?(:length)
+        path = args[0]
+        details = args[1] == true ? true : false
       end
 
       case mode

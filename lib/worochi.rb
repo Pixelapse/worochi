@@ -49,6 +49,7 @@ class Worochi
     #     }
     #     Worochi.create(:github, '6st46setsytgbhd64', opts)
     def create(service, token, opts={})
+      opts ||= {}
       opts[:service] = service.to_sym
       opts[:token] = token
       agent = Agent.new(opts)
@@ -127,6 +128,7 @@ class Worochi
     # @see Item.open
     # @see Agent#push
     def push(origin, opts={})
+      opts ||= {}
       if @agents.empty?
         Log.warn 'No push targets specified'
         return false
