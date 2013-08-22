@@ -152,6 +152,31 @@ new_token = oauth.refresh(token)
 Tokens are hashes and `refresh` expects a hash containing the field
 `refresh_token`. It raises an error if `refresh_token` is invalid.
 
+## Supported Services
+
+Currently these services are fully supported:
+
+**Google Drive**
+  - Service name `:google_drive`
+  - Env variables `GOOGLE_ID` `GOOGLE_SECRET` `GOOGLE_TEST_TOKEN`
+
+**Dropbox**
+  - Service name `:dropbox`
+  - Env variables `DROPBOX_ID` `DROPBOX_SECRET` `DROPBOX_TEST_TOKEN`
+
+**GitHub**
+  - Service name `:github`
+  - Env variables `GITHUB_ID` `GITHUB_SECRET` `GITHUB_TEST_TOKEN`
+
+### Environmental Variables
+
+`ID` and `SECRET` variables are only needed for retrieving access tokens and
+can be omitted if you are using other OAuth2 libraries for that purpose.
+
+`TEST_TOKEN` is a valid user access token used for RSpec testing. The user
+account being used for testing should contain these [test files]
+(https://github.com/darkmirage/test) at the directory specified by the tests.
+
 ## MIME Types
 
 Some services such as Google Drive require Worochi to provide MIME types
