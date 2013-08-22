@@ -1,18 +1,17 @@
 require 'spec_helper'
 
-describe Worochi::Agent::Github do
+describe Worochi::Agent::Github, :github do
   let(:required_keys) { [:repo, :source, :target, :block_size, :commit_msg] }
   let(:client_class) { Octokit::Client }
   let(:master_branch) { 'cdddc3941866854cdb41c023d0f5240ed10df053' }
 
   let(:agent) do
-    Worochi::Agent::Github.new({
+    Worochi::Agent::Github.new(
       token: ENV['GITHUB_TEST_TOKEN'],
       repo: 'darkmirage/test',
       source: 'master',
       target: 'rspec',
-      commit_msg: "RSpec Test"
-    })
+      commit_msg: "RSpec Test")
   end
 
   it_should_behave_like 'a service agent'
@@ -20,7 +19,9 @@ describe Worochi::Agent::Github do
   context 'modifies the repo' do
     before do
       @client = agent.init_client
-      @item = Worochi::Item.open_single(path: local.path, source: local.source)
+      @item = Worochi::Item.open_single(
+        path: local.path,
+        source: local.source)
       delete_target
     end
 

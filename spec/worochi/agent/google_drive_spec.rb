@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe Worochi::Agent::GoogleDrive do
+describe Worochi::Agent::GoogleDrive, :google_drive do
   let(:required_keys) { [] }
   let(:client_class) { Google::APIClient }
   let(:folder_id) { '0B30CGkhrN5qzaUJGbFNDRjl0S2M' }

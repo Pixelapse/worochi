@@ -25,19 +25,23 @@ VCR.configure do |c|
   }
 end
 
+# Service manifest
+test_token_prefix = {
+  google_drive: 'GOOGLE',
+  dropbox: 'DROPBOX',
+  github: 'GITHUB'
+}
+
 # Removes sensitive keys from recordings
 VCR.configure do |c|
   c.filter_sensitive_data('<AWS_KEY>') { ENV['AWS_SECRET_ACCESS_KEY'] }
   c.filter_sensitive_data('<AWS_ID>') { ENV['AWS_ACCESS_KEY_ID'] }
-  c.filter_sensitive_data('<GITHUB_TOKEN>') { ENV['GITHUB_TEST_TOKEN'] }
-  c.filter_sensitive_data('<GITHUB_ID>') { ENV['GITHUB_ID'] }
-  c.filter_sensitive_data('<GITHUB_SECRET>') { ENV['GITHUB_SECRET'] }
-  c.filter_sensitive_data('<DROPBOX_TOKEN>') { ENV['DROPBOX_TEST_TOKEN'] }
-  c.filter_sensitive_data('<DROPBOX_ID>') { ENV['DROPBOX_ID'] }
-  c.filter_sensitive_data('<DROPBOX_SECRET>') { ENV['DROPBOX_SECRET'] }
-  c.filter_sensitive_data('<GOOGLE_TOKEN>') { ENV['GOOGLE_TEST_TOKEN'] }
-  c.filter_sensitive_data('<GOOGLE_ID>') { ENV['GOOGLE_ID'] }
-  c.filter_sensitive_data('<GOOGLE_SECRET>') { ENV['GOOGLE_SECRET'] }
+
+  test_token_prefix.each do |service, prefix|
+    c.filter_sensitive_data("<#{prefix}_TOKEN>") { ENV["#{prefix}_TEST_TOKEN"] }
+    c.filter_sensitive_data("<#{prefix}_ID>") { ENV["#{prefix}_ID"] }
+    c.filter_sensitive_data("<#{prefix}_SECRET>") { ENV["#{prefix}_SECRET"] }
+  end
 end
 
 RSpec.configure do |c|
@@ -57,7 +61,15 @@ RSpec.configure do |c|
   end
 
   # Exclude tests involving AWS if secret key is not set
-  if !ENV['AWS_SECRET_ACCESS_KEY']
+  if ENV['AWS_SECRET_ACCESS_KEY'].nil?
     c.filter_run_excluding :aws
   end
+
+  test_token_prefix.each do |service, prefix|
+    if ENV["#{prefix}_TEST_TOKEN"].nil?
+      c.filter_run_excluding service
+      service_name = Worochi::Config.service_display_name(service)
+      puts "#{prefix}_TEST_TOKEN not found. Skipping Google Drive tests."
+    end
+  end 
 end

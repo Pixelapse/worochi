@@ -1,14 +1,13 @@
 require 'spec_helper'
 
-describe Worochi::Agent::Dropbox do
+describe Worochi::Agent::Dropbox, :dropbox do
   let(:required_keys) { [:chunk_size, :overwrite] }
   let(:client_class) { DropboxClient }
 
   let(:agent) do
-    Worochi::Agent::Dropbox.new({
+    Worochi::Agent::Dropbox.new(
       token: ENV['DROPBOX_TEST_TOKEN'],
-      dir: '/Dev/test'
-    })
+      dir: '/Dev/test')
   end
 
   it_should_behave_like 'a service agent'
