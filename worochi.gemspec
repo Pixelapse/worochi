@@ -17,7 +17,11 @@ Gem::Specification.new do |s|
 
   s.files = %w(README.md LICENSE worochi.gemspec)
   s.files += Dir.glob('lib/**/*.{rb,yml}')
-  s.test_files = Dir.glob('spec/**/*')
+
+  s.test_files = %w(circle.yml Rakefile)
+  s.test_files += Dir.glob('spec/**/*').reject do |path|
+    /^spec\/cassettes.*/.match(path)
+  end
 
   s.require_paths = ['lib']
 
@@ -34,10 +38,9 @@ Gem::Specification.new do |s|
   s.add_development_dependency('vcr', ['~> 2.5.0'])
   s.add_development_dependency('webmock', ['~> 1.9.3'])
   s.add_development_dependency('yard')
+  s.add_development_dependency('redcarpet')
   s.add_development_dependency('simplecov')
   s.add_development_dependency('coveralls')
-  s.add_development_dependency('rake')
-  s.add_development_dependency('redcarpet')
   s.add_development_dependency('awesome_print')
 
   s.post_install_message = <<-MESSAGE
