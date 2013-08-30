@@ -32,6 +32,7 @@ Gem::Specification.new do |s|
   s.add_runtime_dependency('dropbox-sdk') # Dropbox
   s.add_runtime_dependency('google-api-client') # Google
   s.add_runtime_dependency('octokit', ['1.25.0']) # GitHub
+  s.add_runtime_dependency('ruby-box') # Box
 
   s.add_development_dependency('ruby-filemagic')
   s.add_development_dependency('rspec', ['~> 2.14.1'])

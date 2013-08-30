@@ -29,7 +29,8 @@ end
 test_token_prefix = {
   google_drive: 'GOOGLE',
   dropbox: 'DROPBOX',
-  github: 'GITHUB'
+  github: 'GITHUB',
+  box: 'BOX'
 }
 
 # Removes sensitive keys from recordings
@@ -69,7 +70,7 @@ RSpec.configure do |c|
     if ENV["#{prefix}_TEST_TOKEN"].nil?
       c.filter_run_excluding service
       service_name = Worochi::Config.service_display_name(service)
-      puts "#{prefix}_TEST_TOKEN not found. Skipping Google Drive tests."
+      puts "#{prefix}_TEST_TOKEN not found. Skipping #{service_name} tests."
     end
   end 
 end
