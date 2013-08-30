@@ -1,0 +1,156 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://api.box.com/2.0/folders/0
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - '*/*'
+      User-Agent:
+      - Ruby
+      Authorization:
+      - Bearer <BOX_TOKEN>
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - nginx
+      Date:
+      - Fri, 30 Aug 2013 01:06:58 GMT
+      Content-Type:
+      - application/json
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Cache-Control:
+      - no-cache, no-store
+    body:
+      encoding: UTF-8
+      string: '{"type":"folder","id":"0","sequence_id":null,"etag":null,"name":"All
+        Files","created_at":null,"modified_at":null,"description":"","size":436049588,"path_collection":{"total_count":0,"entries":[]},"created_by":{"type":"user","id":"","name":"","login":""},"modified_by":{"type":"user","id":"193600085","name":"Raven
+        Jiang","login":"jcx@stanford.edu"},"trashed_at":null,"purged_at":null,"content_created_at":null,"content_modified_at":null,"owned_by":{"type":"user","id":"193600085","name":"Raven
+        Jiang","login":"jcx@stanford.edu"},"shared_link":null,"folder_upload_email":null,"parent":null,"item_status":"active","item_collection":{"total_count":3,"entries":[{"type":"folder","id":"1115452413","sequence_id":"0","etag":"0","name":"worochi"},{"type":"file","id":"6895642552","sequence_id":"1","etag":"1","sha1":"729e3090a041c6d60d8f49f24f5372b7a204c698","name":"Augmented
+        Copyright.mp4"},{"type":"file","id":"6845398450","sequence_id":"1","etag":"1","sha1":"a714c685a3299574b629a70dd1f24af961f84309","name":"Cyberpunk.mp4"}],"offset":0,"limit":100,"order":[{"by":"type","direction":"ASC"},{"by":"name","direction":"ASC"}]}}'
+    http_version: 
+  recorded_at: Fri, 30 Aug 2013 01:06:57 GMT
+- request:
+    method: get
+    uri: https://api.box.com/2.0/folders/0/items?limit=100&offset=0
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - '*/*'
+      User-Agent:
+      - Ruby
+      Authorization:
+      - Bearer <BOX_TOKEN>
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - nginx
+      Date:
+      - Fri, 30 Aug 2013 01:06:58 GMT
+      Content-Type:
+      - application/json
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Cache-Control:
+      - no-cache, no-store
+    body:
+      encoding: UTF-8
+      string: '{"total_count":3,"entries":[{"type":"folder","id":"1115452413","sequence_id":"0","etag":"0","name":"worochi"},{"type":"file","id":"6895642552","sequence_id":"1","etag":"1","sha1":"729e3090a041c6d60d8f49f24f5372b7a204c698","name":"Augmented
+        Copyright.mp4"},{"type":"file","id":"6845398450","sequence_id":"1","etag":"1","sha1":"a714c685a3299574b629a70dd1f24af961f84309","name":"Cyberpunk.mp4"}],"offset":0,"limit":100,"order":[{"by":"type","direction":"ASC"},{"by":"name","direction":"ASC"}]}'
+    http_version: 
+  recorded_at: Fri, 30 Aug 2013 01:06:58 GMT
+- request:
+    method: get
+    uri: https://api.box.com/2.0/folders/1115452413/items?limit=100&offset=0
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - '*/*'
+      User-Agent:
+      - Ruby
+      Authorization:
+      - Bearer <BOX_TOKEN>
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - nginx
+      Date:
+      - Fri, 30 Aug 2013 01:06:59 GMT
+      Content-Type:
+      - application/json
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Cache-Control:
+      - no-cache, no-store
+    body:
+      encoding: UTF-8
+      string: '{"total_count":1,"entries":[{"type":"folder","id":"1115452031","sequence_id":"1","etag":"1","name":"test"}],"offset":0,"limit":100,"order":[{"by":"type","direction":"ASC"},{"by":"name","direction":"ASC"}]}'
+    http_version: 
+  recorded_at: Fri, 30 Aug 2013 01:06:58 GMT
+- request:
+    method: get
+    uri: https://api.box.com/2.0/folders/1115452031/items?limit=100&offset=0
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - '*/*'
+      User-Agent:
+      - Ruby
+      Authorization:
+      - Bearer <BOX_TOKEN>
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - nginx
+      Date:
+      - Fri, 30 Aug 2013 01:07:00 GMT
+      Content-Type:
+      - application/json
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Cache-Control:
+      - no-cache, no-store
+    body:
+      encoding: UTF-8
+      string: '{"total_count":7,"entries":[{"type":"folder","id":"1115452047","sequence_id":"0","etag":"0","name":".git"},{"type":"folder","id":"1115452189","sequence_id":"0","etag":"0","name":"folder1"},{"type":"folder","id":"1115452251","sequence_id":"0","etag":"0","name":"folder2"},{"type":"folder","id":"1115452105","sequence_id":"0","etag":"0","name":"folder3"},{"type":"file","id":"10065218487","sequence_id":"0","etag":"0","sha1":"94ce098b9e04c0a2b1a575720c59a1b0b00a77e4","name":"file1"},{"type":"file","id":"10065217817","sequence_id":"0","etag":"0","sha1":"880e7320235e88494ba250398dc24cfda9b43d0b","name":"LICENSE"},{"type":"file","id":"10065217217","sequence_id":"0","etag":"0","sha1":"396b12f0affde5e949557384a69993c8161a2642","name":"README.md"}],"offset":0,"limit":100,"order":[{"by":"type","direction":"ASC"},{"by":"name","direction":"ASC"}]}'
+    http_version: 
+  recorded_at: Fri, 30 Aug 2013 01:06:59 GMT
+recorded_with: VCR 2.5.0
