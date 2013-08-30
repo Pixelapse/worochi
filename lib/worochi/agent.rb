@@ -246,7 +246,6 @@ end
 Worochi::Config.services.each do |service|
   begin
     require "worochi/agent/#{service}"
-  rescue LoadError
-    Worochi::Log.warn "Found #{service}.yml but not #{service}.rb"
+  rescue LoadError # yml is defined but not the agent
   end
 end

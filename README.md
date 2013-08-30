@@ -156,10 +156,6 @@ Tokens are hashes and `refresh` expects a hash containing the field
 
 Currently these services are fully supported:
 
-**Google Drive**
-  - Service name `:google_drive`
-  - Env variables `GOOGLE_ID` `GOOGLE_SECRET` `GOOGLE_TEST_TOKEN`
-
 **Dropbox**
   - Service name `:dropbox`
   - Env variables `DROPBOX_ID` `DROPBOX_SECRET` `DROPBOX_TEST_TOKEN`
@@ -167,6 +163,14 @@ Currently these services are fully supported:
 **GitHub**
   - Service name `:github`
   - Env variables `GITHUB_ID` `GITHUB_SECRET` `GITHUB_TEST_TOKEN`
+
+**Google Drive**
+  - Service name `:google_drive`
+  - Env variables `GOOGLE_ID` `GOOGLE_SECRET` `GOOGLE_TEST_TOKEN`
+
+**Box**
+  - Service name `:box`
+  - Env variables `BOX_ID` `BOX_SECRET` `BOX_TEST_TOKEN`
 
 ### Environmental Variables
 

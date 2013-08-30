@@ -29,7 +29,8 @@ end
 test_token_prefix = {
   google_drive: 'GOOGLE',
   dropbox: 'DROPBOX',
-  github: 'GITHUB'
+  github: 'GITHUB',
+  box: 'BOX'
 }
 
 # Removes sensitive keys from recordings

@@ -41,7 +41,7 @@ class Worochi
     # @see Agent#folders
     # @see Agent#files
     def list(path=nil)
-      remote_path = path || options[:dir]
+      remote_path = list_path(path)
       result = @client.get_file_list(remote_path)
       result.map do |elem|
         {
